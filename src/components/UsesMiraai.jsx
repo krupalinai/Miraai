@@ -47,11 +47,17 @@ export default function UsesMiraai() {
 
   useEffect(() => {
     let interval;
+    const getCardWidth = () => {
+      if (window.innerWidth <= 480) return 260 + 20; // card width + gap
+      if (window.innerWidth <= 768) return 280 + 20;
+      return 350; // 320 + 30
+    };
+
     if (!isPaused) {
       interval = setInterval(() => {
         if (railRef.current) {
           const rail = railRef.current;
-          const cardPlusGap = 350; // card width (320) + gap (30)
+          const cardPlusGap = getCardWidth();
 
           // Smoothly scroll to next
           rail.scrollLeft += cardPlusGap;
@@ -62,9 +68,11 @@ export default function UsesMiraai() {
           if (rail.scrollLeft >= oneSetWidth * 2) {
             // Wait for smooth scroll to finish, then snap back
             setTimeout(() => {
-              rail.style.scrollBehavior = 'auto';
-              rail.scrollLeft = oneSetWidth;
-              rail.style.scrollBehavior = 'smooth';
+              if (railRef.current) {
+                rail.style.scrollBehavior = 'auto';
+                rail.scrollLeft = oneSetWidth;
+                rail.style.scrollBehavior = 'smooth';
+              }
             }, 600);
           }
         }
@@ -76,7 +84,12 @@ export default function UsesMiraai() {
   // Initial setup: start at the second set for seamless loop
   useEffect(() => {
     if (railRef.current) {
-      const cardPlusGap = 350;
+      const getCardWidth = () => {
+        if (window.innerWidth <= 480) return 260 + 20;
+        if (window.innerWidth <= 768) return 280 + 20;
+        return 350;
+      };
+      const cardPlusGap = getCardWidth();
       railRef.current.scrollLeft = originalCards.length * cardPlusGap;
     }
   }, []);
@@ -96,6 +109,8 @@ export default function UsesMiraai() {
           ref={railRef}
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
           {cards.map((card, index) => (
             <div
@@ -154,18 +169,19 @@ export default function UsesMiraai() {
         .um-rail {
           display: flex;
           gap: 30px;
-          overflow-x: hidden;
+          overflow-x: auto;
           padding: 30px 0;
           scroll-behavior: smooth;
           -ms-overflow-style: none;
           scrollbar-width: none;
+          scroll-snap-type: x mandatory;
         }
 
         .um-rail::-webkit-scrollbar {
           display: none;
         }
 
-        .um-card {
+          .um-card {
           position: relative;
           width: 320px;
           height: 420px;
@@ -177,6 +193,7 @@ export default function UsesMiraai() {
                       border 0.3s ease, 
                       box-shadow 0.3s ease;
           background: #111;
+          scroll-snap-align: center;
         }
 
         .um-card:hover {
@@ -237,6 +254,22 @@ export default function UsesMiraai() {
           .um-title { font-size: 28px; }
           .um-card { width: 280px; height: 360px; }
           .um-rail { gap: 20px; }
+        }
+
+        @media (max-width: 480px) {
+          .um-title { font-size: 24px; }
+          .um-subtitle { font-size: 13px; padding: 0 15px; }
+          .um-card { width: 260px; height: 340px; }
+          .um-container {
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+          }
+        }
+
+        @media (max-width: 360px) {
+          .um-title { font-size: 22px; }
+          .um-card { width: 260px; border-radius: 20px; }
+          .um-card-title { font-size: 17px; }
+          .um-text { padding: 20px; }
         }
       `}</style>
     </section>
