@@ -1,26 +1,29 @@
-import { useState } from 'react'
-import './App.css'
-import Percentage from './components/percentage'
-import GlobalGiants from './components/global_giants'
-import Features from './components/features'
-import TrustMiraai from './components/trust_miraai'
-import DoBest from './components/do_best'
-import AiContent from './components/ai_content'
-import Header from './components/header'
-function App() {
-  const [count, setCount] = useState(0)
+import React from 'react';
+import Supportingline from './Component/Supportingline';
+import UsesMiraai from './Component/UsesMiraai';
+import BusinessesChooseMiraai from './Component/BusinessesChooseMiraai';
+import Creativerevisualization from './Component/Creativerevisualization';
+import Aidesigngenration from './Component/Aidesigngenration';
+import Whatourclientssay from './Component/whatourclientssay';
+import Calltoaction from './Component/Calltoaction';
+import Frequentlyaskedquestions from './Component/Frequentlyaskedquestions';
+import Footer from './Component/Footer';
+import './App.css';
 
+function App() {
   return (
-    <>
-      <Header />
-      <Percentage />
-      <GlobalGiants />
-      <Features />
-      <TrustMiraai />
-      <DoBest />
-      <AiContent />
-    </>
-  )
+    <div className="App">
+      <Supportingline />
+      <UsesMiraai />
+      <BusinessesChooseMiraai />
+      <Creativerevisualization />
+      <Aidesigngenration />
+      <Whatourclientssay />
+      <Calltoaction />
+      <Frequentlyaskedquestions />
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;
