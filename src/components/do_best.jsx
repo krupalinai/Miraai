@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import WhyMiraaiImage from '../assets/images/why_Miraai.svg';
 
 const DoBest = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -47,16 +48,17 @@ const DoBest = () => {
                     alignItems: 'center'
                 }}>
 
-                    {/* Left Column: Special Gradient Box */}
-                    <div style={{
-                        background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%)',
-                        border: '1px solid #FFFFFF1A', // Using the exact color code provided
-                        borderRadius: '1.5rem',
-                        height: '400px',
-                        width: '100%',
-                        position: 'relative'
-                    }}>
-                        {/* Box content is empty as per image, serving as a visual element or placeholder */}
+                    {/* Left Column: Illustration */}
+                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <img
+                            src={WhyMiraaiImage}
+                            alt="Miraai Illustration"
+                            style={{
+                                width: '100%',
+                                height: 'auto',
+                                objectFit: 'contain'
+                            }}
+                        />
                     </div>
 
                     {/* Right Column: Text and List */}
