@@ -134,9 +134,107 @@ export default function Calltoaction() {
           }
         }
 
-        @media (max-width: 560px) {
+        /* ========================================
+           RESPONSIVE - Mobile (max-width: 680px)
+        ======================================== */
+        @media (max-width: 680px) {
+          .cta-wrap {
+            padding: 70px 16px 90px;
+          }
+
+          .cta-card {
+            padding: 56px 24px 50px;
+            border-radius: 18px;
+          }
+
           .cta-title {
-            font-size: 26px;
+            font-size: 32px;
+            line-height: 1.2;
+          }
+
+          .cta-title br {
+            display: inline;
+          }
+
+          .cta-sub {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 18px;
+            padding: 0 10px;
+          }
+
+          .cta-btn {
+            margin-top: 32px;
+          }
+
+          .cta-btn-img {
+            height: 44px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Small Mobile (max-width: 480px)
+        ======================================== */
+        @media (max-width: 480px) {
+          .cta-wrap {
+            padding: 60px 14px 80px;
+          }
+
+          .cta-card {
+            padding: 48px 20px 44px;
+            border-radius: 16px;
+          }
+
+          .cta-title {
+            font-size: 28px;
+          }
+
+          .cta-sub {
+            font-size: 12px;
+            padding: 0 8px;
+            margin-top: 16px;
+          }
+
+          .cta-btn {
+            margin-top: 28px;
+          }
+
+          .cta-btn-img {
+            height: 42px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Extra Small (max-width: 360px)
+        ======================================== */
+        @media (max-width: 360px) {
+          .cta-wrap {
+            padding: 50px 12px 70px;
+          }
+
+          .cta-card {
+            padding: 42px 18px 38px;
+            border-radius: 14px;
+          }
+
+          .cta-title {
+            font-size: 24px;
+            line-height: 1.25;
+          }
+
+          .cta-sub {
+            font-size: 11px;
+            line-height: 1.55;
+            padding: 0 4px;
+            margin-top: 14px;
+          }
+
+          .cta-btn {
+            margin-top: 24px;
+          }
+
+          .cta-btn-img {
+            height: 40px;
           }
         }
       `}</style>

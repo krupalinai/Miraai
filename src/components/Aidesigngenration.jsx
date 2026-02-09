@@ -352,26 +352,217 @@ export default function Aidesigngenration() {
           }
         }
 
+        /* ========================================
+           RESPONSIVE - Mobile (max-width: 680px)
+        ======================================== */
+        @media (max-width: 680px) {
+          .adg-wrap {
+            padding: 70px 0 90px;
+          }
+
+          .adg-head {
+            margin-bottom: 50px;
+            padding: 0 16px;
+          }
+
+          .adg-title {
+            font-size: 32px;
+            line-height: 1.15;
+          }
+
+          .adg-sub {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 14px;
+            max-width: 100%;
+            padding: 0 10px;
+          }
+
+          .adg-carousel {
+            padding: 16px 0;
+          }
+
+          .adg-carousel-track {
+            gap: 20px;
+            padding: 0 20px;
+          }
+
+          .adg-video-card {
+            width: 220px;
+            height: 320px;
+            border-radius: 20px;
+          }
+
+          .adg-card-overlay {
+            padding: 14px;
+          }
+
+          .adg-profile-icon {
+            width: 26px;
+            height: 26px;
+          }
+
+          .adg-profile-label {
+            font-size: 10px;
+          }
+
+          .adg-growth-badge {
+            font-size: 10px;
+            padding: 3px 9px;
+          }
+
+          .adg-card-title {
+            font-size: 20px;
+          }
+
+          .adg-views {
+            font-size: 12px;
+          }
+
+          .adg-growth-bottom {
+            font-size: 10px;
+            padding: 3px 9px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Small Mobile (max-width: 480px)
+        ======================================== */
         @media (max-width: 480px) {
           .adg-wrap {
             padding: 60px 0 80px;
+          }
+
+          .adg-head {
+            margin-bottom: 44px;
+            padding: 0 14px;
           }
 
           .adg-title {
             font-size: 28px;
           }
 
-          .adg-head {
-            margin-bottom: 40px;
+          .adg-sub {
+            font-size: 12px;
+            padding: 0 8px;
+            margin-top: 12px;
+          }
+
+          .adg-carousel {
+            padding: 14px 0;
+          }
+
+          .adg-carousel-track {
+            gap: 18px;
+            padding: 0 16px;
           }
 
           .adg-video-card {
             width: 200px;
-            height: 280px;
+            height: 290px;
+            border-radius: 18px;
+          }
+
+          .adg-card-overlay {
+            padding: 12px;
+          }
+
+          .adg-profile-icon {
+            width: 24px;
+            height: 24px;
+          }
+
+          .adg-profile-label {
+            font-size: 9px;
+          }
+
+          .adg-growth-badge {
+            font-size: 9px;
+            padding: 3px 8px;
+          }
+
+          .adg-card-title {
+            font-size: 18px;
+          }
+
+          .adg-views {
+            font-size: 11px;
+          }
+
+          .adg-growth-bottom {
+            font-size: 9px;
+            padding: 3px 8px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Extra Small (max-width: 360px)
+        ======================================== */
+        @media (max-width: 360px) {
+          .adg-wrap {
+            padding: 50px 0 70px;
+          }
+
+          .adg-head {
+            margin-bottom: 40px;
+            padding: 0 12px;
+          }
+
+          .adg-title {
+            font-size: 24px;
+          }
+
+          .adg-sub {
+            font-size: 11px;
+            line-height: 1.55;
+            padding: 0 4px;
+            margin-top: 10px;
+          }
+
+          .adg-carousel {
+            padding: 12px 0;
           }
 
           .adg-carousel-track {
             gap: 16px;
+            padding: 0 12px;
+          }
+
+          .adg-video-card {
+            width: 180px;
+            height: 260px;
+            border-radius: 16px;
+          }
+
+          .adg-card-overlay {
+            padding: 10px;
+          }
+
+          .adg-profile-icon {
+            width: 22px;
+            height: 22px;
+          }
+
+          .adg-profile-label {
+            font-size: 8px;
+          }
+
+          .adg-growth-badge {
+            font-size: 8px;
+            padding: 2px 7px;
+          }
+
+          .adg-card-title {
+            font-size: 16px;
+          }
+
+          .adg-views {
+            font-size: 10px;
+          }
+
+          .adg-growth-bottom {
+            font-size: 8px;
+            padding: 2px 7px;
           }
         }
 

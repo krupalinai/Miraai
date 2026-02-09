@@ -256,11 +256,204 @@ export default function Whatourclientssay() {
         }
 
         @media (max-width: 980px) {
+          .wcs-track {
+            gap: 30px;
+          }
+
+          .wcs-card {
+            flex: 0 0 100%;
+          }
+
           .wcs-nav {
             position: relative;
             bottom: 0;
             margin-top: 24px;
             justify-content: center;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Mobile (max-width: 680px)
+        ======================================== */
+        @media (max-width: 680px) {
+          .wcs-wrap {
+            padding: 70px 16px;
+          }
+
+          .wcs-head {
+            margin-bottom: 40px;
+          }
+
+          .wcs-title {
+            font-size: 32px;
+            line-height: 1.15;
+          }
+
+          .wcs-sub {
+            font-size: 13px;
+            line-height: 1.6;
+            margin-top: 14px;
+            padding: 0 10px;
+          }
+
+          .wcs-sub br {
+            display: none;
+          }
+
+          .wcs-viewport {
+            padding: 16px 0;
+          }
+
+          .wcs-track {
+            gap: 24px;
+          }
+
+          .wcs-card {
+            padding: 28px 24px 24px;
+            min-height: auto;
+            border-radius: 16px;
+          }
+
+          .wcs-quote {
+            font-size: 14px;
+            line-height: 1.65;
+          }
+
+          .wcs-role {
+            margin-top: 20px;
+            font-size: 14px;
+          }
+
+          .wcs-brand {
+            font-size: 12px;
+            margin-top: 4px;
+          }
+
+          .wcs-nav {
+            margin-top: 30px;
+          }
+
+          .wcs-nav-btn {
+            width: 40px;
+            height: 40px;
+          }
+
+          .wcs-nav-btn svg {
+            width: 18px;
+            height: 18px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Small Mobile (max-width: 480px)
+        ======================================== */
+        @media (max-width: 480px) {
+          .wcs-wrap {
+            padding: 60px 14px;
+          }
+
+          .wcs-head {
+            margin-bottom: 36px;
+          }
+
+          .wcs-title {
+            font-size: 28px;
+          }
+
+          .wcs-sub {
+            font-size: 12px;
+            padding: 0 8px;
+          }
+
+          .wcs-card {
+            padding: 24px 20px 20px;
+            border-radius: 14px;
+          }
+
+          .wcs-quote {
+            font-size: 13px;
+            line-height: 1.6;
+          }
+
+          .wcs-role {
+            margin-top: 18px;
+            font-size: 13px;
+          }
+
+          .wcs-brand {
+            font-size: 11px;
+          }
+
+          .wcs-nav-btn {
+            width: 38px;
+            height: 38px;
+          }
+
+          .wcs-nav-btn svg {
+            width: 17px;
+            height: 17px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Extra Small (max-width: 360px)
+        ======================================== */
+        @media (max-width: 360px) {
+          .wcs-wrap {
+            padding: 50px 12px;
+          }
+
+          .wcs-head {
+            margin-bottom: 32px;
+          }
+
+          .wcs-title {
+            font-size: 26px;
+          }
+
+          .wcs-sub {
+            font-size: 11px;
+            line-height: 1.55;
+            padding: 0 4px;
+            margin-top: 12px;
+          }
+
+          .wcs-viewport {
+            padding: 14px 0;
+          }
+
+          .wcs-card {
+            padding: 22px 18px 18px;
+            border-radius: 12px;
+          }
+
+          .wcs-quote {
+            font-size: 12px;
+            line-height: 1.55;
+          }
+
+          .wcs-role {
+            margin-top: 16px;
+            font-size: 12px;
+          }
+
+          .wcs-brand {
+            font-size: 10px;
+          }
+
+          .wcs-nav {
+            margin-top: 24px;
+            gap: 10px;
+          }
+
+          .wcs-nav-btn {
+            width: 36px;
+            height: 36px;
+          }
+
+          .wcs-nav-btn svg {
+            width: 16px;
+            height: 16px;
           }
         }
       `}</style>

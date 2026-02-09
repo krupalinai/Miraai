@@ -17,7 +17,7 @@ const steps = [
   {
     number: 1,
     title: 'Input Your Vision',
-    subtitle: 'Start With A Snap Of Concept',
+    subtitle: 'Start With A Script Or Concept',
     description:
       'Paste Your Script, Upload A Brief, Or Use Our AI Assistant To Create One\nFrom Scratch. Miraai Breaks It Into Scenes Automatically And Suggests\nVisual Treatments.',
     side: 'right',
@@ -53,7 +53,7 @@ export default function Supportingline() {
     <section className="sl-wrap">
       <div className="sl-header">
         <div className="sl-title">Supporting Line</div>
-        <div className="sl-subtitle">Simple. Fast. Scalable.</div>
+        <div className="sl-subtitle">Simple. Fast. Reliable.</div>
       </div>
 
       <div className="sl-timeline">
@@ -391,37 +391,103 @@ export default function Supportingline() {
         }
 
         /* ========================================
-           RESPONSIVE - Mobile
+           RESPONSIVE - Mobile (max-width: 680px)
         ======================================== */
         @media (max-width: 680px) {
+          .sl-wrap {
+            padding: 30px 16px 50px;
+          }
+
+          .sl-header {
+            margin-bottom: 30px;
+          }
+
+          .sl-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #a855f7;
+          }
+
+          .sl-subtitle {
+            font-size: 14px;
+            margin-top: 8px;
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.7);
+          }
+
           .sl-timeline {
-            padding-left: 12px;
-            padding-right: 12px;
+            padding-left: 0;
+            padding-right: 0;
           }
 
           .sl-line {
-            left: 22px;
-            transform: none;
+            display: none;
           }
 
           .sl-row {
-            grid-template-columns: 1fr;
-            padding: 22px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: 0 0 40px 0;
           }
 
-          .sl-card-wrapper,
+          .sl-row.is-left,
+          .sl-row.is-right {
+            flex-direction: column;
+          }
+
           .sl-spacer {
-            height: 190px;
+            display: none;
+          }
+
+          .sl-card-wrapper {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            order: 1;
+          }
+
+          .sl-card {
+            border-radius: 14px;
+          }
+
+          .sl-card-img {
+            object-fit: cover;
+          }
+
+          .sl-row:first-child .sl-card-img {
+            object-fit: cover;
+            padding: 0;
+            background: transparent;
           }
 
           .sl-marker {
-            left: 22px;
-            top: 26px;
-            transform: translate(-50%, 0);
+            position: relative;
+            left: 0;
+            top: 0;
+            transform: none;
+            width: 44px;
+            height: 44px;
+            margin-bottom: 16px;
+            order: 2;
+            background: #7846FF;
+            border: none;
+          }
+
+          .sl-marker::after {
+            display: none;
+          }
+
+          .sl-marker-inner {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
           }
 
           .sl-row:hover .sl-marker {
-            transform: translate(-50%, 0) scale(1.12);
+            transform: none;
           }
 
           .sl-content {
@@ -431,12 +497,39 @@ export default function Supportingline() {
             left: auto;
             right: auto;
             max-width: 100%;
-            margin-left: 46px;
+            margin-left: 0;
+            order: 3;
+          }
+
+          .sl-content.content-left,
+          .sl-content.content-right {
+            left: auto;
+            right: auto;
+            text-align: left;
+          }
+
+          .sl-content-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #a855f7;
+            letter-spacing: 0;
+            margin-bottom: 8px;
+          }
+
+          .sl-content-subtitle {
+            font-size: 15px;
+            font-weight: 700;
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 12px;
           }
 
           .sl-content-desc {
+            font-size: 13px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.65);
+            white-space: normal;
             max-width: 100%;
-            white-space: pre-line;
           }
 
           /* Adjust border trace for mobile */
@@ -451,6 +544,54 @@ export default function Supportingline() {
               transparent 270deg,
               transparent 360deg
             );
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Extra Small (max-width: 360px)
+        ======================================== */
+        @media (max-width: 360px) {
+          .sl-wrap {
+            padding: 24px 12px 40px;
+          }
+
+          .sl-title {
+            font-size: 24px;
+          }
+
+          .sl-subtitle {
+            font-size: 13px;
+          }
+
+          .sl-card-wrapper {
+            aspect-ratio: 16 / 11;
+            border-radius: 14px;
+          }
+
+          .sl-card {
+            border-radius: 12px;
+          }
+
+          .sl-marker {
+            width: 40px;
+            height: 40px;
+          }
+
+          .sl-marker-inner {
+            font-size: 15px;
+          }
+
+          .sl-content-title {
+            font-size: 20px;
+          }
+
+          .sl-content-subtitle {
+            font-size: 14px;
+          }
+
+          .sl-content-desc {
+            font-size: 12px;
+            line-height: 1.55;
           }
         }
 

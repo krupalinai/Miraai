@@ -536,128 +536,311 @@ export default function BusinessesChooseMiraai() {
           right: 44px;
         }
 
+        /* ========================================
+           RESPONSIVE - Tablet (max-width: 768px)
+        ======================================== */
         @media (max-width: 768px) {
           .bcm-wrap {
-            padding: 36px 18px 56px;
+            padding: 40px 16px 60px;
           }
 
           .bcm-title {
-            font-size: 24px;
+            font-size: 28px;
+            line-height: 1.2;
           }
 
           .bcm-container {
-            height: 500px;
+            height: auto;
             max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            padding: 0;
           }
 
-          .bcm-circle {
-            width: 154px;
-            height: 154px;
+          /* Hide the SVG lines on mobile - we'll use CSS for connections */
+          .bcm-lines {
+            display: none;
           }
 
-          .bcm-circle-inner {
-            width: 142px;
-            height: 142px;
+          /* Hide the center circle on mobile */
+          .bcm-center {
+            display: none;
           }
 
-          .bcm-center-img {
-            width: 94px;
-            height: 94px;
+          /* Mobile boxes layout */
+          .bcm-box {
+            position: relative;
+            min-width: unset;
+            width: auto;
+            max-width: 200px;
+            height: auto;
+            min-height: 50px;
+            padding: 14px 18px;
+            margin: 0;
+            top: unset !important;
+            left: unset !important;
+            right: unset !important;
+            bottom: unset !important;
+            animation: none;
+          }
+
+          .bcm-box-content {
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+          }
+
+          /* Reorder boxes using order */
+          .bcm-box-top-right { order: 1; }
+          .bcm-box-middle-right { order: 2; }
+          .bcm-box-bottom-right { order: 3; }
+          .bcm-box-top-left { order: 4; }
+          .bcm-box-middle-left { order: 5; }
+          .bcm-box-bottom-left { order: 6; }
+
+          /* Position boxes alternating left/right */
+          .bcm-box-top-right,
+          .bcm-box-bottom-right,
+          .bcm-box-middle-left {
+            align-self: flex-end;
+            margin-right: 20px;
+          }
+
+          .bcm-box-middle-right,
+          .bcm-box-top-left,
+          .bcm-box-bottom-left {
+            align-self: flex-start;
+            margin-left: 20px;
+          }
+
+          /* Add purple markers using pseudo-elements */
+          .bcm-box::before {
+            content: '';
+            position: absolute;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #8B5CF6;
+            box-shadow: 0 4px 20px rgba(139, 92, 246, 0.5);
+          }
+
+          /* Left positioned boxes - marker on left */
+          .bcm-box-middle-right::before,
+          .bcm-box-top-left::before,
+          .bcm-box-bottom-left::before {
+            left: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          /* Right positioned boxes - marker on right */
+          .bcm-box-top-right::before,
+          .bcm-box-bottom-right::before,
+          .bcm-box-middle-left::before {
+            right: -60px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          /* Add play icon to left markers */
+          .bcm-box-middle-right::after,
+          .bcm-box-top-left::after,
+          .bcm-box-bottom-left::after {
+            content: '';
+            position: absolute;
+            left: -52px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 14px;
+            border-color: transparent transparent transparent #fff;
+          }
+
+          /* Add arrow icon to right markers */
+          .bcm-box-top-right::after,
+          .bcm-box-bottom-right::after,
+          .bcm-box-middle-left::after {
+            content: '';
+            position: absolute;
+            right: -52px;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 8px 0 8px 14px;
+            border-color: transparent transparent transparent #fff;
+          }
+
+          /* Connection lines using CSS */
+          .bcm-box:not(:last-child)::after {
+            display: none;
+          }
+
+          /* Create curved connecting lines */
+          .bcm-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Mobile (max-width: 480px)
+        ======================================== */
+        @media (max-width: 480px) {
+          .bcm-wrap {
+            padding: 32px 12px 50px;
+          }
+
+          .bcm-header {
+            margin-bottom: 28px;
+          }
+
+          .bcm-title {
+            font-size: 26px;
+            line-height: 1.25;
+            padding: 0 10px;
+          }
+
+          .bcm-container {
+            gap: 24px;
+            padding: 0 8px;
           }
 
           .bcm-box {
-            height: 48px;
-            padding: 0 16px;
-            min-width: 210px;
+            max-width: 180px;
+            min-height: 48px;
+            padding: 12px 16px;
+            border-radius: 14px;
+          }
+
+          .bcm-box-content {
+            font-size: 13px;
+          }
+
+          .bcm-box::before {
+            width: 40px;
+            height: 40px;
+          }
+
+          .bcm-box-middle-right::before,
+          .bcm-box-top-left::before,
+          .bcm-box-bottom-left::before {
+            left: -54px;
+          }
+
+          .bcm-box-top-right::before,
+          .bcm-box-bottom-right::before,
+          .bcm-box-middle-left::before {
+            right: -54px;
+          }
+
+          .bcm-box-middle-right::after,
+          .bcm-box-top-left::after,
+          .bcm-box-bottom-left::after {
+            left: -47px;
+            border-width: 6px 0 6px 10px;
+          }
+
+          .bcm-box-top-right::after,
+          .bcm-box-bottom-right::after,
+          .bcm-box-middle-left::after {
+            right: -47px;
+            border-width: 6px 0 6px 10px;
+          }
+
+          .bcm-box-top-right,
+          .bcm-box-bottom-right,
+          .bcm-box-middle-left {
+            margin-right: 16px;
+          }
+
+          .bcm-box-middle-right,
+          .bcm-box-top-left,
+          .bcm-box-bottom-left {
+            margin-left: 16px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Extra Small (max-width: 360px)
+        ======================================== */
+        @media (max-width: 360px) {
+          .bcm-wrap {
+            padding: 28px 10px 40px;
+          }
+
+          .bcm-title {
+            font-size: 22px;
+          }
+
+          .bcm-container {
+            gap: 20px;
+            padding: 0 4px;
+          }
+
+          .bcm-box {
+            max-width: 160px;
+            min-height: 44px;
+            padding: 10px 14px;
+            border-radius: 12px;
           }
 
           .bcm-box-content {
             font-size: 12px;
+            line-height: 1.3;
           }
 
-          .bcm-box-top-left,
-          .bcm-box-bottom-left {
-            left: 16px;
+          .bcm-box::before {
+            width: 36px;
+            height: 36px;
+          }
+
+          .bcm-box-middle-right::before,
+          .bcm-box-top-left::before,
+          .bcm-box-bottom-left::before {
+            left: -48px;
+          }
+
+          .bcm-box-top-right::before,
+          .bcm-box-bottom-right::before,
+          .bcm-box-middle-left::before {
+            right: -48px;
+          }
+
+          .bcm-box-middle-right::after,
+          .bcm-box-top-left::after,
+          .bcm-box-bottom-left::after {
+            left: -42px;
+            border-width: 5px 0 5px 9px;
+          }
+
+          .bcm-box-top-right::after,
+          .bcm-box-bottom-right::after,
+          .bcm-box-middle-left::after {
+            right: -42px;
+            border-width: 5px 0 5px 9px;
           }
 
           .bcm-box-top-right,
-          .bcm-box-bottom-right {
-            right: 16px;
-          }
-
+          .bcm-box-bottom-right,
           .bcm-box-middle-left {
-            left: 16px;
-            min-width: 190px;
-            height: 44px;
-            padding: 0 14px;
+            margin-right: 12px;
           }
 
-          .bcm-box-middle-right {
-            right: 16px;
-          }
-
-          .bcm-box-top-left {
-            top: 80px;
-          }
-
-          .bcm-box-top-right {
-            top: 80px;
-          }
-
-          .bcm-box-middle-left {
-            top: 230px;
-          }
-
-          .bcm-box-middle-right {
-            top: 230px;
-          }
-
+          .bcm-box-middle-right,
+          .bcm-box-top-left,
           .bcm-box-bottom-left {
-            top: 380px;
-          }
-
-          .bcm-box-bottom-right {
-            top: 380px;
-          }
-
-          /* Adjust pulse for mobile - using normalized pathLength */
-          .bcm-pulse-path {
-            stroke-dasharray: 12 88;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .bcm-container {
-            height: 450px;
-          }
-
-          .bcm-circle {
-            width: 136px;
-            height: 136px;
-          }
-
-          .bcm-circle-inner {
-            width: 126px;
-            height: 126px;
-          }
-
-          .bcm-center-img {
-            width: 84px;
-            height: 84px;
-          }
-
-          .bcm-box-content {
-            font-size: 11px;
-          }
-
-          .bcm-box {
-            padding: 10px 12px;
-          }
-
-          .bcm-box-middle-left {
-            min-width: 180px;
-            height: 42px;
-            padding: 0 12px;
+            margin-left: 12px;
           }
         }
 

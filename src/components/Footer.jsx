@@ -181,6 +181,191 @@ export default function Footer() {
             padding-top: 0;
           }
         }
+
+        /* ========================================
+           RESPONSIVE - Mobile (max-width: 680px)
+        ======================================== */
+        @media (max-width: 680px) {
+          .ft-wrap {
+            padding: 44px 16px 32px;
+          }
+
+          .ft-top {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 28px;
+          }
+
+          .ft-left {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .ft-logo {
+            height: 42px;
+            margin-bottom: 20px;
+          }
+
+          .ft-desc {
+            font-size: 13px;
+            line-height: 1.65;
+            text-align: center;
+            max-width: 380px;
+          }
+
+          .ft-desc br {
+            display: none;
+          }
+
+          .ft-links {
+            text-align: center;
+            padding-top: 0;
+            gap: 10px;
+          }
+
+          .ft-link {
+            font-size: 13px;
+          }
+
+          .ft-bottom {
+            margin-top: 32px;
+            flex-direction: column;
+            gap: 20px;
+          }
+
+          .ft-copy {
+            font-size: 13px;
+            order: 2;
+          }
+
+          .ft-social {
+            order: 1;
+            gap: 16px;
+          }
+
+          .ft-social-btn {
+            width: 32px;
+            height: 32px;
+          }
+
+          .ft-social-btn svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Small Mobile (max-width: 480px)
+        ======================================== */
+        @media (max-width: 480px) {
+          .ft-wrap {
+            padding: 40px 14px 28px;
+          }
+
+          .ft-top {
+            gap: 24px;
+          }
+
+          .ft-logo {
+            height: 40px;
+            margin-bottom: 18px;
+          }
+
+          .ft-desc {
+            font-size: 12px;
+            line-height: 1.6;
+            max-width: 340px;
+          }
+
+          .ft-links {
+            gap: 8px;
+          }
+
+          .ft-link {
+            font-size: 12px;
+          }
+
+          .ft-bottom {
+            margin-top: 28px;
+            gap: 18px;
+          }
+
+          .ft-copy {
+            font-size: 12px;
+          }
+
+          .ft-social {
+            gap: 14px;
+          }
+
+          .ft-social-btn {
+            width: 30px;
+            height: 30px;
+          }
+
+          .ft-social-btn svg {
+            width: 19px;
+            height: 19px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Extra Small (max-width: 360px)
+        ======================================== */
+        @media (max-width: 360px) {
+          .ft-wrap {
+            padding: 36px 12px 26px;
+          }
+
+          .ft-top {
+            gap: 22px;
+          }
+
+          .ft-logo {
+            height: 36px;
+            margin-bottom: 16px;
+          }
+
+          .ft-desc {
+            font-size: 11px;
+            line-height: 1.55;
+            max-width: 300px;
+          }
+
+          .ft-links {
+            gap: 6px;
+          }
+
+          .ft-link {
+            font-size: 11px;
+          }
+
+          .ft-bottom {
+            margin-top: 24px;
+            gap: 16px;
+          }
+
+          .ft-copy {
+            font-size: 11px;
+          }
+
+          .ft-social {
+            gap: 12px;
+          }
+
+          .ft-social-btn {
+            width: 28px;
+            height: 28px;
+          }
+
+          .ft-social-btn svg {
+            width: 18px;
+            height: 18px;
+          }
+        }
       `}</style>
     </footer>
   );
