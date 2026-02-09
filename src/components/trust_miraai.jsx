@@ -1,11 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import WhyMiraaiImage from '../assets/images/why_Miraai.svg';
 
 const TrustMiraai = () => {
-    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+    const isInView = useInView(sectionRef, { once: false, amount: 0.15, margin: "-50px" });
 
+    // Detect mobile
     useEffect(() => {
-        setTimeout(() => setIsVisible(true), 200);
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
     const issues = [
@@ -16,125 +25,182 @@ const TrustMiraai = () => {
         "Costly Re-Shoots And Revisions"
     ];
 
-    return (
-        <div
-            style={{
-                backgroundColor: '#000004',
-                minHeight: 'auto',
-                padding: '3rem 2rem',
-                position: 'relative',
-                overflow: 'hidden'
-            }}
-        >
-            <style>
-                {`
-                    @media (max-width: 900px) {
-                        .trust-container {
-                            display: flex !important;
-                            flex-direction: column;
-                        }
-                        .trust-box {
-                            order: -1;
-                            margin-bottom: 2rem;
-                            width: 100%;
-                        }
-                        .trust-content {
-                            width: 100%;
-                            padding-right: 0 !important;
-                        }
-                    }
-                `}
-            </style>
+    // Animation variants - only used on desktop
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.12,
+                delayChildren: 0.05
+            }
+        }
+    };
 
-            <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+    const textVariants = {
+        hidden: { opacity: 0, x: -40 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const imageVariants = {
+        hidden: { opacity: 0, y: 40, scale: 0.95 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const listItemVariants = {
+        hidden: { opacity: 0, x: -20 },
+        visible: {
+            opacity: 1,
+            x: 0,
+            transition: { duration: 0.5, ease: "easeOut" }
+        }
+    };
+
+    const headerVariants = {
+        hidden: { opacity: 0, y: -20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    return (
+        <div ref={sectionRef} className="bg-[#000004] min-h-auto py-5 md:py-20 px-4 md:px-8 relative overflow-hidden">
+            <div className="max-w-[1200px] mx-auto relative z-10">
 
                 {/* Header Section */}
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 style={{
-                        fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-                        fontWeight: 'bold',
-                        color: 'white',
-                        letterSpacing: '-0.02em'
-                    }}>
-                        Why Trust Miraai?
-                    </h2>
-                </div>
+                {isMobile ? (
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl font-bold text-white tracking-tight">
+                            Why Trust Miraai?
+                        </h2>
+                    </div>
+                ) : (
+                    <motion.div
+                        className="text-center mb-16"
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        variants={headerVariants}
+                    >
+                        <h2 className="text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-white tracking-tight">
+                            Why Trust Miraai?
+                        </h2>
+                    </motion.div>
+                )}
 
                 {/* Content Section: Two Columns */}
-                <div
-                    className="trust-container"
-                    style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-                        gap: '4rem',
-                        alignItems: 'center'
-                    }}
-                >
+                <div className="flex flex-col-reverse md:grid md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-8 md:gap-16 items-center">
 
                     {/* Left Column: Text and List */}
-                    <div className="trust-content" style={{ paddingRight: '1rem' }}>
-                        <h3 style={{
-                            color: 'white',
-                            fontSize: '1.5rem',
-                            fontWeight: '600',
-                            marginBottom: '1rem',
-                            lineHeight: '1.4'
-                        }}>
-                            Content Creation Is Slow, Expensive & Hard To Scale
-                        </h3>
-                        <p style={{
-                            color: '#9ca3af',
-                            fontSize: '1rem',
-                            marginBottom: '2.5rem',
-                            lineHeight: '1.6'
-                        }}>
-                            Traditional Video And Creative Production Is Slow, Expensive, And Difficult To Scale.
-                        </p>
+                    {isMobile ? (
+                        <div className="pr-0">
+                            <h3 className="text-white text-lg font-semibold mb-3 leading-snug">
+                                Content Creation Is Slow, Expensive & Hard To Scale
+                            </h3>
 
-                        <h4 style={{
-                            color: 'white',
-                            fontSize: '1.25rem',
-                            fontWeight: '600',
-                            marginBottom: '1.5rem'
-                        }}>
-                            Most Businesses Struggle With:
-                        </h4>
+                            <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                                Traditional Video And Creative Production Is Slow, Expensive, And Difficult To Scale.
+                            </p>
 
-                        <ul style={{ listStyle: 'none', padding: 0 }}>
-                            {issues.map((issue, index) => (
-                                <li key={index} style={{
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    marginBottom: '1rem',
-                                    color: '#9ca3af',
-                                    fontSize: '1rem'
-                                }}>
-                                    <span style={{
-                                        color: '#EF4444',
-                                        marginRight: '1rem',
-                                        fontWeight: 'bold',
-                                        fontSize: '1.2rem'
-                                    }}>
-                                        ✕
-                                    </span>
-                                    {issue}
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
+                            <h4 className="text-white text-base font-semibold mb-4">
+                                Most Businesses Struggle With:
+                            </h4>
+
+                            <ul className="list-none p-0">
+                                {issues.map((issue, index) => (
+                                    <li
+                                        key={index}
+                                        className="flex items-center mb-3 text-gray-400 text-sm"
+                                    >
+                                        <span className="text-red-500 mr-3 font-bold text-base">
+                                            ✕
+                                        </span>
+                                        {issue}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ) : (
+                        <motion.div
+                            className="pr-4"
+                            initial="hidden"
+                            animate={isInView ? "visible" : "hidden"}
+                            variants={containerVariants}
+                        >
+                            <motion.h3
+                                className="text-white text-2xl font-semibold mb-4 leading-snug"
+                                variants={textVariants}
+                            >
+                                Content Creation Is Slow, Expensive & Hard To Scale
+                            </motion.h3>
+
+                            <motion.p
+                                className="text-gray-400 text-base mb-10 leading-relaxed"
+                                variants={textVariants}
+                            >
+                                Traditional Video And Creative Production Is Slow, Expensive, And Difficult To Scale.
+                            </motion.p>
+
+                            <motion.h4
+                                className="text-white text-xl font-semibold mb-6"
+                                variants={textVariants}
+                            >
+                                Most Businesses Struggle With:
+                            </motion.h4>
+
+                            <motion.ul
+                                className="list-none p-0"
+                                variants={containerVariants}
+                            >
+                                {issues.map((issue, index) => (
+                                    <motion.li
+                                        key={index}
+                                        className="flex items-center mb-4 text-gray-400 text-base"
+                                        variants={listItemVariants}
+                                    >
+                                        <span className="text-red-500 mr-4 font-bold text-xl">
+                                            ✕
+                                        </span>
+                                        {issue}
+                                    </motion.li>
+                                ))}
+                            </motion.ul>
+                        </motion.div>
+                    )}
 
                     {/* Right Column: Illustration */}
-                    <div className="trust-box" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <img
-                            src={WhyMiraaiImage}
-                            alt="Why Trust Miraai"
-                            style={{
-                                width: '100%',
-                                height: 'auto',
-                                objectFit: 'contain'
-                            }}
-                        />
-                    </div>
+                    {isMobile ? (
+                        <div className="w-full flex justify-center items-center">
+                            <img
+                                src={WhyMiraaiImage}
+                                alt="Why Trust Miraai"
+                                className="w-full max-w-[280px] h-auto object-contain"
+                            />
+                        </div>
+                    ) : (
+                        <motion.div
+                            className="w-full flex justify-center items-center"
+                            initial="hidden"
+                            animate={isInView ? "visible" : "hidden"}
+                            variants={imageVariants}
+                        >
+                            <img
+                                src={WhyMiraaiImage}
+                                alt="Why Trust Miraai"
+                                className="w-full h-auto object-contain"
+                            />
+                        </motion.div>
+                    )}
 
                 </div>
             </div>

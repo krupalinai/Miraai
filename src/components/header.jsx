@@ -1,70 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import miraiLogo from '../assets/images/mirai.svg';
+import Form from './form';
 
 const Header = () => {
-    return (
-        <div style={{
-            position: 'fixed',
-            top: '2rem',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '90%',
-            maxWidth: '1200px',
-            zIndex: 1000,
-            display: 'flex',
-            justifyContent: 'center'
-        }}>
-            <div style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                padding: '0.75rem 2rem',
-                borderRadius: '1.5rem',
-                background: 'rgba(20, 20, 20, 0.4)', // Slightly transparent dark background
-                backdropFilter: 'blur(16px)', // Key glass effect
-                WebkitBackdropFilter: 'blur(16px)',
-                border: '1px solid rgba(255, 255, 255, 0.1)', // Subtle border
-                boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1)'
-            }}>
-                {/* Logo Section */}
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <img
-                        src={miraiLogo}
-                        alt="Mirai Logo"
-                        style={{
-                            height: '40px', // Adjust size as needed based on the SVG
-                            width: 'auto'
-                        }}
-                    />
-                </div>
+    const [isFormOpen, setIsFormOpen] = useState(false);
 
-                {/* Button Section */}
-                <button style={{
-                    backgroundColor: '#8B5CF6', // Purple color from reference
-                    color: 'white',
-                    border: 'none',
-                    padding: '0.6rem 1.5rem',
-                    borderRadius: '2rem', // Pill shape
-                    fontWeight: '600',
-                    fontSize: '0.9rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    boxShadow: '0 0 15px rgba(139, 92, 246, 0.4)' // Glow effect
-                }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = 'scale(1.05)';
-                        e.currentTarget.style.boxShadow = '0 0 25px rgba(139, 92, 246, 0.6)';
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = 'scale(1)';
-                        e.currentTarget.style.boxShadow = '0 0 15px rgba(139, 92, 246, 0.4)';
-                    }}
-                >
-                    Get Started
-                </button>
+    return (
+        <>
+            <div className="fixed top-4 md:top-8 left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] max-w-[1200px] z-[1000] flex justify-center">
+                <div className="w-full flex items-center justify-between px-4 md:px-8 py-2 md:py-3 rounded-2xl md:rounded-3xl bg-[rgba(20,20,20,0.4)] backdrop-blur-[16px] border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+                    {/* Logo Section */}
+                    <div className="flex items-center">
+                        <img
+                            src={miraiLogo}
+                            alt="Mirai Logo"
+                            className="h-8 md:h-10 w-auto"
+                        />
+                    </div>
+
+                    {/* Button Section */}
+                    <button
+                        onClick={() => setIsFormOpen(true)}
+                        className="bg-[#8B5CF6] text-white border-none py-2 px-4 md:py-[0.6rem] md:px-6 rounded-[2rem] font-semibold text-xs md:text-[0.9rem] cursor-pointer transition-all duration-300 ease-in-out shadow-[0_0_15px_rgba(139,92,246,0.4)] hover:scale-105 hover:shadow-[0_0_25px_rgba(139,92,246,0.6)]"
+                    >
+                        Get Started
+                    </button>
+                </div>
             </div>
-        </div>
+
+            {/* Form Modal */}
+            <Form isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
+        </>
     );
 };
 
