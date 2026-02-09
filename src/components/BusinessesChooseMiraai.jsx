@@ -1,5 +1,5 @@
 import React from 'react';
-import boxMiraaiImg from '../assets/Boxmirrai.png';
+import boxMiraaiImg from '../assets/images/Boxmirrai.png';
 
 export default function BusinessesChooseMiraai() {
   const benefits = [

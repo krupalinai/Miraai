@@ -1,9 +1,9 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-import textileImg from '../assets/Textile.png';
-import lifestyleImg from '../assets/Lifestyle.png';
-import jwelleryImg from '../assets/Jwellery.png';
+import textileImg from '../assets/images/Textile.png';
+import lifestyleImg from '../assets/images/Lifestyle.png';
+import jwelleryImg from '../assets/images/Jwellery.png';
 
 const originalCards = [
   {

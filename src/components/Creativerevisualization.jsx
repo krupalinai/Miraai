@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import aiGenerationImg from '../assets/ai genration.png';
-import customizeImg from '../assets/customize and brand.png';
-import inputVisionImg from '../assets/input your vision.png';
-import reviewDeployImg from '../assets/review and deploy.png';
-import buttonImg from '../assets/Button.png';
+import aiGenerationImg from '../assets/images/ai genration.png';
+import customizeImg from '../assets/images/customize and brand.png';
+import inputVisionImg from '../assets/images/input your vision.png';
+import reviewDeployImg from '../assets/images/review and deploy.png';
+import buttonImg from '../assets/images/Button.png';
 
 const features = [
   {

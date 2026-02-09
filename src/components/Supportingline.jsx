@@ -1,10 +1,10 @@
 
 import React from 'react';
 
-import aiGenerationImg from '../assets/ai genration.png';
-import customizeBrandImg from '../assets/customize and brand.png';
-import inputYourVisionImg from '../assets/Input Your Vision.png';
-import reviewDeployImg from '../assets/review and deploy.png';
+import aiGenerationImg from '../assets/images/ai genration.png';
+import customizeBrandImg from '../assets/images/customize and brand.png';
+import inputYourVisionImg from '../assets/images/input your vision.png';
+import reviewDeployImg from '../assets/images/review and deploy.png';
 
 const stepImages = {
   1: inputYourVisionImg,

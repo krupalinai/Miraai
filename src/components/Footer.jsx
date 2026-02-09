@@ -1,6 +1,6 @@
 import React from 'react';
 
-import mirraiLogo from '../assets/Mirrai Logo.png';
+import mirraiLogo from '../assets/images/Mirrai Logo.png';
 
 export default function Footer() {
   return (

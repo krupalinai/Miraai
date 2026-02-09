@@ -1,5 +1,5 @@
 import React from 'react';
-import contactUsBtn from '../assets/contact us button.png';
+import contactUsBtn from '../assets/images/contact us button.png';
 
 export default function Calltoaction() {
   return (

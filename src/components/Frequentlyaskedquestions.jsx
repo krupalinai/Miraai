@@ -5,27 +5,27 @@ export default function Frequentlyaskedquestions() {
 
   const faqs = [
     {
-      id: 6,
+      id: 1,
       q: 'How much does Miraai cost?',
       a: 'Pricing depends on your usage, content volume, and requirements. We offer flexible plans including project-based, subscription, and enterprise packages. Contact us for a customized quote.'
     },
     {
-      id: 7,
+      id: 2,
       q: 'Will my data and content be secure?',
       a: 'Yes. All client data and content are protected using secure cloud infrastructure, encryption, and role-based access controls.'
     },
     {
-      id: 8,
+      id: 3,
       q: 'Can I request revisions after delivery?',
       a: 'Yes. All projects include revision rounds. You can request changes to visuals, text, language, or formatting as per the agreed scope.'
     },
     {
-      id: 9,
+      id: 4,
       q: 'Can Miraai replace my existing agency or studio?',
       a: 'Miraai can significantly reduce dependency on traditional agencies. Many clients use us as their primary production partner or as a scalable in-house solution.'
     },
     {
-      id: 10,
+      id: 5,
       q: 'Do you provide human support or only AI tools?',
       a: 'Miraai combines AI technology with professional human support. Every project is reviewed by experts to ensure quality and brand consistency.'
     },
