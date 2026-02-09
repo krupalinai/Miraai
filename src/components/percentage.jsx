@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const Percentage = () => {
     const [isVisible, setIsVisible] = useState(false);
     const [counts, setCounts] = useState([0, 0, 0, 0]);
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
     const containerRef = useRef(null);
 
     const stats = [
@@ -13,189 +14,114 @@ const Percentage = () => {
     ];
 
     useEffect(() => {
-        // Trigger fade-in animation on mount
-        setTimeout(() => setIsVisible(true), 100);
+        // Check mobile first
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
 
-        // Animate numbers counting up
-        const duration = 3000; // 2 seconds
-        const steps = 60;
-        const interval = duration / steps;
+        // Check if mobile - if yes, set final values immediately, no animation
+        const isMobileNow = window.innerWidth < 768;
 
-        let currentStep = 0;
-        const timer = setInterval(() => {
-            currentStep++;
-            const progress = currentStep / steps;
+        if (isMobileNow) {
+            // Mobile: No animation, show final values immediately
+            setCounts(stats.map(stat => stat.value));
+        } else {
+            // Desktop: Animate numbers counting up
+            setTimeout(() => setIsVisible(true), 100);
 
-            setCounts(stats.map(stat => {
-                const easeOutQuart = 1 - Math.pow(1 - progress, 4);
-                return stat.value * easeOutQuart;
-            }));
+            const duration = 3000;
+            const steps = 60;
+            const interval = duration / steps;
 
-            if (currentStep >= steps) {
+            let currentStep = 0;
+            const timer = setInterval(() => {
+                currentStep++;
+                const progress = currentStep / steps;
+
+                setCounts(stats.map(stat => {
+                    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                    return stat.value * easeOutQuart;
+                }));
+
+                if (currentStep >= steps) {
+                    clearInterval(timer);
+                    setCounts(stats.map(stat => stat.value));
+                }
+            }, interval);
+
+            return () => {
                 clearInterval(timer);
-                setCounts(stats.map(stat => stat.value));
-            }
-        }, interval);
+                window.removeEventListener('resize', checkMobile);
+            };
+        }
 
-        return () => clearInterval(timer);
+        return () => {
+            window.removeEventListener('resize', checkMobile);
+        };
     }, []);
 
     return (
-        <div
-            style={{
-                backgroundColor: '#000004',
-                minHeight: 'auto',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '10rem 2rem 3rem 2rem',
-                position: 'relative',
-                overflow: 'hidden'
-            }}
-        >
-            {/* Animated background glow */}
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: '600px',
-                    height: '600px',
-                    background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%)',
-                    animation: 'pulse 4s ease-in-out infinite',
-                    pointerEvents: 'none'
-                }}
-            />
+        <div className="bg-[#000004] min-h-auto flex items-center justify-center pt-20 md:pt-40 pb-8 md:pb-12 px-4 md:px-8 relative overflow-hidden">
+            {/* Animated background glow - only on desktop */}
+            {!isMobile && (
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(139,92,246,0.15)_0%,transparent_70%)] animate-[pulse_4s_ease-in-out_infinite] pointer-events-none" />
+            )}
 
             <style>
                 {`
-          @keyframes pulse {
-            0%, 100% {
-              opacity: 0.5;
-              transform: translate(-50%, -50%) scale(1);
-            }
-            50% {
-              opacity: 0.8;
-              transform: translate(-50%, -50%) scale(1.1);
-            }
-          }
+                @keyframes pulse {
+                    0%, 100% {
+                        opacity: 0.5;
+                        transform: translate(-50%, -50%) scale(1);
+                    }
+                    50% {
+                        opacity: 0.8;
+                        transform: translate(-50%, -50%) scale(1.1);
+                    }
+                }
 
-          @keyframes fadeInUp {
-            from {
-              opacity: 0;
-              transform: translateY(30px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
-          }
-
-          @keyframes shimmer {
-            0% {
-              background-position: -1000px 0;
-            }
-            100% {
-              background-position: 1000px 0;
-            }
-          }
-
-          .stat-card {
-            animation: fadeInUp 0.6s ease-out forwards;
-            opacity: 0;
-          }
-
-          .stat-card:nth-child(1) { animation-delay: 0.1s; }
-          .stat-card:nth-child(2) { animation-delay: 0.2s; }
-          .stat-card:nth-child(3) { animation-delay: 0.3s; }
-          .stat-card:nth-child(4) { animation-delay: 0.4s; }
-        `}
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                `}
             </style>
 
             <div
                 ref={containerRef}
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
-                    gap: '1.5rem',
-                    maxWidth: '1200px',
-                    width: '100%',
-                    position: 'relative',
-                    zIndex: 1
-                }}
+                className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-[1200px] w-full relative z-[1]"
             >
                 {stats.map((stat, index) => (
                     <div
                         key={index}
-                        className="stat-card"
+                        className={`bg-[rgba(255,255,255,0.02)] backdrop-blur-[10px] border border-[rgba(255,255,255,0.1)] rounded-xl md:rounded-2xl py-5 px-3 md:py-10 md:px-8 text-center cursor-pointer relative overflow-hidden group hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(139,92,246,0.5)] hover:shadow-[0_20px_40px_rgba(139,92,246,0.2)] ${isMobile
+                            ? ''
+                            : 'transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards] md:hover:-translate-y-2 md:hover:scale-[1.02]'
+                            }`}
                         style={{
-                            backgroundColor: 'rgba(255, 255, 255, 0.02)',
-                            backdropFilter: 'blur(10px)',
-                            border: '1px solid rgba(255, 255, 255, 0.1)',
-                            borderRadius: '1rem',
-                            padding: '2.5rem 2rem',
-                            textAlign: 'center',
-                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                            cursor: 'pointer',
-                            position: 'relative',
-                            overflow: 'hidden'
-                        }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-                            e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)';
-                            e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
-                            e.currentTarget.style.boxShadow = '0 20px 40px rgba(139, 92, 246, 0.2)';
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.02)';
-                            e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                            e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                            e.currentTarget.style.boxShadow = 'none';
+                            animationDelay: isMobile ? '0s' : `${(index + 1) * 0.1}s`
                         }}
                     >
-                        {/* Shimmer effect on hover */}
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: 0,
-                                left: '-100%',
-                                width: '100%',
-                                height: '100%',
-                                background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent)',
-                                transition: 'left 0.5s'
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.left = '100%';
-                            }}
-                        />
+                        {/* Shimmer effect on hover - only desktop */}
+                        {!isMobile && (
+                            <div className="absolute top-0 -left-full w-full h-full bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.1),transparent)] transition-[left] duration-500 group-hover:left-full" />
+                        )}
 
-                        <div style={{
-                            fontSize: '3rem',
-                            fontWeight: 'bold',
-                            color: 'white',
-                            marginBottom: '0.75rem',
-                            letterSpacing: '-0.02em',
-                            background: 'linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent',
-                            backgroundClip: 'text',
-                            position: 'relative',
-                            zIndex: 1
-                        }}>
+                        <div className="text-xl md:text-5xl font-bold text-white mb-1 md:mb-3 tracking-tighter bg-gradient-to-br from-white to-[#e0e0e0] bg-clip-text text-transparent relative z-[1]">
                             {index === 1
                                 ? Math.floor(counts[index]) + stat.suffix
                                 : counts[index].toFixed(index === 0 ? 1 : 0) + stat.suffix
                             }
                         </div>
-                        <div style={{
-                            color: '#9ca3af',
-                            fontSize: '0.875rem',
-                            fontWeight: '400',
-                            letterSpacing: '0.02em',
-                            position: 'relative',
-                            zIndex: 1
-                        }}>
+                        <div className="text-gray-400 text-[10px] md:text-sm font-normal tracking-wide relative z-[1]">
                             {stat.label}
                         </div>
                     </div>

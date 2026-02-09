@@ -14,6 +14,17 @@ import tanishq from '../assets/images/Tanishq_Logo.svg';
 import zara from '../assets/images/Zara_Logo.svg';
 
 const GlobalGiants = () => {
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const companies = [
         { name: 'Allen Solly', icon: allenSolly },
         { name: 'Crocs', icon: crocs },
@@ -32,135 +43,60 @@ const GlobalGiants = () => {
     const scrollingCompanies = [...companies, ...companies];
 
     return (
-        <div
-            style={{
-                backgroundColor: '#000004',
-                minHeight: 'auto',
-                padding: '3rem 0',
-                position: 'relative',
-                overflow: 'hidden',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center'
-            }}
-        >
+        <div className="bg-[#000004] min-h-auto py-8 md:py-12 relative overflow-hidden flex flex-col items-center">
             <style>
                 {`
-          @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          
-          .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-          }
-
-          .marquee-content {
-            display: flex;
-            gap: 4rem;
-            animation: scroll 30s linear infinite;
-            width: max-content;
-            padding: 1rem 0;
-          }
-
-          .marquee-content:hover {
-            animation-play-state: paused;
-          }
-        `}
+                @keyframes scroll {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                @keyframes scrollMobile {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+                `}
             </style>
 
             {/* Background gradient glow */}
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '0',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    width: '800px',
-                    height: '400px',
-                    background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)',
-                    pointerEvents: 'none',
-                    zIndex: 0
-                }}
-            />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[radial-gradient(circle,rgba(139,92,246,0.08)_0%,transparent_70%)] pointer-events-none z-0" />
 
-            <div style={{
-                maxWidth: '1200px',
-                width: '100%',
-                position: 'relative',
-                zIndex: 1,
-                padding: '0 2rem'
-            }}>
+            <div className="max-w-[1200px] w-full relative z-[1] px-4 md:px-8">
                 {/* Header */}
-                <div
-                    style={{
-                        textAlign: 'center',
-                        marginBottom: '3.5rem',
-                    }}
-                >
-                    <h2 style={{
-                        fontSize: 'clamp(2rem, 4vw, 3rem)',
-                        fontWeight: 'bold',
-                        color: 'white',
-                        marginBottom: '1rem',
-                        letterSpacing: '-0.02em'
-                    }}>
+                <div className="text-center mb-8 md:mb-14">
+                    <h2 className="text-2xl md:text-[clamp(2rem,4vw,3rem)] font-bold text-white mb-3 md:mb-4 tracking-tight">
                         Trusted by Global Giants
                     </h2>
-                    <p style={{
-                        color: '#9ca3af',
-                        fontSize: 'clamp(0.875rem, 2vw, 1rem)',
-                        maxWidth: '700px',
-                        margin: '0 auto',
-                        lineHeight: '1.6'
-                    }}>
+                    <p className="text-gray-400 text-xs md:text-[clamp(0.875rem,2vw,1rem)] max-w-[700px] mx-auto leading-relaxed px-2">
                         Trusted By Businesses, Creators, And Institutions Across India For Scalable Content Production
                     </p>
                 </div>
             </div>
 
             {/* Scrolling Marquee */}
-            <div className="marquee-container">
-                <div className="marquee-content">
+            <div className="w-full overflow-hidden flex [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+                <div
+                    className={`flex w-max py-4 ${isMobile ? 'gap-8 animate-[scroll_20s_linear_infinite]' : 'gap-16 animate-[scroll_30s_linear_infinite] hover:[animation-play-state:paused]'}`}
+                >
                     {scrollingCompanies.map((company, index) => (
                         <div
                             key={index}
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                minWidth: '120px',
-                                height: '80px',
-                                filter: company.keepColor ? 'none' : 'brightness(0) invert(1) opacity(0.7)',
-                                transition: 'filter 0.3s ease, transform 0.3s ease'
-                            }}
-                            onMouseEnter={(e) => {
-                                if (!company.keepColor) {
-                                    e.currentTarget.style.filter = 'brightness(0) invert(1) opacity(1)';
-                                }
-                                e.currentTarget.style.transform = 'scale(1.1)';
-                            }}
-                            onMouseLeave={(e) => {
-                                if (!company.keepColor) {
-                                    e.currentTarget.style.filter = 'brightness(0) invert(1) opacity(0.7)';
-                                }
-                                e.currentTarget.style.transform = 'scale(1)';
-                            }}
+                            className={`flex items-center justify-center transition-all duration-300 ease-in-out ${isMobile
+                                ? 'min-w-[80px] h-12'
+                                : 'min-w-[120px] h-20'
+                                } ${company.keepColor
+                                    ? 'hover:scale-110'
+                                    : 'brightness-0 invert opacity-70 hover:brightness-0 hover:invert hover:opacity-100 hover:scale-110'
+                                }`}
                         >
                             <img
                                 src={company.icon}
                                 alt={company.name}
-                                style={{
-                                    maxWidth: '100%',
-                                    maxHeight: '100%',
-                                    objectFit: 'contain',
-                                    height: company.name === 'Biba' ? 'auto' : (company.name === 'Hugging Face' ? '50px' : '50px'),
-                                    width: company.name === 'Biba' ? '120px' : 'auto'
-                                }}
+                                className={`max-w-full max-h-full object-contain ${isMobile
+                                    ? 'h-[30px] w-auto'
+                                    : company.name === 'Hugging Face'
+                                        ? 'h-[50px]'
+                                        : 'h-[50px] w-auto'
+                                    } ${company.name === 'Biba' && !isMobile ? 'w-[120px] h-auto' : ''} ${company.name === 'Biba' && isMobile ? 'w-[80px] h-auto' : ''}`}
                             />
                         </div>
                     ))}
