@@ -1,10 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const Features = () => {
-    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
+    const isInView = useInView(sectionRef, { once: false, amount: 0.15, margin: "-50px" });
 
+    // Detect mobile
     useEffect(() => {
-        setTimeout(() => setIsVisible(true), 200);
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
     const features = [
@@ -105,126 +114,120 @@ const Features = () => {
         }
     ];
 
-    return (
-        <div
-            style={{
-                backgroundColor: '#000004',
-                minHeight: '100vh',
-                padding: '3rem 2rem',
-                position: 'relative',
-                overflow: 'hidden'
-            }}
-        >
-            {/* Background glow similar to previous components */}
-            <div
-                style={{
-                    position: 'absolute',
-                    top: '20%',
-                    right: '50%',
-                    transform: 'translateX(50%)',
-                    width: '600px',
-                    height: '600px',
-                    background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 60%)',
-                    pointerEvents: 'none',
-                    zIndex: 0
-                }}
-            />
+    // Animation variants - same as trust_miraai.jsx
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.1
+            }
+        }
+    };
 
-            <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+    const headerVariants = {
+        hidden: { opacity: 0, y: -30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 40 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.6, ease: "easeOut" }
+        }
+    };
+
+    return (
+        <div ref={sectionRef} className="bg-[#000004] min-h-screen py-5 px-4 md:px-8 relative overflow-hidden">
+            {/* Background glow */}
+            <div className="absolute top-[20%] right-1/2 translate-x-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(139,92,246,0.08)_0%,transparent_60%)] pointer-events-none z-0" />
+
+            <div className="max-w-[1200px] mx-auto relative z-10">
 
                 {/* Header Section */}
-                <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-                    <h2 style={{
-                        fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
-                        fontWeight: 'bold',
-                        color: 'white',
-                        marginBottom: '1rem',
-                        lineHeight: '1.2'
-                    }}>
-                        Powerful Platform Features
-                    </h2>
-                    <p style={{
-                        color: '#9ca3af',
-                        fontSize: '1.125rem',
-                        margin: '0 auto',
-                        maxWidth: '600px'
-                    }}>
-                        Everything You Need In One AI Production Platform.
-                    </p>
-                </div>
+                {isMobile ? (
+                    <div className="text-center mb-10">
+                        <h2 className="text-2xl font-bold text-white mb-3 leading-tight">
+                            Powerful Platform<br />Features
+                        </h2>
+                        <p className="text-gray-400 text-xs mx-auto max-w-[400px]">
+                            Everything You Need In One AI Production Platform.
+                        </p>
+                    </div>
+                ) : (
+                    <motion.div
+                        className="text-center mb-16"
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        variants={headerVariants}
+                    >
+                        <h2 className="text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-white mb-4 leading-tight">
+                            Powerful Platform Features
+                        </h2>
+                        <p className="text-gray-400 text-lg mx-auto max-w-[600px]">
+                            Everything You Need In One AI Production Platform.
+                        </p>
+                    </motion.div>
+                )}
 
                 {/* Features Grid */}
-                <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                    gap: '1.5rem',
-                }}>
-                    {features.map((feature, index) => (
-                        <div
-                            key={index}
-                            style={{
-                                background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%)',
-                                border: '1px solid rgba(255, 255, 255, 0.08)',
-                                borderRadius: '1rem',
-                                padding: '2.5rem',
-                                transition: 'all 0.3s ease',
-                                cursor: 'pointer',
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'flex-start',
-                                alignItems: 'flex-start',
-                                height: '100%'
-                            }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = 'rgba(139, 92, 246, 0.1)';
-                                e.currentTarget.style.borderColor = '#8B5CF6';
-                                e.currentTarget.style.boxShadow = '0 0 30px rgba(139, 92, 246, 0.6)';
-                                e.currentTarget.style.transform = 'translateY(-5px)';
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = 'transparent';
-                                e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
-                                e.currentTarget.style.boxShadow = 'none';
-                                e.currentTarget.style.transform = 'translateY(0)';
-                            }}
-                        >
-                            {/* Icon Container */}
-                            <div style={{
-                                width: '50px',
-                                height: '50px',
-                                borderRadius: '12px',
-                                background: 'linear-gradient(135deg, #8B5CF6 0%, #D946EF 100%)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'center',
-                                marginBottom: '1.5rem',
-                                color: 'white'
-                            }}>
-                                {feature.icon}
+                {isMobile ? (
+                    <div className="grid grid-cols-1 gap-4">
+                        {features.map((feature, index) => (
+                            <div
+                                key={index}
+                                className="bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0)_100%)] border border-[rgba(255,255,255,0.08)] rounded-xl p-6 flex flex-col justify-start items-start h-full"
+                            >
+                                <div className="w-[40px] h-[40px] rounded-lg bg-gradient-to-br from-[#8B5CF6] to-[#D946EF] flex items-center justify-center mb-4 text-white">
+                                    {feature.icon}
+                                </div>
+                                <h3 className="text-white text-lg font-bold mb-3 leading-snug">
+                                    {feature.title}
+                                </h3>
+                                <p className="text-gray-400 text-sm leading-relaxed">
+                                    {feature.description}
+                                </p>
                             </div>
+                        ))}
+                    </div>
+                ) : (
+                    <motion.div
+                        className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-6"
+                        initial="hidden"
+                        animate={isInView ? "visible" : "hidden"}
+                        variants={containerVariants}
+                    >
+                        {features.map((feature, index) => (
+                            <motion.div
+                                key={index}
+                                className="bg-[linear-gradient(180deg,rgba(255,255,255,0.08)_0%,rgba(255,255,255,0)_100%)] border border-[rgba(255,255,255,0.08)] rounded-2xl p-10 cursor-pointer flex flex-col justify-start items-start h-full group relative overflow-hidden transition-all duration-300 hover:bg-[rgba(139,92,246,0.1)] hover:border-[#8B5CF6] hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] hover:-translate-y-1"
+                                variants={cardVariants}
+                            >
+                                {/* Icon Container */}
+                                <div className="w-[50px] h-[50px] rounded-xl bg-gradient-to-br from-[#8B5CF6] to-[#D946EF] flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300">
+                                    {feature.icon}
+                                </div>
 
-                            {/* Title */}
-                            <h3 style={{
-                                color: 'white',
-                                fontSize: '1.25rem',
-                                fontWeight: 'bold',
-                                marginBottom: '1rem',
-                                lineHeight: '1.4'
-                            }}>
-                                {feature.title}
-                            </h3>
+                                {/* Title */}
+                                <h3 className="text-white text-xl font-bold mb-4 leading-snug">
+                                    {feature.title}
+                                </h3>
 
-                            {/* Description */}
-                            <p style={{
-                                color: '#9CA3AF',
-                                fontSize: '0.95rem',
-                                lineHeight: '1.6'
-                            }}>
-                                {feature.description}
-                            </p>
-                        </div>
-                    ))}
-                </div>
+                                {/* Description */}
+                                <p className="text-gray-400 text-[0.95rem] leading-relaxed">
+                                    {feature.description}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                )}
             </div>
         </div>
     );
