@@ -1,6 +1,53 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 
 export default function Whatourclientssay() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const trackRef = useRef(null);
+
+  const testimonials = [
+    {
+      id: 1,
+      quote: "“Miraai transformed our content production process. We went from spending ₹25 lakh on regional campaigns to ₹1 lakh-with better results. Our internal team now manages everything without vendor dependencies. This is a game-changer for enterprise marketing.”",
+      role: "Marketing Director",
+      brand: "FMCG Brand"
+    },
+    {
+      id: 2,
+      quote: "“Our agency can now take on 5x more clients without hiring additional editors or production staff. Miraai handles the heavy lifting while our creatives focus on strategy and storytelling. ROI has been incredible.”",
+      role: "Creative Lead",
+      brand: "Ad Agency"
+    },
+    {
+      id: 3,
+      quote: "“The scale at which we can now iterate on our video ads is mind-blowing. What used to take a week of back-and-forth now happens in a single afternoon. Miraai's AI understands our brand voice perfectly.”",
+      role: "Brand Manager",
+      brand: "E-commerce Giant"
+    },
+    {
+      id: 4,
+      quote: "“Miraai has democratized high-quality video production for us. Even our junior designers can now create stunning visual assets that look like they were made by a top-tier production house. Outstanding technology.”",
+      role: "Head of Marketing",
+      brand: "Fintech Startup"
+    },
+    {
+      id: 5,
+      quote: "“We've seen a 40% increase in social engagement since we started using Miraai for our daily content. The ability to localize our message instantly across 10 regions has been a massive competitive advantage.”",
+      role: "Digital Strategist",
+      brand: "Global Fashion Retailer"
+    }
+  ];
+
+  const nextSlide = () => {
+    // Show 2 cards at a time on desktop, so max index is length - 2
+    // If on mobile (1 card), max index is length - 1
+    const maxIndex = window.innerWidth > 980 ? testimonials.length - 2 : testimonials.length - 1;
+    setCurrentIndex(prev => Math.min(prev + 1, Math.max(0, maxIndex)));
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex(prev => Math.max(prev - 1, 0));
+  };
+
   return (
     <section className="wcs-wrap">
       <div className="wcs-inner">
@@ -14,34 +61,40 @@ export default function Whatourclientssay() {
         </div>
 
         <div className="wcs-stage">
-          <div className="wcs-cards">
-            <article className="wcs-card">
-              <div className="wcs-quote">
-                “Miraai transformed our content production process. We went from spending ₹25 lakh on regional
-                campaigns to ₹1 lakh-with better results. Our internal team now manages everything without
-                vendor dependencies. This is a game-changer for enterprise marketing.”
-              </div>
-              <div className="wcs-role">Marketing Director</div>
-              <div className="wcs-brand">FMCG Brand</div>
-            </article>
-
-            <article className="wcs-card">
-              <div className="wcs-quote">
-                “Our agency can now take on 5x more clients without hiring additional editors or production
-                staff. Miraai handles the heavy lifting while our creatives focus on strategy and storytelling.
-                ROI has been incredible.”
-              </div>
-              <div className="wcs-role">Marketing Director</div>
-              <div className="wcs-brand">FMCG Brand</div>
-            </article>
+          <div className="wcs-viewport">
+            <div
+              className="wcs-track"
+              ref={trackRef}
+              style={{ transform: `translateX(calc(-${currentIndex * (window.innerWidth > 980 ? 50 : 100)}% - ${currentIndex * (window.innerWidth > 980 ? 30 : 0)}px))` }}
+            >
+              {testimonials.map((t) => (
+                <article key={t.id} className="wcs-card">
+                  <div className="wcs-quote">{t.quote}</div>
+                  <div className="wcs-role">{t.role}</div>
+                  <div className="wcs-brand">{t.brand}</div>
+                </article>
+              ))}
+            </div>
           </div>
 
-          <div className="wcs-nav" aria-hidden="true">
-            <button className="wcs-nav-btn" type="button">
-              <span className="wcs-chevron">‹</span>
+          <div className="wcs-nav">
+            <button
+              className={`wcs-nav-btn ${currentIndex === 0 ? 'disabled' : ''}`}
+              onClick={prevSlide}
+              aria-label="Previous testimonial"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
             </button>
-            <button className="wcs-nav-btn" type="button">
-              <span className="wcs-chevron">›</span>
+            <button
+              className={`wcs-nav-btn ${currentIndex >= (window.innerWidth > 980 ? testimonials.length - 2 : testimonials.length - 1) ? 'disabled' : ''}`}
+              onClick={nextSlide}
+              aria-label="Next testimonial"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
             </button>
           </div>
         </div>
@@ -65,15 +118,6 @@ export default function Whatourclientssay() {
           background:
             radial-gradient(760px 520px at 42% 30%, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 62%),
             radial-gradient(780px 520px at 75% 70%, rgba(139, 92, 246, 0.08) 0%, rgba(0, 0, 0, 0) 60%);
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        .wcs-wrap::after {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(120% 120% at 50% 50%, rgba(0, 0, 0, 0) 42%, rgba(0, 0, 0, 0.84) 100%);
           pointer-events: none;
           z-index: 0;
         }
@@ -106,16 +150,24 @@ export default function Whatourclientssay() {
 
         .wcs-stage {
           position: relative;
+          width: 100%;
         }
 
-        .wcs-cards {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
+        .wcs-viewport {
+          width: 100%;
+          overflow: hidden;
+          padding: 20px 0;
+        }
+
+        .wcs-track {
+          display: flex;
           gap: 60px;
-          align-items: start;
+          transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+          will-change: transform;
         }
 
         .wcs-card {
+          flex: 0 0 calc(50% - 30px);
           background: rgba(255, 255, 255, 0.04);
           border-radius: 20px;
           padding: 32px 34px 28px;
@@ -124,49 +176,35 @@ export default function Whatourclientssay() {
           position: relative;
           overflow: hidden;
           border: 2px solid rgba(255, 255, 255, 0.06);
-          transform: scale(1);
           transition: transform 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
                       border 300ms ease,
                       box-shadow 300ms ease;
         }
 
-        /* Hover State - Dark Purple Border + Pop Up Effect */
         .wcs-card:hover {
-          transform: scale(1.05);
-          border: 4px solid #7c3aed; /* Dark Purple Border */
+          transform: scale(1.02);
+          border: 2px solid #7c3aed;
           box-shadow:
             0 30px 100px rgba(0, 0, 0, 0.9),
-            0 0 40px rgba(124, 58, 237, 0.4); /* Purple Glow */
-          z-index: 10;
-        }
-
-        .wcs-card::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background:
-            radial-gradient(90% 80% at 40% 15%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 55%),
-            linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 55%);
-          pointer-events: none;
-          z-index: 0;
+            0 0 30px rgba(124, 58, 237, 0.3);
         }
 
         .wcs-quote {
           position: relative;
           z-index: 1;
-          font-size: 12px;
-          line-height: 1.55;
-          color: rgba(255, 255, 255, 0.72);
+          font-size: 13px;
+          line-height: 1.6;
+          color: rgba(255, 255, 255, 0.75);
           text-align: center;
         }
 
         .wcs-role {
           position: relative;
           z-index: 1;
-          margin-top: 18px;
-          font-size: 12px;
+          margin-top: 24px;
+          font-size: 13px;
           font-weight: 700;
-          color: rgba(139, 92, 246, 0.95);
+          color: #a78bfa;
           text-align: center;
         }
 
@@ -175,62 +213,54 @@ export default function Whatourclientssay() {
           z-index: 1;
           margin-top: 6px;
           font-size: 11px;
-          color: rgba(255, 255, 255, 0.6);
+          color: rgba(255, 255, 255, 0.5);
           text-align: center;
         }
 
         .wcs-nav {
           position: absolute;
           right: 0;
-          bottom: -8px;
+          bottom: -40px; /* Moved further down */
           display: flex;
-          align-items: center;
-          gap: 10px;
+          gap: 12px;
+          z-index: 20;
         }
 
         .wcs-nav-btn {
-          width: 28px;
-          height: 28px;
-          border-radius: 999px;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
           background: transparent;
-          border: 1px solid rgba(139, 92, 246, 0.55);
-          color: rgba(139, 92, 246, 0.9);
-          display: grid;
-          place-items: center;
-          cursor: default;
-          padding: 0;
+          border: 2px solid #2d1b54;
+          color: #7c3aed;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.3s ease;
         }
 
-        .wcs-chevron {
-          font-size: 16px;
-          line-height: 1;
-          transform: translateY(-1px);
+        .wcs-nav-btn:hover:not(.disabled) {
+          border-color: #7c3aed;
+          background: rgba(124, 58, 237, 0.1);
+        }
+
+        .wcs-nav-btn.disabled {
+          opacity: 0.2;
+          cursor: not-allowed;
+        }
+
+        .wcs-nav-btn svg {
+          width: 16px;
+          height: 16px;
         }
 
         @media (max-width: 980px) {
-          .wcs-title {
-            font-size: 36px;
-          }
-
-          .wcs-cards {
-            grid-template-columns: 1fr;
-            gap: 22px;
-          }
-
           .wcs-nav {
-            position: static;
-            margin-top: 18px;
+            position: relative;
+            bottom: 0;
+            margin-top: 24px;
             justify-content: center;
-          }
-        }
-
-        @media (max-width: 560px) {
-          .wcs-title {
-            font-size: 30px;
-          }
-
-          .wcs-card {
-            padding: 26px 18px 22px;
           }
         }
       `}</style>
