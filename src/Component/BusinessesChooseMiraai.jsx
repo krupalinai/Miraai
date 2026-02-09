@@ -11,22 +11,150 @@ export default function BusinessesChooseMiraai() {
     { id: 6, text: "No Studio Dependency", position: "bottom-right" }
   ];
 
-  // Path definitions for connection lines - adjusted for smaller circle (150px, radius ~75px)
-  // Center is at 500, 300 in SVG viewBox
-  // All paths connect from center circle edge to box inner edge
+  // ════════════════════════════════════════════════════════════════════════════
+  // BI-DIRECTIONAL CLOSED-LOOP PATH DEFINITIONS
+  // Flow: Center → Bezier → Box Edge → Border Trace → Return Bezier → Center
+  // Each path starts and ends at the SAME coordinates for seamless infinite loop
+  // ════════════════════════════════════════════════════════════════════════════
+  // Arc syntax: A rx ry x-axis-rotation large-arc-flag sweep-flag x y
+  // Box border-radius: 16px (rx=ry=16)
+  //
+  // Starting coordinates (center circle edge):
+  // - Left paths start at (440, 240/300/360)
+  // - Right paths start at (560, 240/300/360)
+
   const paths = [
-    // Top-left: Center edge → Box right edge (connects to box at ~295, 125)
-    { id: 'path1', d: "M 440 240 C 400 200 350 170 295 125", delay: '0s', duration: '2.5s' },
-    // Top-right: Center edge → Box left edge (connects to box at ~705, 125)
-    { id: 'path2', d: "M 560 240 C 600 200 650 170 705 125", delay: '0s', duration: '2.5s' },
-    // Middle-left: Center edge → Box right edge (connects to box at ~265, 280)
-    { id: 'path3', d: "M 425 300 C 380 300 340 290 265 280", delay: '0s', duration: '2.5s' },
-    // Middle-right: Center edge → Box left edge (connects to box at ~735, 280)
-    { id: 'path4', d: "M 575 300 C 620 300 660 290 735 280", delay: '0s', duration: '2.5s' },
-    // Bottom-left: Center edge → Box right edge (connects to box at ~295, 440)
-    { id: 'path5', d: "M 440 360 C 400 400 350 420 295 440", delay: '0s', duration: '2.5s' },
-    // Bottom-right: Center edge → Box left edge (connects to box at ~705, 440)
-    { id: 'path6', d: "M 560 360 C 600 400 650 420 705 440", delay: '0s', duration: '2.5s' }
+    // ═══════════════════════════════════════════════════════════════
+    // PATH 1: Top-left box - CLOSED LOOP
+    // Start: (440, 240) → Box → Border → Return → (440, 240)
+    // ═══════════════════════════════════════════════════════════════
+    {
+      id: 'path1',
+      d: `M 440 240
+          C 400 200 350 160 294 125
+          L 294 114
+          A 16 16 0 0 0 278 98
+          L 60 98
+          A 16 16 0 0 0 44 114
+          L 44 136
+          A 16 16 0 0 0 60 152
+          L 278 152
+          A 16 16 0 0 0 294 136
+          L 294 125
+          C 350 160 400 200 440 240`,
+      delay: '0s',
+      duration: '3s'
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // PATH 2: Top-right box - CLOSED LOOP
+    // Start: (560, 240) → Box → Border → Return → (560, 240)
+    // ═══════════════════════════════════════════════════════════════
+    {
+      id: 'path2',
+      d: `M 560 240
+          C 600 200 650 160 706 125
+          L 706 114
+          A 16 16 0 0 1 722 98
+          L 940 98
+          A 16 16 0 0 1 956 114
+          L 956 136
+          A 16 16 0 0 1 940 152
+          L 722 152
+          A 16 16 0 0 1 706 136
+          L 706 125
+          C 650 160 600 200 560 240`,
+      delay: '0s',
+      duration: '3s'
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // PATH 3: Middle-left box - CLOSED LOOP
+    // Start: (425, 300) → Box → Border → Return → (425, 300)
+    // ═══════════════════════════════════════════════════════════════
+    {
+      id: 'path3',
+      d: `M 425 300
+          C 380 295 340 290 264 279
+          L 264 271
+          A 16 16 0 0 0 248 255
+          L 60 255
+          A 16 16 0 0 0 44 271
+          L 44 287
+          A 16 16 0 0 0 60 303
+          L 248 303
+          A 16 16 0 0 0 264 287
+          L 264 279
+          C 340 290 380 295 425 300`,
+      delay: '0s',
+      duration: '3s'
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // PATH 4: Middle-right box - CLOSED LOOP
+    // Start: (575, 300) → Box → Border → Return → (575, 300)
+    // ═══════════════════════════════════════════════════════════════
+    {
+      id: 'path4',
+      d: `M 575 300
+          C 620 295 660 290 706 282
+          L 706 271
+          A 16 16 0 0 1 722 255
+          L 940 255
+          A 16 16 0 0 1 956 271
+          L 956 293
+          A 16 16 0 0 1 940 309
+          L 722 309
+          A 16 16 0 0 1 706 293
+          L 706 282
+          C 660 290 620 295 575 300`,
+      delay: '0s',
+      duration: '3s'
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // PATH 5: Bottom-left box - CLOSED LOOP
+    // Start: (440, 360) → Box → Border → Return → (440, 360)
+    // ═══════════════════════════════════════════════════════════════
+    {
+      id: 'path5',
+      d: `M 440 360
+          C 400 400 350 425 294 439
+          L 294 428
+          A 16 16 0 0 0 278 412
+          L 60 412
+          A 16 16 0 0 0 44 428
+          L 44 450
+          A 16 16 0 0 0 60 466
+          L 278 466
+          A 16 16 0 0 0 294 450
+          L 294 439
+          C 350 425 400 400 440 360`,
+      delay: '0s',
+      duration: '3s'
+    },
+
+    // ═══════════════════════════════════════════════════════════════
+    // PATH 6: Bottom-right box - CLOSED LOOP
+    // Start: (560, 360) → Box → Border → Return → (560, 360)
+    // ═══════════════════════════════════════════════════════════════
+    {
+      id: 'path6',
+      d: `M 560 360
+          C 600 400 650 425 706 439
+          L 706 428
+          A 16 16 0 0 1 722 412
+          L 940 412
+          A 16 16 0 0 1 956 428
+          L 956 450
+          A 16 16 0 0 1 940 466
+          L 722 466
+          A 16 16 0 0 1 706 450
+          L 706 439
+          C 650 425 600 400 560 360`,
+      delay: '0s',
+      duration: '3s'
+    }
   ];
 
   return (
@@ -85,10 +213,12 @@ export default function BusinessesChooseMiraai() {
                 fill="none"
                 opacity="0.38"
                 strokeLinecap="round"
+                strokeLinejoin="round"
                 filter="url(#lineGlow)"
+                pathLength="100"
               />
 
-              {/* Pulse Path - Traveling light effect */}
+              {/* Pulse Path - Traveling light effect with border tracing */}
               <path
                 className="bcm-pulse-path"
                 d={path.d}
@@ -96,7 +226,9 @@ export default function BusinessesChooseMiraai() {
                 strokeWidth="2"
                 fill="none"
                 strokeLinecap="round"
+                strokeLinejoin="round"
                 filter="url(#pulseGlow)"
+                pathLength="100"
                 style={{
                   animationDelay: path.delay,
                   animationDuration: path.duration
@@ -263,22 +395,70 @@ export default function BusinessesChooseMiraai() {
 
         /* ========================================
            ENERGY FLOW PULSE ANIMATION
-           Continuous flow - Always running
+           Bi-directional closed-loop circuit:
+           Center → Box → Border Trace → Return → Center
+           Using pathLength="100" for normalized calculations
         ======================================== */
         .bcm-pulse-path {
-          stroke-dasharray: 80 220;
-          stroke-dashoffset: 300;
-          animation: pulseFlowContinuous 1s linear infinite;
+          /* 10% visible pulse, 90% gap - single energy packet per circuit */
+          stroke-dasharray: 10 90;
+          stroke-dashoffset: 100;
+          animation: pulseFlowContinuous 3s linear infinite;
           opacity: 1;
           will-change: stroke-dashoffset;
         }
 
         @keyframes pulseFlowContinuous {
           0% {
-            stroke-dashoffset: 300;
+            stroke-dashoffset: 100;
           }
           100% {
             stroke-dashoffset: 0;
+          }
+        }
+
+        /* ========================================
+           BOX CHARGING PULSE EFFECT
+           Double pulse: charges on arrival + return
+        ======================================== */
+
+        @keyframes boxChargingPulse {
+          /* Idle state */
+          0%, 20% {
+            box-shadow:
+              0 18px 50px rgba(0, 0, 0, 0.7),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          }
+          /* First charge: energy arrives at box (~30-50% of cycle) */
+          30%, 50% {
+            box-shadow:
+              0 18px 50px rgba(0, 0, 0, 0.7),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08),
+              0 0 25px rgba(167, 139, 250, 0.5),
+              0 0 50px rgba(167, 139, 250, 0.25),
+              inset 0 0 20px rgba(167, 139, 250, 0.15);
+          }
+          /* Fade between charges */
+          55%, 65% {
+            box-shadow:
+              0 18px 50px rgba(0, 0, 0, 0.7),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08),
+              0 0 10px rgba(167, 139, 250, 0.2);
+          }
+          /* Second charge: energy returns through box (~70-85% of cycle) */
+          70%, 85% {
+            box-shadow:
+              0 18px 50px rgba(0, 0, 0, 0.7),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08),
+              0 0 20px rgba(167, 139, 250, 0.4),
+              0 0 40px rgba(167, 139, 250, 0.2),
+              inset 0 0 15px rgba(167, 139, 250, 0.1);
+          }
+          /* Return to idle */
+          100% {
+            box-shadow:
+              0 18px 50px rgba(0, 0, 0, 0.7),
+              inset 0 1px 0 rgba(255, 255, 255, 0.08);
           }
         }
 
@@ -299,6 +479,7 @@ export default function BusinessesChooseMiraai() {
           box-shadow:
             0 18px 50px rgba(0, 0, 0, 0.7),
             inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          animation: boxChargingPulse 3s ease-in-out infinite;
         }
 
         .bcm-box:hover {
@@ -439,9 +620,9 @@ export default function BusinessesChooseMiraai() {
             top: 380px;
           }
 
-          /* Adjust pulse for mobile */
+          /* Adjust pulse for mobile - using normalized pathLength */
           .bcm-pulse-path {
-            stroke-dasharray: 15 200;
+            stroke-dasharray: 12 88;
           }
         }
 
@@ -486,6 +667,12 @@ export default function BusinessesChooseMiraai() {
             animation: none;
             opacity: 0.5;
             stroke-dasharray: none;
+          }
+          .bcm-box {
+            animation: none;
+          }
+          .bcm-circle {
+            animation: none;
           }
         }
       `}</style>
