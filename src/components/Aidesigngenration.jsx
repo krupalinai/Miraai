@@ -1,18 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-export default function Aidesigngenration() {
-  // Video cards data
-  const videoCards = [
-    { id: 1, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-    { id: 2, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-    { id: 3, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-    { id: 4, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-    { id: 5, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-    { id: 6, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-  ];
+// Video cards data
+const videoCards = [
+  { id: 1, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
+  { id: 2, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
+  { id: 3, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
+  { id: 4, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
+  { id: 5, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
+  { id: 6, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
+];
 
-  // Triple cards for seamless JS-based infinite scroll
-  const cards = [...videoCards, ...videoCards, ...videoCards];
+// Triple cards for seamless JS-based infinite scroll
+const cards = [...videoCards, ...videoCards, ...videoCards];
+
+export default function Aidesigngenration() {
 
   const [isPaused, setIsPaused] = useState(false);
   const railRef = useRef(null);

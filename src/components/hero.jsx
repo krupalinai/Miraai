@@ -1,27 +1,28 @@
+// eslint-disable-next-line no-unused-vars
 import { motion, useAnimationControls } from 'framer-motion';
-import { useEffect, useMemo, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 // Import local videos
-import v1 from '../assets/images/videos/Clothing reel 2.mp4';
-import v2 from '../assets/images/videos/Clothing reel 3.mp4';
-import v3 from '../assets/images/videos/Clothing reel 3.mp4';
-import v4 from '../assets/images/videos/Clothing reel.mp4';
-import v5 from '../assets/images/videos/Jewellery.mp4';
-import v6 from '../assets/images/videos/Clothing reel 2.mp4';
+import v1 from '../assets/images/videos/clothing rell 1.mp4';
+import v2 from '../assets/images/videos/clothing reel 2.mp4';
+import v3 from '../assets/images/videos/clothing reel 3.mp4';
+import v4 from '../assets/images/videos/clothing reel 4.mp4';
+import v5 from '../assets/images/videos/clothing reel 5.mp4';
+import v6 from '../assets/images/videos/car reel 6.mp4';
 
 // Video sources array
 const videoSources = [v1, v2, v3, v4, v5, v6];
 
-// Card positions around center - balanced layout (3 left, 3 right)
+// Card positions around center - balanced layout (3 top, 3 bottom)
 const cardConfigs = [
-  // Left side cards
-  { x: -200, y: -200, rotate: -12, scale: 0.95 },
-  { x: -380, y: 80, rotate: 8, scale: 0.92 },
-  { x: -100, y: 220, rotate: -10, scale: 0.88 },
-  // Right side cards
-  { x: 200, y: -200, rotate: 12, scale: 0.95 },
-  { x: 380, y: 80, rotate: -8, scale: 0.92 },
-  { x: 100, y: 220, rotate: 6, scale: 0.88 },
+  // Top side cards
+  { x: -500, y: -200, rotate: 0, scale: 0.95 },
+  { x: 0, y: -280, rotate: 0, scale: 0.95 },
+  { x: 500, y: -200, rotate: 0, scale: 0.95 },
+  // Bottom side cards
+  { x: -450, y: 150, rotate: 0, scale: 0.92 },
+  { x: 0, y: 280, rotate: 0, scale: 0.92 },
+  { x: 450, y: 150, rotate: 0, scale: 0.92 },
 ];
 
 // Desktop Floating Video Card Component
@@ -82,7 +83,6 @@ const FloatingVideoCard = ({ src, config, index, randomValues }) => {
       initial={{ x: 0, y: 0, scale: 0.65, opacity: 0, rotate: 0 }}
       animate={controls}
       whileHover={{
-        scale: config.scale * 1.08,
         rotate: 0,
         zIndex: 100,
         boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
@@ -149,7 +149,7 @@ const contentItemVariants = {
 };
 
 // Main Hero Component
-export default function FloatingVideoHero({ openForm }) {
+export default function FloatingVideoHero() {
   const contentControls = useAnimationControls();
   const [isMobile, setIsMobile] = useState(false);
   const scrollContainerRef = useRef(null);
@@ -190,14 +190,14 @@ export default function FloatingVideoHero({ openForm }) {
     container.scrollTo({ left: scrollTo, behavior: 'smooth' });
   }, [activeVideoIndex, isMobile]);
 
-  // Generate random values for desktop floating
-  const randomValues = useMemo(() =>
+  // Generate random values for desktop floating - initialized once on mount
+  const [randomValues] = useState(() =>
     cardConfigs.map(() => ({
       duration: 4 + Math.random() * 3,
       xAmp: 8 + Math.random() * 17,
       yAmp: 10 + Math.random() * 20,
       rotAmp: 2 + Math.random() * 4,
-    })), []
+    }))
   );
 
   // Content entry animation
@@ -233,12 +233,21 @@ export default function FloatingVideoHero({ openForm }) {
         animate={contentControls}
       >
         <motion.h1 className="hero-heading" variants={contentItemVariants}>
-          Create winning ads <span className="heading-italic">with AI</span>
+          India's 1st Premium AI-Powered Image & Video Production Services
         </motion.h1>
 
         <motion.p className="hero-subheading" variants={contentItemVariants}>
-          Use our library of 1,000+ Captivating AI Actors, or create your own AI Avatar
+          Turn scripts into stunning videos and visuals in days, not months. 70% Cost reduction, 10x faster  no studios or crews required.
         </motion.p>
+
+        <motion.button
+          className="hero-button"
+          variants={contentItemVariants}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Talk to Our Expert
+        </motion.button>
       </motion.div>
 
       {/* Mobile: Horizontal Video Row */}
@@ -280,15 +289,32 @@ export default function FloatingVideoHero({ openForm }) {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding-top: 120px;
-          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a24 50%, #0d0d14 100%);
+          background: #000000;
+        }
+
+        .hero-button {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: #ffffff;
+          border: none;
+          padding: 14px 32px;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .hero-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
 
         /* Mobile Layout */
         .hero-section.mobile {
           flex-direction: column;
           justify-content: flex-start;
-          padding-top: 100px;
+          padding-top: 80px;
           gap: 40px;
           justify-content: space-between;
         }
@@ -296,10 +322,7 @@ export default function FloatingVideoHero({ openForm }) {
         /* Cards Container - Desktop */
         .cards-container {
           position: absolute;
-          top: 100px;
-          left: 0;
-          right: 0;
-          bottom: 0;
+          inset: 0;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -308,8 +331,8 @@ export default function FloatingVideoHero({ openForm }) {
         /* Floating Card - Desktop */
         .floating-card {
           position: absolute;
-          width: 140px;
-          aspect-ratio: 9 / 16;
+          width: 165px;
+          height: 282px;
           border-radius: 16px;
           overflow: hidden;
           background: #111;
@@ -342,7 +365,7 @@ export default function FloatingVideoHero({ openForm }) {
 
         .hero-heading {
           font-family: 'Inter', sans-serif;
-          font-size: 48px;
+          font-size: 30px;
           font-weight: 700;
           color: #ffffff;
           line-height: 1.15;
@@ -394,8 +417,8 @@ export default function FloatingVideoHero({ openForm }) {
 
         .mobile-card {
           flex-shrink: 0;
-          width: 100px;
-          aspect-ratio: 9 / 16;
+          width: 165px;
+          height: 282px;
           border-radius: 12px;
           overflow: hidden;
           background: #111;
@@ -463,7 +486,8 @@ export default function FloatingVideoHero({ openForm }) {
         /* Responsive - Tablet */
         @media (max-width: 1024px) {
           .floating-card {
-            width: 120px;
+            width: 165px;
+            height: 282px;
           }
           .hero-heading {
             font-size: 40px;
@@ -495,7 +519,8 @@ export default function FloatingVideoHero({ openForm }) {
             font-size: 24px;
           }
           .mobile-card {
-            width: 85px;
+            width: 165px;
+            height: 282px;
           }
         }
       `}</style>
