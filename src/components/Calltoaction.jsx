@@ -139,7 +139,7 @@ export default function Calltoaction({ openForm }) {
         ======================================== */
         @media (max-width: 680px) {
           .cta-wrap {
-            padding: 70px 16px 90px;
+            padding: 40px 16px 40px;
           }
 
           .cta-card {

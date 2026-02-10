@@ -934,7 +934,7 @@ export default function Creativerevisualization({ openForm }) {
           }
 
           .cr-title {
-            font-size: 24px;
+            font-size: 22px;
           }
 
           .cr-sub {

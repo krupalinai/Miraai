@@ -79,7 +79,7 @@ export default function Frequentlyaskedquestions() {
       <style>{`
         .faq-wrap {
           width: 100%;
-          padding: 92px 18px 98px;
+          padding: 40px 18px 40px;
           background: #000;
           color: rgba(255, 255, 255, 0.92);
           font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;

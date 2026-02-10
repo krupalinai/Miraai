@@ -369,7 +369,7 @@ export default function Aidesigngenration() {
         }
 
         @media (max-width: 680px) {
-          .adg-wrap { padding: 60px 0 80px; }
+          .adg-wrap { padding: 40px 0 40px; }
           .adg-title { font-size: 32px; }
           .adg-carousel-track { padding: 0 40px; gap: 20px; }
           .adg-video-card { width: 260px; height: 380px; opacity: 1; transform: scale(1); }

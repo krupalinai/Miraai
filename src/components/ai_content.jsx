@@ -107,7 +107,7 @@ const AiContent = () => {
                     animate={isInView ? "visible" : "hidden"}
                     variants={headerVariants}
                 >
-                    <h2 className="text-3xl md:text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-white mb-2 tracking-tight leading-tight">
+                    <h2 className="text-2xl md:text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-white mb-2 tracking-tight leading-tight">
                         AI Content & Ad Creation Gallery
                     </h2>
                     <p className="text-gray-400 text-sm md:text-lg mx-auto max-w-[900px] leading-relaxed">

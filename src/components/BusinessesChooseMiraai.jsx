@@ -297,7 +297,7 @@ export default function BusinessesChooseMiraai() {
         }
 
         .bcm-subtitle {
-          font-size: 20px;
+          font-size: 14px;
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
           max-width: 600px;
