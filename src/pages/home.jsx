@@ -6,7 +6,7 @@ import Form from '../components/form'
 import GlobalGiants from '../components/global_giants'
 import Features from '../components/features'
 import TrustMiraai from '../components/trust_miraai'
-import DoBest from '../components/do_best'
+import DoBest from '../components/comparison'
 import AiContent from '../components/ai_content'
 import Header from '../components/header'
 import Supportingline from '../components/Supportingline';
@@ -18,32 +18,30 @@ import Whatourclientssay from '../components/whatourclientssay';
 import Calltoaction from '../components/Calltoaction';
 import Frequentlyaskedquestions from '../components/Frequentlyaskedquestions';
 import Footer from '../components/Footer';
-import ThankU from '../components/thank_u';
 
 function Home() {
-    const [count, setCount] = useState(0)
+    const [isFormOpen, setIsFormOpen] = useState(false);
 
     return (
         <>
-            <Header />
-            <Hero />
+            <Header openForm={() => setIsFormOpen(true)} />
+            <Hero openForm={() => setIsFormOpen(true)} />
             <Percentage />
             <GlobalGiants />
             <Features />
-            {/* <Form /> */}
+            <Form isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
             <TrustMiraai />
             <DoBest />
             <AiContent />
             <Supportingline />
             <UsesMiraai />
             <BusinessesChooseMiraai />
-            <Creativerevisualization />
+            <Creativerevisualization openForm={() => setIsFormOpen(true)} />
             <Aidesigngenration />
             <Whatourclientssay />
-            <Calltoaction />
+            <Calltoaction openForm={() => setIsFormOpen(true)} />
             <Frequentlyaskedquestions />
             <Footer />
-            <ThankU />
         </>
     )
 }

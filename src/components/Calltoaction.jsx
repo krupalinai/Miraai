@@ -1,7 +1,7 @@
 import React from 'react';
 import contactUsBtn from '../assets/images/contact us button.png';
 
-export default function Calltoaction() {
+export default function Calltoaction({ openForm }) {
   return (
     <section className="cta-wrap">
       <div className="cta-inner">
@@ -15,7 +15,7 @@ export default function Calltoaction() {
             Start Creating Professional Videos With AI - Faster, Smarter, And More Cost-Effective.
           </div>
 
-          <button className="cta-btn" type="button">
+          <button className="cta-btn" type="button" onClick={openForm}>
             <img src={contactUsBtn} alt="Contact Us" className="cta-btn-img" />
           </button>
         </div>

@@ -133,7 +133,7 @@ const ComparisonSlider = ({ img }) => {
   );
 };
 
-export default function Creativerevisualization() {
+export default function Creativerevisualization({ openForm }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const triggerRefs = useRef([]);
 
@@ -255,7 +255,7 @@ export default function Creativerevisualization() {
                 ))}
               </div>
 
-              <button className="cr-try-btn" type="button" aria-label="Try it now">
+              <button className="cr-try-btn" type="button" aria-label="Try it now" onClick={openForm}>
                 <span className="cr-btn-star">✦</span>
                 <span className="cr-btn-text">Try It Now</span>
                 <span className="cr-btn-star">✦</span>

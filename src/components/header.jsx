@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import miraiLogo from '../assets/images/mirai.svg';
-import Form from './form';
 
-const Header = () => {
-    const [isFormOpen, setIsFormOpen] = useState(false);
-
+const Header = ({ openForm }) => {
     return (
         <>
             <div className="fixed top-4 md:top-8 left-1/2 -translate-x-1/2 w-[95%] md:w-[90%] max-w-[1200px] z-[1000] flex justify-center">
@@ -20,16 +17,13 @@ const Header = () => {
 
                     {/* Button Section */}
                     <button
-                        onClick={() => setIsFormOpen(true)}
+                        onClick={openForm}
                         className="bg-[#8B5CF6] text-white border-none py-2 px-4 md:py-[0.6rem] md:px-6 rounded-[2rem] font-semibold text-xs md:text-[0.9rem] cursor-pointer transition-all duration-300 ease-in-out shadow-[0_0_15px_rgba(139,92,246,0.4)] hover:scale-105 hover:shadow-[0_0_25px_rgba(139,92,246,0.6)]"
                     >
                         Get Started
                     </button>
                 </div>
             </div>
-
-            {/* Form Modal */}
-            <Form isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
         </>
     );
 };

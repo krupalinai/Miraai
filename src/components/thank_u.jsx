@@ -1,4 +1,5 @@
 import React from 'react';
+import rightIcon from '../assets/images/right.svg';
 
 const ThankU = ({ onClose }) => {
     return (
@@ -7,9 +8,7 @@ const ThankU = ({ onClose }) => {
                 {/* Success Icon */}
                 <div className="mb-8 flex justify-center">
                     <div className="tu-check-circle">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 6L9 17L4 12" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                        <img src={rightIcon} alt="Success" className="w-[40px] h-[40px]" />
                     </div>
                 </div>
 
@@ -23,7 +22,7 @@ const ThankU = ({ onClose }) => {
                 </p>
 
                 {/* Info Card */}
-                <div className="tu-card bg-[#0A0A0A] border border-[rgba(255,255,255,0.08)] rounded-2xl p-8 md:p-10 mb-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                <div className="tu-card border border-[#262626] rounded-2xl p-8 md:p-10 mb-12 backdrop-blur-[16px]">
                     <h3 className="text-xl font-bold text-white mb-10">What Happens Next ?</h3>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="flex flex-col items-center">
@@ -90,7 +89,7 @@ const ThankU = ({ onClose }) => {
                     color: white;
                 }
                 .tu-card {
-                    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+                    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
                 }
             `}</style>
         </div>
