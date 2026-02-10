@@ -16,6 +16,7 @@ import Whatourclientssay from '../components/whatourclientssay';
 import Calltoaction from '../components/Calltoaction';
 import Frequentlyaskedquestions from '../components/Frequentlyaskedquestions';
 import Footer from '../components/Footer';
+import Hero from '../components/hero';
 
 function Home() {
     const [count, setCount] = useState(0)
@@ -23,6 +24,7 @@ function Home() {
     return (
         <>
             <Header />
+            <Hero />
             <Percentage />
             <GlobalGiants />
             <Features />
