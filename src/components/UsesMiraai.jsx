@@ -96,7 +96,7 @@ export default function UsesMiraai() {
   return (
     <section className="um-wrap">
       <div className="um-header">
-        <div className="um-title">Who Uses Miraai</div>
+        <div className="um-title">Who Uses Miraai?</div>
         <div className="um-subtitle">
           Industries That Use Miraai To Reduce Production Costs And Scale High-Quality Content.
         </div>
