@@ -3,6 +3,19 @@ import aiGenerationImg from '../assets/images/ai genration.png';
 import customizeImg from '../assets/images/customize and brand.png';
 import inputVisionImg from '../assets/images/input your vision.png';
 import reviewDeployImg from '../assets/images/review and deploy.png';
+import jolyImg from '../assets/images/Joly .svg';
+import jolyVideo from '../assets/images/videos/Joly .mp4';
+import joly2Img from '../assets/images/Joly 2 .svg';
+import joly2Video from '../assets/images/videos/Joly 2 .mp4';
+import joly3Img from '../assets/images/Joly 3.svg';
+import joly3Video from '../assets/images/videos/Joly 3.mp4';
+import joly4Img from '../assets/images/Joly 4.svg';
+import joly4Video from '../assets/images/videos/Joly 4.mp4';
+import jwelleryImg from '../assets/images/Jwellery.png';
+import jwelleryVideo from '../assets/images/videos/Jewellery.mp4';
+import lifestyleImg from '../assets/images/Lifestyle.png';
+import textileImg from '../assets/images/Textile.png';
+import clothingVideo from '../assets/images/videos/Clothing reel.mp4';
 
 
 const features = [
@@ -13,7 +26,8 @@ const features = [
     desc: [
       "Breathe Motion Into Still Images Convert Photos Into Captivating Animated Videos With AI-Powered Fluidity. Add Seamless Motion, Effects, And Emotion Effortlessly."
     ],
-    img: aiGenerationImg,
+    img: jolyImg,
+    video: jolyVideo,
   },
   {
     id: 2,
@@ -22,7 +36,8 @@ const features = [
     desc: [
       "Generate Multiple Variations Of Your Marketing Banners In One Click. Stay Brand-Consistent While Scaling Your Creative Output. Designed For High-Performance Ads."
     ],
-    img: customizeImg,
+    img: joly2Img,
+    video: joly2Video,
   },
   {
     id: 3,
@@ -31,7 +46,8 @@ const features = [
     desc: [
       "Expand The Boundaries Of Your Photos Or Intelligently Fill Missing Details. Fix Composition Errors And Create Formatting Variations. Perfect For Adapting Content To Different Social Platforms."
     ],
-    img: inputVisionImg,
+    img: joly3Img,
+    video: joly3Video,
   },
   {
     id: 4,
@@ -40,11 +56,12 @@ const features = [
     desc: [
       "Scale Your Production By Generating Dozens Of Variations From A Single Seed Image. Test Different Styles, Colors, And Compositions To Find The Perfect High-Performing Creative."
     ],
-    img: reviewDeployImg,
+    img: joly4Img,
+    video: joly4Video,
   }
 ];
 
-const ComparisonSlider = ({ img }) => {
+const ComparisonSlider = ({ img, video }) => {
   const [sliderPos, setSliderPos] = useState(50);
   const containerRef = useRef(null);
   const isDragging = useRef(false);
@@ -104,10 +121,22 @@ const ComparisonSlider = ({ img }) => {
       onMouseDown={onMouseDown}
       onTouchStart={onTouchStart}
     >
-      {/* Background: B&W Image (Right Side) */}
-      <img src={img} alt="" className="cr-compare-img cr-img-bw" />
+      {/* Background: Video or Grayscale Image (Right Side) */}
+      {video ? (
+        <video
+          src={video}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="cr-compare-img"
+          style={{ objectFit: 'cover' }}
+        />
+      ) : (
+        <img src={img} alt="" className="cr-compare-img cr-img-bw" />
+      )}
 
-      {/* Overlay: Color Image (Left Side) - Clipped to be static */}
+      {/* Overlay: Color Image (Left Side) - Clipped */}
       <img
         src={img}
         alt=""
@@ -119,13 +148,8 @@ const ComparisonSlider = ({ img }) => {
       <div className="cr-compare-line" style={{ left: `${sliderPos}%` }}>
         <div className="cr-compare-button">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            {/* Two Vertical Bars */}
-            <path d="M10 7V17" stroke="white" strokeWidth="2" strokeLinecap="round" />
-            <path d="M14 7V17" stroke="white" strokeWidth="2" strokeLinecap="round" />
-            {/* Left Triangle */}
-            <path d="M6 12L9 9V15L6 12Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            {/* Right Triangle */}
-            <path d="M18 12L15 9V15L18 12Z" fill="white" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M8 12L11 9V15L8 12Z" fill="black" />
+            <path d="M16 12L13 9V15L16 12Z" fill="black" />
           </svg>
         </div>
       </div>
@@ -195,7 +219,7 @@ export default function Creativerevisualization({ openForm }) {
                   >
                     <div className="cr-card">
                       {feature.img ? (
-                        <ComparisonSlider img={feature.img} />
+                        <ComparisonSlider img={feature.img} video={feature.video} />
                       ) : (
                         <div className="cr-img-placeholder" style={{ background: feature.gradient }}>
                           <span className="placeholder-number">{index + 1}</span>
@@ -465,8 +489,8 @@ export default function Creativerevisualization({ openForm }) {
             width: 44px;
             height: 44px;
             /* Gradient matching reference: Purple/Pink mix */
-            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-            border: 2px solid white;
+            background: #fff;
+            border: none;
             border-radius: 50%;
             display: flex;
             align-items: center;
