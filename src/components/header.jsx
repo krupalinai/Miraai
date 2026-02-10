@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import miraiLogo from '../assets/images/mirai.svg';
 import Form from './form';
 
-const Header = () => {
+const Header = ({ openForm }) => {
     const [isFormOpen, setIsFormOpen] = useState(false);
     const [showHeader, setShowHeader] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
@@ -31,8 +31,6 @@ const Header = () => {
 
     // Always show on mobile, show based on scroll on desktop
     const isVisible = isMobile || showHeader;
-
-const Header = ({ openForm }) => {
     return (
         <>
             <div
