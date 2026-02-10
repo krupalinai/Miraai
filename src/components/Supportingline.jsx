@@ -113,8 +113,8 @@ export default function Supportingline() {
       <style>{`
         .sl-wrap {
           width: 100%;
-          min-height: 100vh;
-          padding: 34px 18px 60px;
+          min-height: auto;
+          padding: 34px 18px 30px;
           background: #000;
           color: #e9e9ee;
           font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;

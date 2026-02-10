@@ -237,7 +237,7 @@ export default function FloatingVideoHero({ openForm }) {
         </motion.h1>
 
         <motion.p className="hero-subheading" variants={contentItemVariants}>
-          Turn scripts into stunning videos and visuals in days, not months. 70% Cost reduction, 10x faster  no studios or crews required.
+          70% Cost reduction, 10x faster  no studios or crews required.
         </motion.p>
 
         <motion.button
@@ -294,13 +294,19 @@ export default function FloatingVideoHero({ openForm }) {
           padding: 0;
         }
 
+        .hero-section.mobile {
+          flex-direction: column;
+          justify-content: center; 
+          gap: 0; 
+        }
+
         .hero-button {
           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
           color: #ffffff;
           border: none;
-          padding: 14px 32px;
+          padding: 10px 24px;
           border-radius: 8px;
-          font-size: 16px;
+          font-size: 14px;
           font-weight: 600;
           cursor: pointer;
           transition: all 0.3s ease;
@@ -364,7 +370,7 @@ export default function FloatingVideoHero({ openForm }) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 14px;
+          gap: 6px;
         }
 
         .hero-heading {
@@ -407,7 +413,7 @@ export default function FloatingVideoHero({ openForm }) {
           display: flex;
           gap: 12px;
           overflow-x: auto;
-          padding: 10px 0;
+          padding: 0px 0;
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
           scrollbar-width: none;
@@ -509,7 +515,7 @@ export default function FloatingVideoHero({ openForm }) {
             padding: 0 20px;
           }
           .hero-content {
-            padding: 1rem;
+            padding: 2rem 2rem 0.5rem 2rem;
           }
         }
 

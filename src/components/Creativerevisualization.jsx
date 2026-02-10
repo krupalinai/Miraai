@@ -315,8 +315,9 @@ export default function Creativerevisualization({ openForm }) {
           width: 100%;
           overflow: hidden;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           justify-content: center;
+          padding-top: 140px;
         }
 
         .cr-triggers {
@@ -647,7 +648,7 @@ export default function Creativerevisualization({ openForm }) {
           .cr-sticky-viewport {
             position: relative;
             height: auto;
-            padding: 50px 0;
+            padding: 20px 0;
             top: 0;
             display: block;
           }
@@ -826,7 +827,7 @@ export default function Creativerevisualization({ openForm }) {
         ======================================== */
         @media (max-width: 480px) {
           .cr-sticky-viewport {
-            padding: 40px 0;
+            padding: 20px 0;
           }
 
           .cr-wrap {

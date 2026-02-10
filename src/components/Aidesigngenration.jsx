@@ -19,6 +19,8 @@ export default function Aidesigngenration() {
   const railRef = useRef(null);
 
   // Auto-scroll logic (Step-based for better compatibility with scroll-snap)
+  /* Disabled auto-scroll to remove lag */
+  /*
   useEffect(() => {
     let interval;
     const getCardWidth = () => {
@@ -52,6 +54,7 @@ export default function Aidesigngenration() {
     }
     return () => clearInterval(interval);
   }, [isPaused]);
+  */
 
   // Initial positioning: start in the middle (second set)
   useEffect(() => {

@@ -47,7 +47,7 @@ const DoBest = () => {
     ];
 
     return (
-        <section className="bg-[#000004] py-12 md:py-20 px-4 md:px-8">
+        <section className="bg-[#000004] py-12 md:py-12 px-4 md:px-4">
             <style>{styles}</style>
             <div className="max-w-[1200px] mx-auto">
                 <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-10 md:mb-16 tracking-tight px-4 leading-tight">
@@ -91,7 +91,7 @@ const DoBest = () => {
                     </table>
                 </div>
 
-                {/* Mobile Card View - Hidden on Desktop */}
+                {/* Mobile Card View - Hidden on Desktop with Sticky Stacking */}
                 <div className="md:hidden flex flex-col gap-6">
                     {comparisonData.map((row, index) => (
                         <motion.div
@@ -100,31 +100,32 @@ const DoBest = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="bg-[#0A0A0B] border border-[#262626] rounded-2xl p-6 flex flex-col gap-5 shadow-2xl relative overflow-hidden group"
+                            className="sticky top-24 bg-[#0A0A0A] border border-white/10 rounded-[2rem] p-8 flex flex-col gap-6 shadow-2xl relative overflow-hidden group min-h-[250px]"
+                            style={{ zIndex: index + 1 }}
                         >
-                            {/* Subtle background glow */}
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#8B5CF640] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                            {/* Glossy Gradient Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] via-transparent to-transparent opacity-100 pointer-events-none" />
 
-                            <h3 className="text-white font-bold text-xl text-center pb-3 border-b border-white/10">
+                            <h3 className="text-white font-bold text-2xl text-center pb-4 border-b border-white/10 relative z-10">
                                 {row.area}
                             </h3>
 
-                            <div className="flex flex-col gap-4">
+                            <div className="flex flex-col gap-5 relative z-10">
                                 {/* DIY Side */}
-                                <div className="flex items-start gap-4">
-                                    <span className="text-red-500 font-bold text-lg leading-none mt-1">✕</span>
+                                <div className="flex items-start gap-4 p-3 rounded-xl bg-white/[0.02]">
+                                    <span className="text-red-500 font-bold text-xl leading-none mt-1">✕</span>
                                     <div className="flex flex-col">
-                                        <p className="text-gray-300 text-[15px] leading-relaxed">
+                                        <p className="text-gray-400 text-sm leading-relaxed font-medium">
                                             {row.diy}
                                         </p>
                                     </div>
                                 </div>
 
                                 {/* Miraai Side */}
-                                <div className="flex items-start gap-4">
-                                    <img src={rightIcon} alt="Check" className="w-6 h-6 flex-shrink-0 mt-0.5 filter drop-shadow-[0_0_5px_rgba(59,130,246,0.4)]" />
+                                <div className="flex items-start gap-4 p-3 rounded-xl bg-[#8B5CF6]/10 border border-[#8B5CF6]/20">
+                                    <img src={rightIcon} alt="Check" className="w-5 h-5 flex-shrink-0 mt-0.5 filter drop-shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
                                     <div className="flex flex-col">
-                                        <p className="text-white text-[15px] font-medium leading-relaxed">
+                                        <p className="text-white text-base font-semibold leading-relaxed">
                                             {row.miraai}
                                         </p>
                                     </div>

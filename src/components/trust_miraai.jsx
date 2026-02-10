@@ -76,14 +76,14 @@ const TrustMiraai = () => {
     };
 
     return (
-        <div ref={sectionRef} className="bg-[#000004] min-h-auto py-5 md:py-20 px-4 md:px-8 relative overflow-hidden">
+        <div ref={sectionRef} className="bg-[#000004] min-h-auto py-6 md:py-12 px-4 md:px-8 relative overflow-hidden">
             <div className="max-w-[1200px] mx-auto relative z-10">
 
                 {/* Header Section */}
                 {isMobile ? (
                     <div className="text-center mb-10">
                         <h2 className="text-3xl font-bold text-white tracking-tight">
-                            Why Trust Miraai?
+                            why work with miraai?
                         </h2>
                     </div>
                 ) : (
@@ -94,7 +94,7 @@ const TrustMiraai = () => {
                         variants={headerVariants}
                     >
                         <h2 className="text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-white tracking-tight">
-                            Why Trust Miraai?
+                            Why Work With Miraai?
                         </h2>
                     </motion.div>
                 )}

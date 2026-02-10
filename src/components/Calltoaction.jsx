@@ -167,8 +167,9 @@ export default function Calltoaction({ openForm }) {
             margin-top: 32px;
           }
 
+
           .cta-btn-img {
-            height: 44px;
+            height: 36px;
           }
         }
 
@@ -199,8 +200,9 @@ export default function Calltoaction({ openForm }) {
             margin-top: 28px;
           }
 
+
           .cta-btn-img {
-            height: 42px;
+            height: 32px;
           }
         }
 
@@ -233,8 +235,9 @@ export default function Calltoaction({ openForm }) {
             margin-top: 24px;
           }
 
+
           .cta-btn-img {
-            height: 40px;
+            height: 30px;
           }
         }
       `}</style>

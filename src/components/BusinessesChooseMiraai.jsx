@@ -165,7 +165,7 @@ export default function BusinessesChooseMiraai() {
 
       <div className="bcm-container">
         {/* Connection Lines with Energy Flow Pulse */}
-        <svg className="bcm-lines" viewBox="0 0 1000 600">
+        <svg className="bcm-lines" viewBox="0 0 1000 500">
           <defs>
             {/* Base Line Gradient */}
             <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -214,7 +214,6 @@ export default function BusinessesChooseMiraai() {
                 opacity="0.38"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                filter="url(#lineGlow)"
                 pathLength="100"
               />
 
@@ -227,7 +226,6 @@ export default function BusinessesChooseMiraai() {
                 fill="none"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                filter="url(#pulseGlow)"
                 pathLength="100"
                 style={{
                   animationDelay: path.delay,
@@ -264,7 +262,7 @@ export default function BusinessesChooseMiraai() {
       <style>{`
         .bcm-wrap {
           width: 100%;
-          padding: 46px 18px 64px;
+          padding: 80px 18px;
           background: #000;
           color: #e9e9ee;
           font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -298,7 +296,7 @@ export default function BusinessesChooseMiraai() {
         .bcm-container {
           position: relative;
           max-width: 1000px;
-          height: 600px;
+          height: 500px;
           margin: 0 auto;
           z-index: 1;
         }
@@ -529,7 +527,7 @@ export default function BusinessesChooseMiraai() {
         ======================================== */
         @media (max-width: 768px) {
           .bcm-wrap {
-            padding: 40px 16px 60px;
+            padding: 40px 16px;
           }
 
           .bcm-title {

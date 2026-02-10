@@ -3,8 +3,7 @@ import miraiLogo from '../assets/images/mirai.svg';
 import Form from './form';
 
 const Header = ({ openForm }) => {
-    const [isFormOpen, setIsFormOpen] = useState(false);
-    const [showHeader, setShowHeader] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -15,11 +14,9 @@ const Header = ({ openForm }) => {
         checkMobile();
         window.addEventListener('resize', checkMobile);
 
-        // Scroll handler - only for desktop
+        // Scroll handler
         const handleScroll = () => {
-            if (window.innerWidth > 768) {
-                setShowHeader(window.scrollY > 50);
-            }
+            setIsScrolled(window.scrollY > 50);
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
 
@@ -29,8 +26,6 @@ const Header = ({ openForm }) => {
         };
     }, []);
 
-    // Always show on mobile, show based on scroll on desktop
-    const isVisible = isMobile || showHeader;
     return (
         <>
             <div
@@ -44,13 +39,15 @@ const Header = ({ openForm }) => {
                     zIndex: 1000,
                     display: 'flex',
                     justifyContent: 'center',
-                    opacity: isVisible ? 1 : 0,
-                    visibility: isVisible ? 'visible' : 'hidden',
-                    transition: isMobile ? 'none' : 'opacity 0.4s ease, visibility 0.4s ease',
-                    pointerEvents: isVisible ? 'auto' : 'none',
+                    pointerEvents: 'auto',
                 }}
             >
-                <div className="w-full flex items-center justify-between px-4 md:px-8 py-2 md:py-3 rounded-2xl md:rounded-3xl bg-[rgba(20,20,20,0.4)] backdrop-blur-[16px] border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]">
+                <div
+                    className={`w-full flex items-center justify-between px-4 md:px-8 py-2 md:py-3 rounded-2xl md:rounded-3xl transition-all duration-400 ease-in-out ${isScrolled
+                            ? 'bg-[rgba(20,20,20,0.4)] backdrop-blur-[16px] border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]'
+                            : 'bg-transparent border border-transparent shadow-none'
+                        }`}
+                >
                     {/* Logo Section */}
                     <div className="flex items-center">
                         <img

@@ -146,7 +146,7 @@ const Features = () => {
     };
 
     return (
-        <div ref={sectionRef} className="bg-[#000004] min-h-screen py-5 px-4 md:px-8 relative overflow-hidden">
+        <div ref={sectionRef} className="bg-[#000004] min-h-auto py-6 md:py-12 px-4 md:px-8 relative overflow-hidden">
             {/* Background glow */}
             <div className="absolute top-[20%] right-1/2 translate-x-1/2 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(139,92,246,0.08)_0%,transparent_60%)] pointer-events-none z-0" />
 

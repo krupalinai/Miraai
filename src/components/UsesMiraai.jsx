@@ -130,7 +130,7 @@ export default function UsesMiraai() {
       <style>{`
         .um-wrap {
           width: 100%;
-          padding: 60px 0 80px;
+          padding: 80px 0;
           background: #000;
           color: #e9e9ee;
           font-family: 'Urbanist', system-ui, -apple-system, sans-serif;
@@ -249,7 +249,7 @@ export default function UsesMiraai() {
         }
 
         @media (max-width: 768px) {
-          .um-wrap { padding: 40px 0 60px; }
+          .um-wrap { padding: 40px 0; }
           .um-title { font-size: 28px; }
           .um-card { width: 280px; height: 360px; }
           .um-rail { gap: 20px; }
