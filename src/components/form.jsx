@@ -133,14 +133,6 @@ const Form = ({ isOpen, onClose }) => {
                     }
                 `}</style>
 
-                {/* Background Decoration */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    <div className="absolute left-1/2 top-0 bottom-0 w-px border-l border-dashed border-[#22D3EE33] -translate-x-1/2" />
-                    <div className="absolute top-1/2 left-0 right-0 h-px border-t border-dashed border-[#22D3EE33] -translate-y-1/2" />
-                    <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#000004] p-2 flex items-center justify-center">
-                        <div className="text-[#22D3EE] text-xl">✦</div>
-                    </div>
-                </div>
 
                 {/* Close Button */}
                 <button

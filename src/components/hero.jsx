@@ -283,13 +283,14 @@ export default function FloatingVideoHero() {
 
         .hero-section {
           position: relative;
-          min-height: 100vh;
+          min-height: 110vh;
           width: 100%;
           overflow: hidden;
           display: flex;
           align-items: center;
           justify-content: center;
           background: #000000;
+          padding: 0;
         }
 
         .hero-button {
@@ -315,8 +316,9 @@ export default function FloatingVideoHero() {
           flex-direction: column;
           justify-content: flex-start;
           padding-top: 80px;
-          gap: 40px;
-          justify-content: space-between;
+          gap: 20px;
+          min-height: auto;
+          padding-bottom: 40px;
         }
 
         /* Cards Container - Desktop */
@@ -326,6 +328,7 @@ export default function FloatingVideoHero() {
           display: flex;
           align-items: center;
           justify-content: center;
+          padding: 80px 0;
         }
 
         /* Floating Card - Desktop */
