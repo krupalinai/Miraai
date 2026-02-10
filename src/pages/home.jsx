@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import '../App.css'
 import Hero from '../components/hero'
 import Percentage from '../components/percentage'
@@ -17,7 +18,6 @@ import Whatourclientssay from '../components/whatourclientssay';
 import Calltoaction from '../components/Calltoaction';
 import Frequentlyaskedquestions from '../components/Frequentlyaskedquestions';
 import Footer from '../components/Footer';
-import Hero from '../components/hero';
 
 function Home() {
     const [isFormOpen, setIsFormOpen] = useState(false);
