@@ -149,7 +149,7 @@ const contentItemVariants = {
 };
 
 // Main Hero Component
-export default function FloatingVideoHero() {
+export default function FloatingVideoHero({ openForm }) {
   const contentControls = useAnimationControls();
   const [isMobile, setIsMobile] = useState(false);
   const scrollContainerRef = useRef(null);
@@ -245,6 +245,7 @@ export default function FloatingVideoHero() {
           variants={contentItemVariants}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={openForm}
         >
           Talk to Our Expert
         </motion.button>
