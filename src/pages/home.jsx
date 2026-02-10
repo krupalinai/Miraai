@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import '../App.css'
 import Percentage from '../components/percentage'
 import GlobalGiants from '../components/global_giants'
@@ -19,8 +18,6 @@ import Footer from '../components/Footer';
 import Hero from '../components/hero';
 
 function Home() {
-    const [count, setCount] = useState(0)
-
     return (
         <>
             <Header />

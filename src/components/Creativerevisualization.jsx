@@ -3,7 +3,7 @@ import aiGenerationImg from '../assets/images/ai genration.png';
 import customizeImg from '../assets/images/customize and brand.png';
 import inputVisionImg from '../assets/images/input your vision.png';
 import reviewDeployImg from '../assets/images/review and deploy.png';
-import buttonImg from '../assets/images/Button.png';
+
 
 const features = [
   {
