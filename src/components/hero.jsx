@@ -1,275 +1,284 @@
+// eslint-disable-next-line no-unused-vars
 import { motion, useAnimationControls } from 'framer-motion';
-import { useEffect, useMemo, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 // Import local videos
-import v1 from '../assets/images/videos/Clothing reel 2.mp4';
-import v2 from '../assets/images/videos/Clothing reel 3.mp4';
-import v3 from '../assets/images/videos/Clothing reel 3.mp4';
-import v4 from '../assets/images/videos/Clothing reel.mp4';
-import v5 from '../assets/images/videos/Jewellery.mp4';
-import v6 from '../assets/images/videos/Clothing reel 2.mp4';
+import v1 from '../assets/images/videos/clothing rell 1.mp4';
+import v2 from '../assets/images/videos/clothing reel 2.mp4';
+import v3 from '../assets/images/videos/clothing reel 3.mp4';
+import v4 from '../assets/images/videos/clothing reel 4.mp4';
+import v5 from '../assets/images/videos/clothing reel 5.mp4';
+import v6 from '../assets/images/videos/car reel 6.mp4';
 
 // Video sources array
 const videoSources = [v1, v2, v3, v4, v5, v6];
 
-// Card positions around center - balanced layout (3 left, 3 right)
+// Card positions around center - balanced layout (3 top, 3 bottom)
 const cardConfigs = [
-    // Left side cards
-    { x: -200, y: -200, rotate: -12, scale: 0.95 },
-    { x: -380, y: 80, rotate: 8, scale: 0.92 },
-    { x: -100, y: 220, rotate: -10, scale: 0.88 },
-    // Right side cards
-    { x: 200, y: -200, rotate: 12, scale: 0.95 },
-    { x: 380, y: 80, rotate: -8, scale: 0.92 },
-    { x: 100, y: 220, rotate: 6, scale: 0.88 },
+  // Top side cards
+  { x: -500, y: -200, rotate: 0, scale: 0.95 },
+  { x: 0, y: -280, rotate: 0, scale: 0.95 },
+  { x: 500, y: -200, rotate: 0, scale: 0.95 },
+  // Bottom side cards
+  { x: -450, y: 150, rotate: 0, scale: 0.92 },
+  { x: 0, y: 280, rotate: 0, scale: 0.92 },
+  { x: 450, y: 150, rotate: 0, scale: 0.92 },
 ];
 
 // Desktop Floating Video Card Component
 const FloatingVideoCard = ({ src, config, index, randomValues }) => {
-    const controls = useAnimationControls();
-    const { duration, xAmp, yAmp, rotAmp } = randomValues;
+  const controls = useAnimationControls();
+  const { duration, xAmp, yAmp, rotAmp } = randomValues;
 
-    useEffect(() => {
-        const animateSequence = async () => {
-            await controls.start({
-                x: -config.x * 0.15,
-                y: -config.y * 0.15,
-                rotate: -config.rotate * 0.3,
-                scale: 0.5,
-                opacity: 0.6,
-                transition: {
-                    type: 'spring',
-                    stiffness: 120,
-                    damping: 20,
-                    mass: 1,
-                    delay: index * 0.08,
-                },
-            });
+  useEffect(() => {
+    const animateSequence = async () => {
+      await controls.start({
+        x: -config.x * 0.15,
+        y: -config.y * 0.15,
+        rotate: -config.rotate * 0.3,
+        scale: 0.5,
+        opacity: 0.6,
+        transition: {
+          type: 'spring',
+          stiffness: 120,
+          damping: 20,
+          mass: 1,
+          delay: index * 0.08,
+        },
+      });
 
-            await controls.start({
-                x: config.x,
-                y: config.y,
-                rotate: config.rotate,
-                scale: config.scale,
-                opacity: 1,
-                transition: {
-                    type: 'spring',
-                    stiffness: 45,
-                    damping: 18,
-                    mass: 1.2,
-                    delay: 0.05,
-                },
-            });
+      await controls.start({
+        x: config.x,
+        y: config.y,
+        rotate: config.rotate,
+        scale: config.scale,
+        opacity: 1,
+        transition: {
+          type: 'spring',
+          stiffness: 45,
+          damping: 18,
+          mass: 1.2,
+          delay: 0.05,
+        },
+      });
 
-            controls.start({
-                x: [config.x - xAmp, config.x + xAmp, config.x - xAmp],
-                y: [config.y - yAmp, config.y + yAmp, config.y - yAmp],
-                rotate: [config.rotate - rotAmp, config.rotate + rotAmp, config.rotate - rotAmp],
-                transition: {
-                    x: { duration, repeat: Infinity, ease: 'easeInOut' },
-                    y: { duration: duration * 1.2, repeat: Infinity, ease: 'easeInOut' },
-                    rotate: { duration: duration * 1.4, repeat: Infinity, ease: 'easeInOut' },
-                },
-            });
-        };
+      controls.start({
+        x: [config.x - xAmp, config.x + xAmp, config.x - xAmp],
+        y: [config.y - yAmp, config.y + yAmp, config.y - yAmp],
+        rotate: [config.rotate - rotAmp, config.rotate + rotAmp, config.rotate - rotAmp],
+        transition: {
+          x: { duration, repeat: Infinity, ease: 'easeInOut' },
+          y: { duration: duration * 1.2, repeat: Infinity, ease: 'easeInOut' },
+          rotate: { duration: duration * 1.4, repeat: Infinity, ease: 'easeInOut' },
+        },
+      });
+    };
 
-        animateSequence();
-    }, [controls, config, index, duration, xAmp, yAmp, rotAmp]);
+    animateSequence();
+  }, [controls, config, index, duration, xAmp, yAmp, rotAmp]);
 
-    return (
-        <motion.div
-            className="floating-card"
-            initial={{ x: 0, y: 0, scale: 0.65, opacity: 0, rotate: 0 }}
-            animate={controls}
-            whileHover={{
-                scale: config.scale * 1.08,
-                rotate: 0,
-                zIndex: 100,
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-                transition: { duration: 0.22 },
-            }}
-        >
-            <video src={src} autoPlay muted loop playsInline className="card-video" />
-        </motion.div>
-    );
+  return (
+    <motion.div
+      className="floating-card"
+      initial={{ x: 0, y: 0, scale: 0.65, opacity: 0, rotate: 0 }}
+      animate={controls}
+      whileHover={{
+        rotate: 0,
+        zIndex: 100,
+        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+        transition: { duration: 0.22 },
+      }}
+    >
+      <video src={src} autoPlay muted loop playsInline className="card-video" />
+    </motion.div>
+  );
 };
 
 // Mobile Video Card - plays only when active
 const MobileVideoCard = ({ src, isActive, index, cardRef }) => {
-    const videoRef = useRef(null);
+  const videoRef = useRef(null);
 
-    useEffect(() => {
-        if (videoRef.current) {
-            if (isActive) {
-                videoRef.current.currentTime = 0;
-                videoRef.current.play();
-            } else {
-                videoRef.current.pause();
-            }
-        }
-    }, [isActive]);
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isActive) {
+        videoRef.current.currentTime = 0;
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isActive]);
 
-    return (
-        <motion.div
-            ref={cardRef}
-            className={`mobile-card ${isActive ? 'active' : ''}`}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1, duration: 0.5 }}
-        >
-            <video
-                ref={videoRef}
-                src={src}
-                muted
-                loop
-                playsInline
-                className="mobile-card-video"
-            />
-            {isActive && <div className="active-indicator" />}
-        </motion.div>
-    );
+  return (
+    <motion.div
+      ref={cardRef}
+      className={`mobile-card ${isActive ? 'active' : ''}`}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        muted
+        loop
+        playsInline
+        className="mobile-card-video"
+      />
+      {isActive && <div className="active-indicator" />}
+    </motion.div>
+  );
 };
 
 // Hero Content Variants
 const contentContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.12, delayChildren: 0 },
-    },
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12, delayChildren: 0 },
+  },
 };
 
 const contentItemVariants = {
-    hidden: { opacity: 0, y: 16 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: 'easeOut' },
-    },
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: 'easeOut' },
+  },
 };
 
 // Main Hero Component
 export default function FloatingVideoHero() {
-    const contentControls = useAnimationControls();
-    const [isMobile, setIsMobile] = useState(false);
-    const scrollContainerRef = useRef(null);
-    const cardRefs = useRef([]);
-    const [activeVideoIndex, setActiveVideoIndex] = useState(0);
+  const contentControls = useAnimationControls();
+  const [isMobile, setIsMobile] = useState(false);
+  const scrollContainerRef = useRef(null);
+  const cardRefs = useRef([]);
+  const [activeVideoIndex, setActiveVideoIndex] = useState(0);
 
-    // Check if mobile
-    useEffect(() => {
-        const checkMobile = () => setIsMobile(window.innerWidth <= 768);
-        checkMobile();
-        window.addEventListener('resize', checkMobile);
-        return () => window.removeEventListener('resize', checkMobile);
-    }, []);
+  // Check if mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth <= 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
-    // Auto-cycle videos on mobile (one by one)
-    useEffect(() => {
-        if (!isMobile) return;
+  // Auto-cycle videos on mobile (one by one)
+  useEffect(() => {
+    if (!isMobile) return;
 
-        const interval = setInterval(() => {
-            setActiveVideoIndex((prev) => (prev + 1) % videoSources.length);
-        }, 3000); // Change video every 3 seconds
+    const interval = setInterval(() => {
+      setActiveVideoIndex((prev) => (prev + 1) % videoSources.length);
+    }, 3000); // Change video every 3 seconds
 
-        return () => clearInterval(interval);
-    }, [isMobile]);
+    return () => clearInterval(interval);
+  }, [isMobile]);
 
-    // Auto-scroll to center active video
-    useEffect(() => {
-        if (!isMobile || !scrollContainerRef.current || !cardRefs.current[activeVideoIndex]) return;
+  // Auto-scroll to center active video
+  useEffect(() => {
+    if (!isMobile || !scrollContainerRef.current || !cardRefs.current[activeVideoIndex]) return;
 
-        const container = scrollContainerRef.current;
-        const activeCard = cardRefs.current[activeVideoIndex];
-        const containerWidth = container.offsetWidth;
-        const cardLeft = activeCard.offsetLeft;
-        const cardWidth = activeCard.offsetWidth;
+    const container = scrollContainerRef.current;
+    const activeCard = cardRefs.current[activeVideoIndex];
+    const containerWidth = container.offsetWidth;
+    const cardLeft = activeCard.offsetLeft;
+    const cardWidth = activeCard.offsetWidth;
 
-        // Scroll to center the active card
-        const scrollTo = cardLeft - (containerWidth / 2) + (cardWidth / 2);
-        container.scrollTo({ left: scrollTo, behavior: 'smooth' });
-    }, [activeVideoIndex, isMobile]);
+    // Scroll to center the active card
+    const scrollTo = cardLeft - (containerWidth / 2) + (cardWidth / 2);
+    container.scrollTo({ left: scrollTo, behavior: 'smooth' });
+  }, [activeVideoIndex, isMobile]);
 
-    // Generate random values for desktop floating
-    const randomValues = useMemo(() =>
-        cardConfigs.map(() => ({
-            duration: 4 + Math.random() * 3,
-            xAmp: 8 + Math.random() * 17,
-            yAmp: 10 + Math.random() * 20,
-            rotAmp: 2 + Math.random() * 4,
-        })), []
-    );
+  // Generate random values for desktop floating - initialized once on mount
+  const [randomValues] = useState(() =>
+    cardConfigs.map(() => ({
+      duration: 4 + Math.random() * 3,
+      xAmp: 8 + Math.random() * 17,
+      yAmp: 10 + Math.random() * 20,
+      rotAmp: 2 + Math.random() * 4,
+    }))
+  );
 
-    // Content entry animation
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            contentControls.start('visible');
-        }, isMobile ? 500 : 1500);
-        return () => clearTimeout(timer);
-    }, [contentControls, isMobile]);
+  // Content entry animation
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      contentControls.start('visible');
+    }, isMobile ? 500 : 1500);
+    return () => clearTimeout(timer);
+  }, [contentControls, isMobile]);
 
-    return (
-        <section className={`hero-section ${isMobile ? 'mobile' : ''}`}>
-            {/* Desktop: Floating Cards */}
-            {!isMobile && (
-                <div className="cards-container">
-                    {videoSources.map((src, index) => (
-                        <FloatingVideoCard
-                            key={index}
-                            src={src}
-                            config={cardConfigs[index]}
-                            index={index}
-                            randomValues={randomValues[index]}
-                        />
-                    ))}
-                </div>
-            )}
+  return (
+    <section className={`hero-section ${isMobile ? 'mobile' : ''}`}>
+      {/* Desktop: Floating Cards */}
+      {!isMobile && (
+        <div className="cards-container">
+          {videoSources.map((src, index) => (
+            <FloatingVideoCard
+              key={index}
+              src={src}
+              config={cardConfigs[index]}
+              index={index}
+              randomValues={randomValues[index]}
+            />
+          ))}
+        </div>
+      )}
 
-            {/* Center Content */}
-            <motion.div
-                className="hero-content"
-                variants={contentContainerVariants}
-                initial="hidden"
-                animate={contentControls}
-            >
-                <motion.h1 className="hero-heading" variants={contentItemVariants}>
-                    Create winning ads <span className="heading-italic">with AI</span>
-                </motion.h1>
+      {/* Center Content */}
+      <motion.div
+        className="hero-content"
+        variants={contentContainerVariants}
+        initial="hidden"
+        animate={contentControls}
+      >
+        <motion.h1 className="hero-heading" variants={contentItemVariants}>
+          India's 1st Premium AI-Powered Image & Video Production Services
+        </motion.h1>
 
-                <motion.p className="hero-subheading" variants={contentItemVariants}>
-                    Use our library of 1,000+ Captivating AI Actors, or create your own AI Avatar
-                </motion.p>
-            </motion.div>
+        <motion.p className="hero-subheading" variants={contentItemVariants}>
+          Turn scripts into stunning videos and visuals in days, not months. 70% Cost reduction, 10x faster  no studios or crews required.
+        </motion.p>
 
-            {/* Mobile: Horizontal Video Row */}
-            {isMobile && (
-                <div className="mobile-videos-container">
-                    <div className="mobile-videos-row" ref={scrollContainerRef}>
-                        {videoSources.map((src, index) => (
-                            <MobileVideoCard
-                                key={index}
-                                src={src}
-                                isActive={activeVideoIndex === index}
-                                index={index}
-                                cardRef={(el) => (cardRefs.current[index] = el)}
-                            />
-                        ))}
-                    </div>
-                    {/* Progress dots */}
-                    <div className="progress-dots">
-                        {videoSources.map((_, index) => (
-                            <button
-                                key={index}
-                                className={`dot ${activeVideoIndex === index ? 'active' : ''}`}
-                                onClick={() => setActiveVideoIndex(index)}
-                            />
-                        ))}
-                    </div>
-                </div>
-            )}
+        <motion.button
+          className="hero-button"
+          variants={contentItemVariants}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Talk to Our Expert
+        </motion.button>
+      </motion.div>
 
-            {/* Styles */}
-            <style>{`
+      {/* Mobile: Horizontal Video Row */}
+      {isMobile && (
+        <div className="mobile-videos-container">
+          <div className="mobile-videos-row" ref={scrollContainerRef}>
+            {videoSources.map((src, index) => (
+              <MobileVideoCard
+                key={index}
+                src={src}
+                isActive={activeVideoIndex === index}
+                index={index}
+                cardRef={(el) => (cardRefs.current[index] = el)}
+              />
+            ))}
+          </div>
+          {/* Progress dots */}
+          <div className="progress-dots">
+            {videoSources.map((_, index) => (
+              <button
+                key={index}
+                className={`dot ${activeVideoIndex === index ? 'active' : ''}`}
+                onClick={() => setActiveVideoIndex(index)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Styles */}
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,500&display=swap');
 
         .hero-section {
@@ -280,7 +289,25 @@ export default function FloatingVideoHero() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, #0a0a0f 0%, #1a1a24 50%, #0d0d14 100%);
+          background: #000000;
+        }
+
+        .hero-button {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          color: #ffffff;
+          border: none;
+          padding: 14px 32px;
+          border-radius: 8px;
+          font-size: 16px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .hero-button:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
         }
 
         /* Mobile Layout */
@@ -304,8 +331,8 @@ export default function FloatingVideoHero() {
         /* Floating Card - Desktop */
         .floating-card {
           position: absolute;
-          width: 140px;
-          aspect-ratio: 9 / 16;
+          width: 165px;
+          height: 282px;
           border-radius: 16px;
           overflow: hidden;
           background: #111;
@@ -338,7 +365,7 @@ export default function FloatingVideoHero() {
 
         .hero-heading {
           font-family: 'Inter', sans-serif;
-          font-size: 48px;
+          font-size: 30px;
           font-weight: 700;
           color: #ffffff;
           line-height: 1.15;
@@ -390,8 +417,8 @@ export default function FloatingVideoHero() {
 
         .mobile-card {
           flex-shrink: 0;
-          width: 100px;
-          aspect-ratio: 9 / 16;
+          width: 165px;
+          height: 282px;
           border-radius: 12px;
           overflow: hidden;
           background: #111;
@@ -459,7 +486,8 @@ export default function FloatingVideoHero() {
         /* Responsive - Tablet */
         @media (max-width: 1024px) {
           .floating-card {
-            width: 120px;
+            width: 165px;
+            height: 282px;
           }
           .hero-heading {
             font-size: 40px;
@@ -491,10 +519,11 @@ export default function FloatingVideoHero() {
             font-size: 24px;
           }
           .mobile-card {
-            width: 85px;
+            width: 165px;
+            height: 282px;
           }
         }
       `}</style>
-        </section>
-    );
+    </section>
+  );
 }

@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 
+const stats = [
+    { value: 99.8, suffix: '%', label: 'Satisfaction Rate' },
+    { value: 24, suffix: '/7', label: 'AI Availability' },
+    { value: 70, suffix: '%', label: 'Cost Reduction' },
+    { value: 10, suffix: 'x', label: 'Faster Delivery' }
+];
+
 const Percentage = () => {
-    const [isVisible, setIsVisible] = useState(false);
     const [counts, setCounts] = useState([0, 0, 0, 0]);
     const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
     const containerRef = useRef(null);
-
-    const stats = [
-        { value: 99.8, suffix: '%', label: 'Satisfaction Rate' },
-        { value: 24, suffix: '/7', label: 'AI Availability' },
-        { value: 70, suffix: '%', label: 'Cost Reduction' },
-        { value: 10, suffix: 'x', label: 'Faster Delivery' }
-    ];
 
     useEffect(() => {
         // Check mobile first
@@ -29,7 +28,6 @@ const Percentage = () => {
             setCounts(stats.map(stat => stat.value));
         } else {
             // Desktop: Animate numbers counting up
-            setTimeout(() => setIsVisible(true), 100);
 
             const duration = 3000;
             const steps = 60;

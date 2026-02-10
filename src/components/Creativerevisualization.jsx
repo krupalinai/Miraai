@@ -3,7 +3,7 @@ import aiGenerationImg from '../assets/images/ai genration.png';
 import customizeImg from '../assets/images/customize and brand.png';
 import inputVisionImg from '../assets/images/input your vision.png';
 import reviewDeployImg from '../assets/images/review and deploy.png';
-import buttonImg from '../assets/images/Button.png';
+
 
 const features = [
   {
@@ -107,10 +107,13 @@ const ComparisonSlider = ({ img }) => {
       {/* Background: B&W Image (Right Side) */}
       <img src={img} alt="" className="cr-compare-img cr-img-bw" />
 
-      {/* Overlay: Color Image (Left Side) - Clipped */}
-      <div className="cr-compare-overlay" style={{ width: `${sliderPos}%` }}>
-        <img src={img} alt="" className="cr-compare-img cr-img-color" />
-      </div>
+      {/* Overlay: Color Image (Left Side) - Clipped to be static */}
+      <img
+        src={img}
+        alt=""
+        className="cr-compare-img cr-img-color"
+        style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
+      />
 
       {/* Slider Line (Simple sleek line with button) */}
       <div className="cr-compare-line" style={{ left: `${sliderPos}%` }}>
@@ -130,7 +133,7 @@ const ComparisonSlider = ({ img }) => {
   );
 };
 
-export default function Creativerevisualization() {
+export default function Creativerevisualization({ openForm }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const triggerRefs = useRef([]);
 
@@ -207,12 +210,12 @@ export default function Creativerevisualization() {
               {/* Mobile Navigation Buttons */}
               <button className="cr-nav-btn cr-nav-prev" onClick={handlePrev} aria-label="Previous">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15 18L9 12L15 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
               <button className="cr-nav-btn cr-nav-next" onClick={handleNext} aria-label="Next">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 18L15 12L9 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
             </div>
@@ -252,7 +255,7 @@ export default function Creativerevisualization() {
                 ))}
               </div>
 
-              <button className="cr-try-btn" type="button" aria-label="Try it now">
+              <button className="cr-try-btn" type="button" aria-label="Try it now" onClick={openForm}>
                 <span className="cr-btn-star">✦</span>
                 <span className="cr-btn-text">Try It Now</span>
                 <span className="cr-btn-star">✦</span>
@@ -438,14 +441,8 @@ export default function Creativerevisualization() {
            filter: grayscale(100%);
         }
 
-        .cr-compare-overlay {
-           position: absolute;
-           top: 0;
-           left: 0;
-           height: 100%;
-           overflow: hidden;
+        .cr-img-color {
            z-index: 10;
-           box-shadow: 1px 0 0 rgba(255,255,255,0.2) inset; 
         }
 
         .cr-compare-line {
@@ -486,22 +483,22 @@ export default function Creativerevisualization() {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          width: 44px;
-          height: 44px;
-          background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
-          border: 2px solid rgba(255, 255, 255, 0.3);
+          width: 38px;
+          height: 38px;
+          background: transparent;
+          border: 1.5px solid #8b5cf6;
           border-radius: 50%;
           cursor: pointer;
           z-index: 20;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+          color: #8b5cf6;
         }
 
         .cr-nav-btn:hover {
-          background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
-          border-color: rgba(255, 255, 255, 0.5);
+          background: rgba(139, 92, 246, 0.1);
+          border-color: #a78bfa;
+          color: #a78bfa;
           transform: translateY(-50%) scale(1.1);
-          box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
         }
 
         .cr-nav-btn:active {
@@ -722,6 +719,8 @@ export default function Creativerevisualization() {
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 36px;
+            height: 36px;
           }
 
           .cr-nav-prev {
@@ -846,8 +845,13 @@ export default function Creativerevisualization() {
           }
 
           .cr-nav-btn {
-            width: 40px;
-            height: 40px;
+            width: 32px;
+            height: 32px;
+          }
+          
+          .cr-nav-btn svg {
+            width: 16px;
+            height: 16px;
           }
 
           .cr-nav-prev {
@@ -933,8 +937,13 @@ export default function Creativerevisualization() {
           }
 
           .cr-nav-btn {
-            width: 36px;
-            height: 36px;
+            width: 28px;
+            height: 28px;
+          }
+
+          .cr-nav-btn svg {
+            width: 14px;
+            height: 14px;
           }
 
           .cr-nav-prev {

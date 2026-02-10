@@ -248,8 +248,12 @@ export default function BusinessesChooseMiraai() {
         </div>
 
         {/* Benefit Boxes */}
-        {benefits.map((benefit) => (
-          <div key={benefit.id} className={`bcm-box bcm-box-${benefit.position}`}>
+        {benefits.map((benefit, index) => (
+          <div
+            key={benefit.id}
+            className={`bcm-box bcm-box-${benefit.position}`}
+            style={{ animationDelay: `${index * 0.5}s` }}
+          >
             <div className="bcm-box-content">
               {benefit.text}
             </div>
@@ -423,42 +427,26 @@ export default function BusinessesChooseMiraai() {
         ======================================== */
 
         @keyframes boxChargingPulse {
-          /* Idle state */
-          0%, 20% {
+          0%, 100% {
+            transform: scale(1);
             box-shadow:
               0 18px 50px rgba(0, 0, 0, 0.7),
               inset 0 1px 0 rgba(255, 255, 255, 0.08);
           }
-          /* First charge: energy arrives at box (~30-50% of cycle) */
-          30%, 50% {
+          30%, 60% {
+            transform: scale(1.05); /* Pop-up scale */
             box-shadow:
               0 18px 50px rgba(0, 0, 0, 0.7),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08),
-              0 0 25px rgba(167, 139, 250, 0.5),
-              0 0 50px rgba(167, 139, 250, 0.25),
-              inset 0 0 20px rgba(167, 139, 250, 0.15);
+              0 0 30px rgba(167, 139, 250, 0.6),
+              0 0 60px rgba(167, 139, 250, 0.3),
+              inset 0 0 20px rgba(167, 139, 250, 0.2);
+            border-color: rgba(167, 139, 250, 0.6);
           }
-          /* Fade between charges */
-          55%, 65% {
+          70%, 90% {
+            transform: scale(1.02);
             box-shadow:
               0 18px 50px rgba(0, 0, 0, 0.7),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08),
-              0 0 10px rgba(167, 139, 250, 0.2);
-          }
-          /* Second charge: energy returns through box (~70-85% of cycle) */
-          70%, 85% {
-            box-shadow:
-              0 18px 50px rgba(0, 0, 0, 0.7),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08),
-              0 0 20px rgba(167, 139, 250, 0.4),
-              0 0 40px rgba(167, 139, 250, 0.2),
-              inset 0 0 15px rgba(167, 139, 250, 0.1);
-          }
-          /* Return to idle */
-          100% {
-            box-shadow:
-              0 18px 50px rgba(0, 0, 0, 0.7),
-              inset 0 1px 0 rgba(255, 255, 255, 0.08);
+              0 0 20px rgba(167, 139, 250, 0.3);
           }
         }
 
@@ -582,7 +570,7 @@ export default function BusinessesChooseMiraai() {
             left: unset !important;
             right: unset !important;
             bottom: unset !important;
-            animation: none;
+            animation: boxChargingPulse 3s ease-in-out infinite;
           }
 
           .bcm-box-content {
@@ -789,15 +777,17 @@ export default function BusinessesChooseMiraai() {
           }
 
           .bcm-box {
-            max-width: 160px;
+            max-width: 150px;
             min-height: 44px;
             padding: 10px 14px;
             border-radius: 12px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
           }
 
           .bcm-box-content {
-            font-size: 12px;
-            line-height: 1.3;
+            font-size: 11px;
+            line-height: 1.25;
           }
 
           .bcm-box::before {
