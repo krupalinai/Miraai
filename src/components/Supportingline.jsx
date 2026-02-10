@@ -427,8 +427,9 @@ export default function Supportingline() {
           .sl-row {
             display: flex;
             flex-direction: column;
+            align-items: center; /* Center all items */
             gap: 0;
-            padding: 0 0 40px 0;
+            padding: 0 0 50px 0;
           }
 
           .sl-row.is-left,
@@ -440,40 +441,20 @@ export default function Supportingline() {
             display: none;
           }
 
-          .sl-card-wrapper {
-            width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 10;
-            border-radius: 16px;
-            margin-bottom: 16px;
-            order: 1;
-          }
-
-          .sl-card {
-            border-radius: 14px;
-          }
-
-          .sl-card-img {
-            object-fit: cover;
-          }
-
-          .sl-row:first-child .sl-card-img {
-            object-fit: cover;
-            padding: 0;
-            background: transparent;
-          }
-
+          /* Number Circle - Move to Top & Center */
           .sl-marker {
             position: relative;
-            left: 0;
-            top: 0;
+            left: auto;
+            top: auto;
             transform: none;
             width: 44px;
             height: 44px;
-            margin-bottom: 16px;
-            order: 2;
+            margin-bottom: 20px;
+            order: 1; /* First */
             background: #7846FF;
             border: none;
+            display: grid;
+            place-items: center;
           }
 
           .sl-marker::after {
@@ -490,6 +471,7 @@ export default function Supportingline() {
             transform: none;
           }
 
+          /* Text Content - Center */
           .sl-content {
             position: relative;
             top: auto;
@@ -498,14 +480,43 @@ export default function Supportingline() {
             right: auto;
             max-width: 100%;
             margin-left: 0;
-            order: 3;
+            margin-bottom: 30px; /* Spacing below text */
+            order: 2; /* Second - Right under the number */
+            text-align: center; 
           }
 
           .sl-content.content-left,
           .sl-content.content-right {
             left: auto;
             right: auto;
-            text-align: left;
+            text-align: center;
+          }
+
+          /* Image Card - Bottom */
+          .sl-card-wrapper {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            aspect-ratio: 16 / 10;
+            border-radius: 16px;
+            margin-bottom: 0;
+            order: 3; /* Third - At the bottom */
+          }
+
+          .sl-card {
+            border-radius: 14px;
+          }
+
+          .sl-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+
+          .sl-row:first-child .sl-card-img {
+            object-fit: cover;
+            padding: 0;
+            background: transparent;
           }
 
           .sl-content-title {

@@ -62,11 +62,8 @@ export default function UsesMiraai() {
           // Smoothly scroll to next
           rail.scrollLeft += cardPlusGap;
 
-          // If reached near the end of the second set, jump back to the first set
-          // to create an infinite loop without the user noticing.
           const oneSetWidth = originalCards.length * cardPlusGap;
           if (rail.scrollLeft >= oneSetWidth * 2) {
-            // Wait for smooth scroll to finish, then snap back
             setTimeout(() => {
               if (railRef.current) {
                 rail.style.scrollBehavior = 'auto';
@@ -76,22 +73,24 @@ export default function UsesMiraai() {
             }, 600);
           }
         }
-      }, 2000); // 2 Seconds interval
+      }, 2000);
     }
     return () => clearInterval(interval);
   }, [isPaused]);
 
-  // Initial setup: start at the second set for seamless loop
   useEffect(() => {
-    if (railRef.current) {
-      const getCardWidth = () => {
-        if (window.innerWidth <= 480) return 260 + 20;
-        if (window.innerWidth <= 768) return 280 + 20;
-        return 350;
-      };
-      const cardPlusGap = getCardWidth();
-      railRef.current.scrollLeft = originalCards.length * cardPlusGap;
-    }
+    const timer = setTimeout(() => {
+      if (railRef.current) {
+        const getCardWidth = () => {
+          if (window.innerWidth <= 480) return 260 + 20;
+          if (window.innerWidth <= 768) return 280 + 20;
+          return 350;
+        };
+        const cardPlusGap = getCardWidth();
+        railRef.current.scrollLeft = originalCards.length * cardPlusGap;
+      }
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -169,7 +168,7 @@ export default function UsesMiraai() {
         .um-rail {
           display: flex;
           gap: 30px;
-          overflow-x: auto;
+          overflow-x: auto; /* Changed to auto for better mobile interaction if needed, but JS still handles it */
           padding: 30px 0;
           scroll-behavior: smooth;
           -ms-overflow-style: none;
