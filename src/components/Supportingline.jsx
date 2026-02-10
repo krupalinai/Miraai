@@ -19,7 +19,7 @@ const steps = [
     title: 'Input Your Vision',
     subtitle: 'Start With A Script Or Concept',
     description:
-      'Paste Your Script, Upload A Brief, Or Use Our AI Assistant To Create One\nFrom Scratch. Miraai Breaks It Into Scenes Automatically And Suggests\nVisual Treatments.',
+      'Paste Your Script, Upload A Brief, Or Use Our AI Assistant To Create One From Scratch. Miraai Breaks It Into Scenes Automatically And Suggests Visual Treatments.',
     side: 'right',
   },
   {
@@ -27,7 +27,7 @@ const steps = [
     title: 'Customize & Brand',
     subtitle: 'Make It Uniquely Yours',
     description:
-      'Select Templates, Customize Colors, Fonts, And Visual Styles To Match Your\nBrand Guidelines. Upload Logos, Set Tone Preferences, Choose Virtual\nCharacters.',
+      'Select Templates, Customize Colors, Fonts, And Visual Styles To Match Your Brand Guidelines. Upload Logos, Set Tone Preferences, Choose Virtual Characters.',
     side: 'left',
   },
   {
@@ -35,7 +35,7 @@ const steps = [
     title: 'AI Generation',
     subtitle: 'Let AI Work Its Magic',
     description:
-      'Miraai Generates Your Video With Professional Editing, Effects, Color\nGrading, And Audio. Localize Into Multiple Languages With One Click. Wait\nMinutes, Not Weeks.',
+      'Miraai Generates Your Video With Professional Editing, Effects, Color Grading, And Audio. Localize Into Multiple Languages With One Click. Wait Minutes, Not Weeks.',
     side: 'right',
   },
   {
@@ -43,7 +43,7 @@ const steps = [
     title: 'Review & Deploy',
     subtitle: 'Refine And Publish',
     description:
-      'Review Your Content, Make Any Final Adjustments, Get Team Approvals,\nAnd Export In Your Preferred Formats. Deploy Across All Channels Instantly.',
+      'Review Your Content, Make Any Final Adjustments, Get Team Approvals, And Export In Your Preferred Formats. Deploy Across All Channels Instantly.',
     side: 'left',
   },
 ];
@@ -52,8 +52,9 @@ export default function Supportingline() {
   return (
     <section className="sl-wrap">
       <div className="sl-header">
-        <div className="sl-title">Supporting Line</div>
-        <div className="sl-subtitle">Simple. Fast. Reliable.</div>
+        <div className="sl-title">Here's Exactly How We Work With You
+        </div>
+        <div className="sl-subtitle">No confusion. No complexity. Just a simple process from idea to delivery.</div>
       </div>
 
       <div className="sl-timeline">
@@ -122,20 +123,22 @@ export default function Supportingline() {
 
         .sl-header {
           text-align: center;
-          margin-bottom: 26px;
+          margin-bottom: 40px;
         }
 
         .sl-title {
-          font-size: 22px;
-          font-weight: 700;
-          letter-spacing: 0.2px;
+          font-size: 46px;
+          font-weight: 800;
+          letter-spacing: -0.02em;
           color: #f3f3f6;
+          line-height: 1.1;
         }
 
         .sl-subtitle {
-          margin-top: 6px;
-          font-size: 12px;
-          color: rgba(255, 255, 255, 0.62);
+          margin-top: 12px;
+          font-size: 20px;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
         }
 
         .sl-timeline {
@@ -365,29 +368,31 @@ export default function Supportingline() {
         }
 
         .sl-content-title {
-          font-size: 14px;
+          font-size: 34px;
           font-weight: 800;
           color: rgba(154, 105, 255, 0.92);
           letter-spacing: 0.2px;
+          line-height: 1.1;
+          margin-bottom: 6px;
         }
 
         .sl-content-subtitle {
-          margin-top: 6px;
-          font-size: 12px;
+          font-size: 20px;
           font-weight: 700;
-          color: rgba(255, 255, 255, 0.9);
+          color: rgba(255, 255, 255, 0.95);
+          margin-top: 0;
         }
 
         .sl-content-desc {
-          margin-top: 8px;
+          margin-top: 10px;
           font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-          font-size: 13px;
-          line-height: 1.55;
+          font-size: 14px;
+          line-height: 1.6;
           letter-spacing: 0.15px;
           font-weight: 400;
-          color: rgba(255, 255, 255, 0.62);
+          color: rgba(255, 255, 255, 0.75);
           max-width: 560px;
-          white-space: pre;
+          white-space: pre-wrap;
         }
 
         /* ========================================
@@ -528,7 +533,7 @@ export default function Supportingline() {
           }
 
           .sl-content-subtitle {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: #fff;
             margin-top: 0;

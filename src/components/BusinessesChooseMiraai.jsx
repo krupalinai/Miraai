@@ -160,7 +160,8 @@ export default function BusinessesChooseMiraai() {
   return (
     <section className="bcm-wrap">
       <div className="bcm-header">
-        <div className="bcm-title">Why Businesses Choose Miraai</div>
+        <div className="bcm-title">Why Smart Businesses Choose Miraai?</div>
+        <div className="bcm-subtitle">Because smart businesses choose results, not experiments.</div>
       </div>
 
       <div className="bcm-container">
@@ -287,10 +288,20 @@ export default function BusinessesChooseMiraai() {
         }
 
         .bcm-title {
-          font-size: 30px;
+          font-size: 46px;
           font-weight: 800;
-          letter-spacing: 0.2px;
-          color: rgba(255, 255, 255, 0.95);
+          color: #f3f3f6;
+          letter-spacing: -0.02em;
+          line-height: 1.1;
+          margin-bottom: 12px;
+        }
+
+        .bcm-subtitle {
+          font-size: 20px;
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          max-width: 600px;
+          margin: 0 auto;
         }
 
         .bcm-container {

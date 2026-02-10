@@ -1,8 +1,16 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export default function Whatourclientssay() {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(3); // Start at the first real item (index 3)
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const trackRef = useRef(null);
+
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const testimonials = [
     {
@@ -37,15 +45,49 @@ export default function Whatourclientssay() {
     }
   ];
 
+  // Create Clones for Infinite Loop
+  // Clone last 3 to start, first 3 to end
+  const extendedTestimonials = [
+    ...testimonials.slice(-3),
+    ...testimonials,
+    ...testimonials.slice(0, 3)
+  ];
+
   const nextSlide = () => {
-    // Show 2 cards at a time on desktop, so max index is length - 2
-    // If on mobile (1 card), max index is length - 1
-    const maxIndex = window.innerWidth > 980 ? testimonials.length - 2 : testimonials.length - 1;
-    setCurrentIndex(prev => Math.min(prev + 1, Math.max(0, maxIndex)));
+    if (currentIndex >= extendedTestimonials.length - 1) return;
+    setIsTransitioning(true);
+    setCurrentIndex(prev => prev + 1);
   };
 
   const prevSlide = () => {
-    setCurrentIndex(prev => Math.max(prev - 1, 0));
+    if (currentIndex <= 0) return;
+    setIsTransitioning(true);
+    setCurrentIndex(prev => prev - 1);
+  };
+
+  const handleTransitionEnd = () => {
+    setIsTransitioning(false);
+    // If we reached the end clones (index 8 or 9 or 10), jump to start real items (index 3 or 4 or 5)
+    if (currentIndex >= testimonials.length + 3) {
+      setCurrentIndex(currentIndex - testimonials.length);
+    }
+    // If we reached the start clones (index 0, 1, 2), jump to end real items
+    else if (currentIndex < 3) {
+      setCurrentIndex(currentIndex + testimonials.length);
+    }
+  };
+
+  const getTransform = () => {
+    // Desktop: 33.333% width + 10px part of gap (total gap 30px)
+    if (windowWidth > 980) {
+      return `translateX(calc(-${currentIndex * 33.333}% - ${currentIndex * 10}px))`;
+    }
+    // Tablet (<= 980): 100% width + 30px gap
+    if (windowWidth > 680) {
+      return `translateX(calc(-${currentIndex * 100}% - ${currentIndex * 30}px))`;
+    }
+    // Mobile (<= 680): 100% width + 24px gap
+    return `translateX(calc(-${currentIndex * 100}% - ${currentIndex * 24}px))`;
   };
 
   return (
@@ -65,10 +107,14 @@ export default function Whatourclientssay() {
             <div
               className="wcs-track"
               ref={trackRef}
-              style={{ transform: `translateX(calc(-${currentIndex * (window.innerWidth > 980 ? 50 : 100)}% - ${currentIndex * (window.innerWidth > 980 ? 30 : 0)}px))` }}
+              onTransitionEnd={handleTransitionEnd}
+              style={{
+                transform: getTransform(),
+                transition: isTransitioning ? 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' : 'none'
+              }}
             >
-              {testimonials.map((t) => (
-                <article key={t.id} className="wcs-card">
+              {extendedTestimonials.map((t, index) => (
+                <article key={`${index}-${t.id}`} className="wcs-card">
                   <div className="wcs-quote">{t.quote}</div>
                   <div className="wcs-role">{t.role}</div>
                   <div className="wcs-brand">{t.brand}</div>
@@ -79,7 +125,7 @@ export default function Whatourclientssay() {
 
           <div className="wcs-nav">
             <button
-              className={`wcs-nav-btn ${currentIndex === 0 ? 'disabled' : ''}`}
+              className="wcs-nav-btn"
               onClick={prevSlide}
               aria-label="Previous testimonial"
             >
@@ -88,7 +134,7 @@ export default function Whatourclientssay() {
               </svg>
             </button>
             <button
-              className={`wcs-nav-btn ${currentIndex >= (window.innerWidth > 980 ? testimonials.length - 2 : testimonials.length - 1) ? 'disabled' : ''}`}
+              className="wcs-nav-btn"
               onClick={nextSlide}
               aria-label="Next testimonial"
             >
@@ -156,18 +202,19 @@ export default function Whatourclientssay() {
         .wcs-viewport {
           width: 100%;
           overflow: hidden;
-          padding: 20px 0;
+          padding: 40px 40px;
+          box-sizing: border-box;
         }
 
         .wcs-track {
           display: flex;
-          gap: 60px;
+          gap: 30px;
           transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
           will-change: transform;
         }
 
         .wcs-card {
-          flex: 0 0 calc(50% - 30px);
+          flex: 0 0 calc(33.333% - 20px);
           background: rgba(255, 255, 255, 0.04);
           border-radius: 20px;
           padding: 32px 34px 28px;
@@ -183,10 +230,8 @@ export default function Whatourclientssay() {
 
         .wcs-card:hover {
           transform: scale(1.02);
-          border: 2px solid #7c3aed;
           box-shadow:
-            0 30px 100px rgba(0, 0, 0, 0.9),
-            0 0 30px rgba(124, 58, 237, 0.3);
+            0 30px 100px rgba(0, 0, 0, 0.9);
         }
 
         .wcs-quote {
@@ -301,7 +346,7 @@ export default function Whatourclientssay() {
           }
 
           .wcs-viewport {
-            padding: 16px 0;
+            padding: 30px 24px;
           }
 
           .wcs-track {
@@ -419,7 +464,7 @@ export default function Whatourclientssay() {
           }
 
           .wcs-viewport {
-            padding: 14px 0;
+            padding: 30px 20px;
           }
 
           .wcs-card {

@@ -759,7 +759,7 @@ export default function Creativerevisualization({ openForm }) {
           .cr-right {
             max-width: 100%;
             width: 100%;
-            text-align: left;
+            text-align: center;
             padding: 0 4px;
             overflow: hidden;
           }
@@ -781,6 +781,7 @@ export default function Creativerevisualization({ openForm }) {
             font-weight: 800;
             line-height: 1.2;
             flex-direction: column;
+            align-items: center;
             gap: 0;
             word-wrap: break-word;
             overflow-wrap: break-word;

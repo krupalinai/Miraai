@@ -121,6 +121,10 @@ export default function Frequentlyaskedquestions() {
           align-items: start;
         }
 
+        .faq-left {
+          padding-top: 200px;
+        }
+
         .faq-title {
           font-size: 46px;
           font-weight: 800;
@@ -143,10 +147,8 @@ export default function Frequentlyaskedquestions() {
         }
 
         .faq-item-wrapper.is-open {
-          border: 4px solid #7c3aed;
-          box-shadow:
-            0 30px 100px rgba(0, 0, 0, 0.9),
-            0 0 35px rgba(124, 58, 237, 0.4);
+          border: none;
+          box-shadow: none;
         }
 
         .faq-item {
@@ -213,12 +215,7 @@ export default function Frequentlyaskedquestions() {
 
         /* Hover State */
         .faq-item:hover {
-          transform: scale(1.03);
-          border: 4px solid #7c3aed;
-          box-shadow:
-            0 30px 100px rgba(0, 0, 0, 0.9),
-            0 0 35px rgba(124, 58, 237, 0.4);
-          z-index: 10;
+          /* Static - No effect */
         }
 
         .faq-item-wrapper.is-open .faq-item:hover {
@@ -228,7 +225,7 @@ export default function Frequentlyaskedquestions() {
         }
 
         .faq-item:hover .faq-plus {
-          color: #a855f7;
+          color: #fff;
           transform: rotate(90deg);
         }
 
@@ -238,7 +235,7 @@ export default function Frequentlyaskedquestions() {
 
         /* Open State - Plus becomes X */
         .faq-item-wrapper.is-open .faq-plus {
-          color: #a855f7;
+          color: #fff;
           transform: rotate(45deg);
         }
 
@@ -276,6 +273,10 @@ export default function Frequentlyaskedquestions() {
           .faq-title {
             text-align: center;
             font-size: 38px;
+          }
+
+          .faq-left {
+            padding-top: 0;
           }
         }
 
