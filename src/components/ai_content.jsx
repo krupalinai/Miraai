@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 
 // Import images
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import fashionImg from '../assets/images/fashion.jpg';
 import jewelleryImg from '../assets/images/jewellery.png';
 import realEstateImg from '../assets/images/real_estate.png';
@@ -37,6 +38,8 @@ const categories = [
     }
 ];
 =======
+=======
+>>>>>>> Stashed changes
 import fashionImg from '../assets/images/fashion.svg';
 import jewelleryImg from '../assets/images/jewellery.svg';
 import realEstateImg from '../assets/images/real_estate.svg';
@@ -133,7 +136,11 @@ const AiContent = () => {
                 {/* Header */}
                 <motion.div
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     className="text-center mb-8 md:mb-16"
+=======
+                    className="text-center mb-12 md:mb-16"
+>>>>>>> Stashed changes
 =======
                     className="text-center mb-12 md:mb-16"
 >>>>>>> Stashed changes
@@ -142,11 +149,19 @@ const AiContent = () => {
                     variants={headerVariants}
                 >
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                     <h2 className="text-2xl md:text-[3.5rem] font-bold text-white mb-2 md:mb-4 tracking-tight leading-tight">
                         AI Content & Ad Creation Gallery
                     </h2>
                     <p className="text-gray-400 text-sm md:text-lg mx-auto max-w-[900px]">
                         Explore Real Campaigns, Branding Ads, And AI-Generated Videos.
+=======
+                    <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[90%] md:max-w-[1000px] mx-auto leading-tight mb-4 md:mb-6">
+                        Creative Solutions Built for Every Industry
+                    </h2>
+                    <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-medium tracking-wide opacity-80 max-w-[600px] md:max-w-[850px] mx-auto leading-relaxed">
+                        See how Miraai delivers high-quality AI-powered visuals, ads, and branded content that help businesses grow faster, attract customers, and scale their marketing effortlessly.
+>>>>>>> Stashed changes
 =======
                     <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[90%] md:max-w-[1000px] mx-auto leading-tight mb-4 md:mb-6">
                         Creative Solutions Built for Every Industry
