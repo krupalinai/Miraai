@@ -83,7 +83,7 @@ const TrustMiraai = () => {
                 {isMobile ? (
                     <div className="text-center mb-10">
                         <h2 className="text-3xl font-bold text-white tracking-tight">
-                            why work with miraai?
+                            Why work with miraai?
                         </h2>
                     </div>
                 ) : (

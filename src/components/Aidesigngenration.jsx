@@ -19,14 +19,13 @@ export default function Aidesigngenration() {
   const railRef = useRef(null);
 
   // Auto-scroll logic (Step-based for better compatibility with scroll-snap)
-  /* Disabled auto-scroll to remove lag */
-  /*
   useEffect(() => {
     let interval;
     const getCardWidth = () => {
       const width = window.innerWidth;
-      if (width <= 680) return 260 + 20;
-      return 280 + 24;
+      // Match the CSS media queries for card width + gap
+      if (width <= 680) return 260 + 20; // 260px width + 20px gap
+      return 280 + 24; // 280px width + 24px gap
     };
 
     if (!isPaused) {
@@ -50,11 +49,10 @@ export default function Aidesigngenration() {
             }, 600); // Wait for the smooth scroll to finish before snapping
           }
         }
-      }, 2500); // Scroll every 2.5 seconds
+      }, 4000); // Scroll every 4 seconds
     }
     return () => clearInterval(interval);
   }, [isPaused]);
-  */
 
   // Initial positioning: start in the middle (second set)
   useEffect(() => {

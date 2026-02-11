@@ -19,7 +19,7 @@ const steps = [
     title: 'Input Your Vision',
     subtitle: 'Start With A Script Or Concept',
     description:
-      'Paste Your Script, Upload A Brief, Or Use Our AI Assistant To Create One From Scratch. Miraai Breaks It Into Scenes Automatically And Suggests Visual Treatments.',
+      'Paste Your Script, Upload A Brief, Or Use Our AI Assistant To Create One \nFrom Scratch. Miraai Breaks It Into Scenes Automatically And Suggests \nVisual Treatments.',
     side: 'right',
   },
   {
@@ -35,7 +35,7 @@ const steps = [
     title: 'AI Generation',
     subtitle: 'Let AI Work Its Magic',
     description:
-      'Miraai Generates Your Video With Professional Editing, Effects, Color Grading, And Audio. Localize Into Multiple Languages With One Click. Wait Minutes, Not Weeks.',
+      'Miraai Generates Your Video With Professional Editing, Effects, Color \nGrading, And Audio. Localize Into Multiple Languages With One Click. Wait Minutes, Not Weeks.',
     side: 'right',
   },
   {
@@ -115,15 +115,15 @@ export default function Supportingline() {
         .sl-wrap {
           width: 100%;
           min-height: auto;
-          padding: 34px 18px 30px;
-          background: #000;
+          padding: 48px 18px 48px;
+          background: #000004;
           color: #e9e9ee;
           font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
         }
 
         .sl-header {
           text-align: center;
-          margin-bottom: 40px;
+          margin-bottom: 60px;
         }
 
         .sl-title {
@@ -143,7 +143,7 @@ export default function Supportingline() {
 
         .sl-timeline {
           position: relative;
-          max-width: 760px;
+          max-width: 1200px;
           margin: 0 auto;
           padding: 8px 0 12px;
         }
@@ -198,7 +198,7 @@ export default function Supportingline() {
         ======================================== */
         .sl-card-wrapper {
           position: relative;
-          height: 220px;
+          height: 380px; 
           border-radius: 22px;
           overflow: hidden;
           padding: 4px;
@@ -287,7 +287,7 @@ export default function Supportingline() {
         }
 
         .sl-spacer {
-          height: 220px;
+          height: 380px;
         }
 
         /* ========================================
@@ -354,7 +354,7 @@ export default function Supportingline() {
           position: absolute;
           top: 50%;
           transform: translateY(-50%);
-          max-width: 560px;
+          width: calc(50% - 60px);
         }
 
         .sl-content.content-right {
@@ -391,15 +391,15 @@ export default function Supportingline() {
           letter-spacing: 0.15px;
           font-weight: 400;
           color: rgba(255, 255, 255, 0.75);
-          max-width: 560px;
+          max-width: 100%;
           white-space: pre-wrap;
         }
 
         /* ========================================
            RESPONSIVE - Mobile (max-width: 680px)
         ======================================== */
-        @media (max-width: 680px) {
-          .sl-wrap {
+        @media (max-width: 900px) {
+           .sl-wrap {
             padding: 30px 16px 50px;
           }
 
@@ -483,6 +483,7 @@ export default function Supportingline() {
             transform: none;
             left: auto;
             right: auto;
+            width: 100%;
             max-width: 100%;
             margin-left: 0;
             margin-bottom: 30px; /* Spacing below text */
@@ -500,7 +501,7 @@ export default function Supportingline() {
           /* Image Card - Bottom */
           .sl-card-wrapper {
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             height: auto;
             aspect-ratio: 16 / 10;
             border-radius: 16px;
@@ -563,53 +564,7 @@ export default function Supportingline() {
           }
         }
 
-        /* ========================================
-           RESPONSIVE - Extra Small (max-width: 360px)
-        ======================================== */
-        @media (max-width: 360px) {
-          .sl-wrap {
-            padding: 24px 12px 40px;
-          }
 
-          .sl-title {
-            font-size: 24px;
-          }
-
-          .sl-subtitle {
-            font-size: 13px;
-          }
-
-          .sl-card-wrapper {
-            aspect-ratio: 16 / 11;
-            border-radius: 14px;
-          }
-
-          .sl-card {
-            border-radius: 12px;
-          }
-
-          .sl-marker {
-            width: 40px;
-            height: 40px;
-          }
-
-          .sl-marker-inner {
-            font-size: 15px;
-          }
-
-          .sl-content-title {
-            font-size: 20px;
-          }
-
-          .sl-content-subtitle {
-            font-size: 14px;
-          }
-
-          .sl-content-desc {
-            font-size: 12px;
-            line-height: 1.55;
-          }
-        }
 
         /* ========================================
            REDUCED MOTION
