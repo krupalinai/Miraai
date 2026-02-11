@@ -263,7 +263,7 @@ export default function BusinessesChooseMiraai() {
       <style>{`
         .bcm-wrap {
           width: 100%;
-          padding: 80px 18px;
+          padding: 80px 18px 40px;
           background: #000;
           color: #e9e9ee;
           font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -538,7 +538,10 @@ export default function BusinessesChooseMiraai() {
         ======================================== */
         @media (max-width: 768px) {
           .bcm-wrap {
-            padding: 40px 16px;
+            padding-top: 80px; /* Increased top padding */
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-bottom: 20px; /* Reduced bottom padding */
           }
 
           .bcm-title {

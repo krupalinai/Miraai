@@ -181,17 +181,25 @@ export default function Whatourclientssay() {
         }
 
         .wcs-title {
-          font-size: 44px;
+          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
           font-weight: 800;
-          letter-spacing: 0.2px;
-          color: rgba(255, 255, 255, 0.95);
+          letter-spacing: -0.02em;
+          color: #f3f3f6;
+          line-height: 1.15;
+          max-width: 1000px;
+          margin: 0 auto;
         }
 
         .wcs-sub {
-          margin-top: 12px;
-          font-size: 13px;
-          line-height: 1.55;
-          color: rgba(255, 255, 255, 0.55);
+          margin-top: 24px;
+          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          max-width: 850px;
+          margin-left: auto;
+          margin-right: auto;
+          opacity: 0.8;
+          line-height: 1.6;
         }
 
         .wcs-stage {
@@ -330,15 +338,19 @@ export default function Whatourclientssay() {
           }
 
           .wcs-title {
-            font-size: 32px;
-            line-height: 1.15;
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 90%;
+            margin: 0 auto;
           }
 
           .wcs-sub {
-            font-size: 13px;
-            line-height: 1.6;
-            margin-top: 14px;
-            padding: 0 10px;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-top: 16px;
+            opacity: 0.8;
+            max-width: 100%;
           }
 
           .wcs-sub br {
@@ -402,7 +414,7 @@ export default function Whatourclientssay() {
           }
 
           .wcs-title {
-            font-size: 28px;
+            font-size: 22px;
           }
 
           .wcs-sub {
@@ -453,7 +465,7 @@ export default function Whatourclientssay() {
           }
 
           .wcs-title {
-            font-size: 26px;
+            font-size: 20px;
           }
 
           .wcs-sub {

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import aiGenerationImg from '../assets/images/ai genration.png';
-import customizeImg from '../assets/images/customize and brand.png';
-import inputVisionImg from '../assets/images/input your vision.png';
-import reviewDeployImg from '../assets/images/review and deploy.png';
+import aiGenerationImg from '../assets/ai genration.png';
+import customizeImg from '../assets/images/customize and brand copy.png';
+import inputVisionImg from '../assets/images/input your vision copy.png';
+import reviewDeployImg from '../assets/images/review and deploy copy.png';
 import jolyImg from '../assets/images/Joly .svg';
 import jolyVideo from '../assets/images/videos/Joly .mp4';
 import joly2Img from '../assets/images/Joly 2 .svg';
@@ -11,11 +11,11 @@ import joly3Img from '../assets/images/Joly 3.svg';
 import joly3Video from '../assets/images/videos/Joly 3.mp4';
 import joly4Img from '../assets/images/Joly 4.svg';
 import joly4Video from '../assets/images/videos/Joly 4.mp4';
-import jwelleryImg from '../assets/images/Jwellery.png';
-import jwelleryVideo from '../assets/images/videos/Jewellery.mp4';
-import lifestyleImg from '../assets/images/Lifestyle.png';
-import textileImg from '../assets/images/Textile.png';
-import clothingVideo from '../assets/images/videos/Clothing reel.mp4';
+import jwelleryImg from '../assets/images/Jewllery.jpg';
+import jwelleryVideo from '../assets/images/videos/Joly 4.mp4';
+import lifestyleImg from '../assets/images/lifestyles.jpg';
+import textileImg from '../assets/images/textile & garments.jpg';
+import clothingVideo from '../assets/images/videos/Joly 3.mp4';
 
 
 const features = [
@@ -317,7 +317,7 @@ export default function Creativerevisualization({ openForm }) {
           display: flex;
           align-items: flex-start;
           justify-content: center;
-          padding-top: 140px;
+          padding-top: 60px;
         }
 
         .cr-triggers {
@@ -361,14 +361,17 @@ export default function Creativerevisualization({ openForm }) {
         }
 
         .cr-title {
-          font-size: 36px;
+          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
           font-weight: 800;
-          letter-spacing: 0.2px;
-          color: rgba(255, 255, 255, 0.95);
+          letter-spacing: -0.02em;
+          color: #f3f3f6;
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
           gap: 0 10px;
+          line-height: 1.15;
+          max-width: 1000px;
+          margin: 0 auto;
         }
 
         .cr-title span {
@@ -376,10 +379,15 @@ export default function Creativerevisualization({ openForm }) {
         }
 
         .cr-sub {
-          margin-top: 10px;
-          font-size: 13px;
-          line-height: 1.5;
-          color: rgba(255, 255, 255, 0.6);
+          margin-top: 24px;
+          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          line-height: 1.6;
+          color: rgba(255, 255, 255, 0.7);
+          opacity: 0.8;
+          max-width: 850px;
+          margin-left: auto;
+          margin-right: auto;
+          font-weight: 500;
         }
 
         .cr-grid {
@@ -695,21 +703,25 @@ export default function Creativerevisualization({ openForm }) {
           }
 
           .cr-title {
-            font-size: 32px;
-            line-height: 1.15;
-            flex-direction: column;
-            gap: 0;
+            font-size: 24px;
+            line-height: 1.2;
+            flex-direction: row;
+            gap: 0 8px;
+            max-width: 90%;
+            margin: 0 auto;
           }
 
           .cr-title span {
-            display: block;
+            display: inline-block;
           }
 
           .cr-sub {
-            font-size: 13px;
+            font-size: 14px;
             line-height: 1.55;
-            margin-top: 12px;
+            margin-top: 16px;
             padding: 0 10px;
+            opacity: 0.8;
+            max-width: 100%;
           }
 
           .cr-sub br {
@@ -840,7 +852,7 @@ export default function Creativerevisualization({ openForm }) {
           }
 
           .cr-title {
-            font-size: 28px;
+            font-size: 22px;
           }
 
           .cr-sub {
@@ -934,7 +946,7 @@ export default function Creativerevisualization({ openForm }) {
           }
 
           .cr-title {
-            font-size: 22px;
+            font-size: 20px;
           }
 
           .cr-sub {

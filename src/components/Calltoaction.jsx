@@ -83,20 +83,26 @@ export default function Calltoaction({ openForm }) {
         .cta-title {
           position: relative;
           z-index: 1;
-          font-size: 40px;
+          font-size: clamp(1.5rem, 3.5vw, 2.6rem);
           font-weight: 800;
-          line-height: 1.18;
-          letter-spacing: 0.2px;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
           color: rgba(255, 255, 255, 0.95);
+          max-width: 900px;
+          margin: 0 auto;
         }
 
         .cta-sub {
           position: relative;
           z-index: 1;
-          margin-top: 16px;
-          font-size: 12px;
-          line-height: 1.5;
-          color: rgba(255, 255, 255, 0.55);
+          margin-top: 24px;
+          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          line-height: 1.65;
+          color: rgba(255, 255, 255, 0.7);
+          opacity: 0.8;
+          max-width: 800px;
+          margin: 0 auto;
+          font-weight: 500;
         }
 
         .cta-btn {
@@ -126,7 +132,8 @@ export default function Calltoaction({ openForm }) {
 
         @media (max-width: 980px) {
           .cta-title {
-            font-size: 34px;
+            font-size: 24px;
+            font-weight: 800;
           }
 
           .cta-card {
@@ -148,8 +155,11 @@ export default function Calltoaction({ openForm }) {
           }
 
           .cta-title {
-            font-size: 32px;
+            font-size: 24px;
             line-height: 1.2;
+            font-weight: 800;
+            max-width: 90%;
+            margin: 0 auto;
           }
 
           .cta-title br {
@@ -157,10 +167,11 @@ export default function Calltoaction({ openForm }) {
           }
 
           .cta-sub {
-            font-size: 13px;
+            font-size: 14px;
             line-height: 1.6;
             margin-top: 18px;
-            padding: 0 10px;
+            opacity: 0.8;
+            max-width: 100%;
           }
 
           .cta-btn {
@@ -187,7 +198,7 @@ export default function Calltoaction({ openForm }) {
           }
 
           .cta-title {
-            font-size: 28px;
+            font-size: 22px;
           }
 
           .cta-sub {
@@ -220,7 +231,7 @@ export default function Calltoaction({ openForm }) {
           }
 
           .cta-title {
-            font-size: 24px;
+            font-size: 20px;
             line-height: 1.25;
           }
 

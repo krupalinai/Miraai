@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
+import cloth1 from '../assets/images/videos/Cloth 1.gif';
+import cloth2 from '../assets/images/videos/Cloth 2.gif';
+import cloth3 from '../assets/images/videos/Cloth 3.gif';
+import cloth4 from '../assets/images/videos/Cloth 4.gif';
+import cloth5 from '../assets/images/videos/Cloth 5.gif';
+import cloth6 from '../assets/images/videos/Cloth 6.gif';
 
 // Video cards data
 const videoCards = [
-  { id: 1, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-  { id: 2, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-  { id: 3, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-  { id: 4, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-  { id: 5, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
-  { id: 6, title: 'Jewellery Tips', growth: '+22%', views: '+11M' },
+  { id: 1, title: 'Jewellery Tips', growth: '+22%', views: '+11M', src: cloth1 },
+  { id: 2, title: 'Jewellery Tips', growth: '+22%', views: '+11M', src: cloth2 },
+  { id: 3, title: 'Jewellery Tips', growth: '+22%', views: '+11M', src: cloth3 },
+  { id: 4, title: 'Jewellery Tips', growth: '+22%', views: '+11M', src: cloth4 },
+  { id: 5, title: 'Jewellery Tips', growth: '+22%', views: '+11M', src: cloth5 },
+  { id: 6, title: 'Jewellery Tips', growth: '+22%', views: '+11M', src: cloth6 },
 ];
 
 // Triple cards for seamless JS-based infinite scroll
@@ -72,48 +78,25 @@ export default function Aidesigngenration() {
       <div className="adg-video-card">
         {/* Video Container */}
         <div className="adg-video-container">
-          <video
-            className="adg-video"
-            autoPlay
-            muted
-            loop
-            playsInline
-          >
-            <source
-              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
+          {card.src && card.src.includes('.gif') ? (
+            <img src={card.src} className="adg-video" alt={card.title} />
+          ) : (
+            <video
+              className="adg-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source
+                src={card.src}
+                type="video/mp4"
+              />
+              Your browser does not support the video tag.
+            </video>
+          )}
 
-          {/* Card Overlay Content */}
-          <div className="adg-card-overlay">
-            {/* Top Section - Profile & Title */}
-            <div className="adg-card-top">
-              <div className="adg-profile-section">
-                <div className="adg-profile-icon">
-                  <img
-                    src="https://api.dicebear.com/7.x/avataaars/svg?seed=jewellery"
-                    alt="Profile"
-                    className="adg-profile-img"
-                  />
-                </div>
-                <span className="adg-profile-label">Jewellery Tips</span>
-              </div>
-              <div className="adg-growth-badge">{card.growth}</div>
-            </div>
 
-            {/* Center Title */}
-            <div className="adg-card-center">
-              <h3 className="adg-card-title">{card.title}</h3>
-            </div>
-
-            {/* Bottom Section - Stats */}
-            <div className="adg-card-bottom">
-              <span className="adg-views">{card.views}</span>
-              <span className="adg-growth-bottom">{card.growth}</span>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -181,21 +164,25 @@ export default function Aidesigngenration() {
         }
 
         .adg-title {
-          font-size: 48px;
-          font-weight: 700;
-          letter-spacing: -0.5px;
-          color: rgba(255, 255, 255, 0.95);
-          margin: 0;
+          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+          font-weight: 800;
+          letter-spacing: -0.02em;
+          color: #f3f3f6;
+          line-height: 1.15;
+          max-width: 1000px;
+          margin: 0 auto;
         }
 
         .adg-sub {
-          margin-top: 16px;
-          font-size: 16px;
-          line-height: 1.6;
-          color: rgba(255, 255, 255, 0.5);
-          max-width: 600px;
+          margin-top: 24px;
+          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          max-width: 850px;
           margin-left: auto;
           margin-right: auto;
+          opacity: 0.8;
+          line-height: 1.6;
         }
 
         /* Carousel Styles */
@@ -362,20 +349,21 @@ export default function Aidesigngenration() {
         }
 
         @media (max-width: 768px) {
-          .adg-title { font-size: 36px; }
+          .adg-title { font-size: 24px; font-weight: 800; }
+          .adg-sub { font-size: 14px; margin-top: 16px; font-weight: 400; }
           .adg-video-card { width: 240px; height: 340px; }
         }
 
         @media (max-width: 680px) {
           .adg-wrap { padding: 40px 0 40px; }
-          .adg-title { font-size: 32px; }
+          .adg-title { font-size: 24px; max-width: 90%; }
           .adg-carousel-track { padding: 0 40px; gap: 20px; }
           .adg-video-card { width: 260px; height: 380px; opacity: 1; transform: scale(1); }
           .adg-card-title { font-size: 20px; }
         }
 
         @media (max-width: 480px) {
-          .adg-title { font-size: 28px; }
+          .adg-title { font-size: 22px; }
           .adg-carousel-track { padding: 0 30px; }
         }
       `}</style>

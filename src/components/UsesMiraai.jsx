@@ -1,9 +1,12 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-import textileImg from '../assets/images/Textile.png';
-import lifestyleImg from '../assets/images/Lifestyle.png';
-import jwelleryImg from '../assets/images/Jwellery.png';
+import textileImg from '../assets/images/textile & garments.jpg';
+import lifestyleImg from '../assets/images/lifestyles.jpg';
+import jwelleryImg from '../assets/images/Jewllery.jpg';
+import realEstateImg from '../assets/images/real states.png';
+import foodImg from '../assets/images/food.png';
+import carImg from '../assets/images/car.png';
 
 const originalCards = [
   {
@@ -24,17 +27,17 @@ const originalCards = [
   {
     title: 'Real Estate & Property',
     subtitle: '(Property Developers, Architects,\nInterior Designers, Real Estate Agents)',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=800&fit=crop',
+    image: realEstateImg,
   },
   {
     title: 'Food & Beverage',
     subtitle: '(Restaurants, Cafes, Food Brands,\nBeverage Companies, Catering)',
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=800&fit=crop',
+    image: foodImg,
   },
   {
     title: 'Automobile & Vehicles',
     subtitle: '(Car Dealerships, Auto Brands,\nMotorcycle Companies, Luxury Vehicles)',
-    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&h=800&fit=crop',
+    image: carImg,
   },
 ];
 
@@ -114,7 +117,7 @@ export default function UsesMiraai() {
           {cards.map((card, index) => (
             <div
               key={`${card.title}-${index}`}
-              className="um-card"
+              className={`um-card ${card.title.includes('Jewellery') ? 'um-card-jewellery' : ''}`}
             >
               <img className="um-img" src={card.image} alt="" />
               <div className="um-overlay" aria-hidden="true" />
@@ -144,18 +147,26 @@ export default function UsesMiraai() {
         }
 
         .um-title {
-          font-size: 34px;
+          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
           font-weight: 800;
-          color: #fff;
+          letter-spacing: -0.02em;
+          color: #f3f3f6;
+          line-height: 1.15;
+          max-width: 1000px;
+          margin: 0 auto;
           margin-bottom: 12px;
-          letter-spacing: -0.5px;
         }
 
         .um-subtitle {
-          font-size: 14px;
-          color: rgba(255, 255, 255, 0.6);
-          max-width: 600px;
-          margin: 0 auto;
+          margin-top: 24px;
+          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          color: rgba(255, 255, 255, 0.7);
+          font-weight: 500;
+          max-width: 850px;
+          margin-left: auto;
+          margin-right: auto;
+          opacity: 0.8;
+          line-height: 1.6;
         }
 
         .um-container {
@@ -213,6 +224,10 @@ export default function UsesMiraai() {
           transform: scale(1.15);
         }
 
+        .um-card-jewellery .um-img {
+          object-position: center 70%;
+        }
+
         .um-overlay {
           position: absolute;
           inset: 0;
@@ -249,14 +264,15 @@ export default function UsesMiraai() {
         }
 
         @media (max-width: 768px) {
-          .um-wrap { padding: 40px 0; }
-          .um-title { font-size: 28px; }
+          .um-wrap { padding: 10px 0 40px 0; }
+          .um-title { font-size: 24px; font-weight: 800; line-height: 1.2; max-width: 90%; }
+          .um-subtitle { font-size: 14px; margin-top: 16px; opacity: 0.8; }
           .um-card { width: 280px; height: 360px; }
           .um-rail { gap: 20px; }
         }
 
         @media (max-width: 480px) {
-          .um-title { font-size: 24px; }
+          .um-title { font-size: 22px; }
           .um-subtitle { font-size: 13px; padding: 0 15px; }
           .um-card { width: 260px; height: 340px; }
           .um-container {
@@ -265,7 +281,7 @@ export default function UsesMiraai() {
         }
 
         @media (max-width: 360px) {
-          .um-title { font-size: 22px; }
+          .um-title { font-size: 20px; }
           .um-card { width: 260px; border-radius: 20px; }
           .um-card-title { font-size: 17px; }
           .um-text { padding: 20px; }

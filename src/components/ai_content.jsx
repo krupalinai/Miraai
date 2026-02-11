@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 // Import images
+<<<<<<< Updated upstream
 import fashionImg from '../assets/images/fashion.jpg';
 import jewelleryImg from '../assets/images/jewellery.png';
 import realEstateImg from '../assets/images/real_estate.png';
@@ -35,6 +36,13 @@ const categories = [
         image: retailServiceImg
     }
 ];
+=======
+import fashionImg from '../assets/images/fashion.svg';
+import jewelleryImg from '../assets/images/jewellery.svg';
+import realEstateImg from '../assets/images/real_estate.svg';
+import ecommerceImg from '../assets/images/e-commerce.svg';
+import retailServiceImg from '../assets/images/retail___service.svg';
+>>>>>>> Stashed changes
 
 const AiContent = () => {
     const [activeTab, setActiveTab] = useState(0);
@@ -75,8 +83,45 @@ const AiContent = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+<<<<<<< Updated upstream
     // Animation Variants
     const headerVariants = {
+=======
+    const categories = [
+        {
+            title: "Fashion & Apparel Brands",
+            description: "Traditional fashion shoots demand high budgets, models, and long production timelines. Miraai delivers hyper-realistic AI-generated visuals and catalogs that help brands launch collections faster while reducing creative costs.",
+            image: fashionImg
+        },
+        {
+            title: "Jewellery Businesses",
+            description: "Luxury jewellery shoots are expensive and difficult to scale across campaigns. Miraai creates ultra-realistic product visuals and premium catalogs that build trust and boost online and offline sales.",
+            image: jewelleryImg
+        },
+        {
+            title: "Real Estate",
+            description: "Property videos and walkthrough shoots often require heavy production and travel expenses. Miraai provides cinematic AI-generated visuals and promotional creatives that attract buyers and generate leads faster.",
+            image: realEstateImg
+        },
+        {
+            title: "E-Commerce Sellers",
+            description: "Traditional product photography slows down catalog expansion and increases operational costs. Miraai enables scalable AI-generated product images and videos that improve conversions and speed up marketplace growth.",
+            image: ecommerceImg
+        },
+        {
+            title: "Retail & Service Businesses",
+            description: "Professional ad shoots can be costly for growing local businesses. Miraai delivers high-quality AI-generated branding visuals and ads that help attract more customers without large production budgets.",
+            image: retailServiceImg
+        }
+    ];
+
+    // Animation variants
+    // Animation variants
+    const headerVariants = isMobile ? {
+        hidden: { opacity: 1, y: 0 },
+        visible: { opacity: 1, y: 0 }
+    } : {
+>>>>>>> Stashed changes
         hidden: { opacity: 0, y: -20 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
     };
@@ -87,16 +132,28 @@ const AiContent = () => {
 
                 {/* Header */}
                 <motion.div
+<<<<<<< Updated upstream
                     className="text-center mb-8 md:mb-16"
+=======
+                    className="text-center mb-12 md:mb-16"
+>>>>>>> Stashed changes
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={headerVariants}
                 >
+<<<<<<< Updated upstream
                     <h2 className="text-2xl md:text-[3.5rem] font-bold text-white mb-2 md:mb-4 tracking-tight leading-tight">
                         AI Content & Ad Creation Gallery
                     </h2>
                     <p className="text-gray-400 text-sm md:text-lg mx-auto max-w-[900px]">
                         Explore Real Campaigns, Branding Ads, And AI-Generated Videos.
+=======
+                    <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[90%] md:max-w-[1000px] mx-auto leading-tight mb-4 md:mb-6">
+                        Creative Solutions Built for Every Industry
+                    </h2>
+                    <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-medium tracking-wide opacity-80 max-w-[600px] md:max-w-[850px] mx-auto leading-relaxed">
+                        See how Miraai delivers high-quality AI-powered visuals, ads, and branded content that help businesses grow faster, attract customers, and scale their marketing effortlessly.
+>>>>>>> Stashed changes
                     </p>
                 </motion.div>
 

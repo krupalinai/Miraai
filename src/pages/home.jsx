@@ -18,6 +18,7 @@ import Whatourclientssay from '../components/whatourclientssay';
 import Calltoaction from '../components/Calltoaction';
 import Frequentlyaskedquestions from '../components/Frequentlyaskedquestions';
 import Footer from '../components/Footer';
+import Whatwedo from '../components/Whatwedo';
 
 function Home() {
     const [isFormOpen, setIsFormOpen] = useState(false);
@@ -31,6 +32,7 @@ function Home() {
             <Features />
             <Form isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
             <TrustMiraai />
+            <Whatwedo />
             <DoBest />
             <AiContent />
             <Supportingline />

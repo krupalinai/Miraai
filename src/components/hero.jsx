@@ -3,12 +3,12 @@ import { motion, useAnimationControls } from 'framer-motion';
 import { useEffect, useState, useRef } from 'react';
 
 // Import local videos
-import v1 from '../assets/images/videos/clothing rell 1.mp4';
-import v2 from '../assets/images/videos/clothing reel 2.mp4';
-import v3 from '../assets/images/videos/clothing reel 3.mp4';
-import v4 from '../assets/images/videos/clothing reel 4.mp4';
-import v5 from '../assets/images/videos/clothing reel 5.mp4';
-import v6 from '../assets/images/videos/car reel 6.mp4';
+import v1 from '../assets/images/videos/Cloth 1.gif';
+import v2 from '../assets/images/videos/Cloth 2.gif';
+import v3 from '../assets/images/videos/Cloth 3.gif';
+import v4 from '../assets/images/videos/Cloth 4.gif';
+import v5 from '../assets/images/videos/Cloth 5.gif';
+import v6 from '../assets/images/videos/Cloth 6.gif';
 
 // Video sources array
 const videoSources = [v1, v2, v3, v4, v5, v6];
@@ -89,7 +89,11 @@ const FloatingVideoCard = ({ src, config, index, randomValues }) => {
         transition: { duration: 0.22 },
       }}
     >
-      <video src={src} autoPlay muted loop playsInline className="card-video" />
+      {src.includes('.gif') ? (
+        <img src={src} className="card-video" alt="" />
+      ) : (
+        <video src={src} autoPlay muted loop playsInline className="card-video" />
+      )}
     </motion.div>
   );
 };
@@ -99,15 +103,16 @@ const MobileVideoCard = ({ src, isActive, index, cardRef }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
+    if (src.includes('.gif')) return;
     if (videoRef.current) {
       if (isActive) {
         videoRef.current.currentTime = 0;
-        videoRef.current.play();
+        videoRef.current.play().catch(() => { });
       } else {
         videoRef.current.pause();
       }
     }
-  }, [isActive]);
+  }, [isActive, src]);
 
   return (
     <motion.div
@@ -117,14 +122,18 @@ const MobileVideoCard = ({ src, isActive, index, cardRef }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
     >
-      <video
-        ref={videoRef}
-        src={src}
-        muted
-        loop
-        playsInline
-        className="mobile-card-video"
-      />
+      {src.includes('.gif') ? (
+        <img src={src} className="mobile-card-video" alt="" />
+      ) : (
+        <video
+          ref={videoRef}
+          src={src}
+          muted
+          loop
+          playsInline
+          className="mobile-card-video"
+        />
+      )}
       {isActive && <div className="active-indicator" />}
     </motion.div>
   );

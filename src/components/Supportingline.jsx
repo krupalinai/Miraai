@@ -1,10 +1,10 @@
 
 import React from 'react';
 
-import aiGenerationImg from '../assets/images/ai genration.png';
-import customizeBrandImg from '../assets/images/customize and brand.png';
-import inputYourVisionImg from '../assets/images/input your vision.png';
-import reviewDeployImg from '../assets/images/review and deploy.png';
+import aiGenerationImg from '../assets/ai genration.png';
+import customizeBrandImg from '../assets/images/customize and brand copy.png';
+import inputYourVisionImg from '../assets/images/input your vision copy.png';
+import reviewDeployImg from '../assets/images/review and deploy copy.png';
 
 const stepImages = {
   1: inputYourVisionImg,
@@ -123,22 +123,29 @@ export default function Supportingline() {
 
         .sl-header {
           text-align: center;
-          margin-bottom: 60px;
+          margin-bottom: 48px;
         }
 
         .sl-title {
-          font-size: 46px;
+          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
           font-weight: 800;
           letter-spacing: -0.02em;
           color: #f3f3f6;
-          line-height: 1.1;
+          line-height: 1.15;
+          max-width: 1000px;
+          margin: 0 auto;
         }
 
         .sl-subtitle {
-          margin-top: 12px;
-          font-size: 20px;
+          margin-top: 24px;
+          font-size: clamp(1rem, 1.2vw, 1.25rem);
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
+          max-width: 850px;
+          margin-left: auto;
+          margin-right: auto;
+          opacity: 0.8;
+          line-height: 1.6;
         }
 
         .sl-timeline {
@@ -400,7 +407,7 @@ export default function Supportingline() {
         ======================================== */
         @media (max-width: 900px) {
            .sl-wrap {
-            padding: 30px 16px 50px;
+            padding: 30px 16px 20px;
           }
 
           .sl-header {
@@ -408,16 +415,22 @@ export default function Supportingline() {
           }
 
           .sl-title {
-            font-size: 28px;
-            font-weight: 700;
-            color: #a855f7;
+            font-size: 24px;
+            font-weight: 800;
+            color: #fff; /* Match other sections white title */
+            line-height: 1.2;
+            max-width: 90%;
+            margin: 0 auto;
           }
 
           .sl-subtitle {
             font-size: 14px;
-            margin-top: 8px;
-            font-style: italic;
+            margin-top: 16px;
             color: rgba(255, 255, 255, 0.7);
+            opacity: 0.8;
+            max-width: 100%;
+            line-height: 1.5;
+            font-style: normal; /* Remove italic for consistency */
           }
 
           .sl-timeline {
@@ -434,7 +447,11 @@ export default function Supportingline() {
             flex-direction: column;
             align-items: center; /* Center all items */
             gap: 0;
-            padding: 0 0 50px 0;
+            padding: 0 0 40px 0;
+          }
+
+          .sl-row:last-of-type {
+            padding-bottom: 10px;
           }
 
           .sl-row.is-left,
