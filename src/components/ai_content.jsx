@@ -2,132 +2,68 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 // Import images
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 import fashionImg from '../assets/images/fashion.jpg';
-import jewelleryImg from '../assets/images/jewellery.png';
+import jwelleryImg from '../assets/images/Jewllery.jpg';
 import realEstateImg from '../assets/images/real_estate.png';
 import ecommerceImg from '../assets/images/e-commerce.jpg';
 import retailServiceImg from '../assets/images/retail___service.jpg';
 
-const categories = [
-    {
-        title: "Fashion & Apparel Brands",
-        description: "We help clothing and fashion brands increase sales with professional product shoots, catalogs, and social media ads.",
-        image: fashionImg
-    },
-    {
-        title: "Jewellery Businesses",
-        description: "We create premium visuals and catalogs that build trust and boost jewellery sales online and offline.",
-        image: jewelleryImg
-    },
-    {
-        title: "Real Estate",
-        description: "We support developers and agents with property videos, walkthroughs, and lead-generation ads.",
-        image: realEstateImg
-    },
-    {
-        title: "E-Commerce Sellers",
-        description: "We help online sellers grow faster with high-converting product images, videos, and marketplace creatives.",
-        image: ecommerceImg
-    },
-    {
-        title: "Retail & Service Businesses",
-        description: "We help local and growing businesses attract more customers through effective digital ads and branding.",
-        image: retailServiceImg
-    }
-];
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-import fashionImg from '../assets/images/fashion.svg';
-import jewelleryImg from '../assets/images/jewellery.svg';
-import realEstateImg from '../assets/images/real_estate.svg';
-import ecommerceImg from '../assets/images/e-commerce.svg';
-import retailServiceImg from '../assets/images/retail___service.svg';
->>>>>>> Stashed changes
-
 const AiContent = () => {
     const [activeTab, setActiveTab] = useState(0);
+    const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' ? window.innerWidth < 768 : false);
     const sectionRef = useRef(null);
     const cardRefs = useRef([]);
-    const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
+    const isInView = useInView(sectionRef, { once: false, amount: 0.15, margin: "-50px" });
 
-    // Scroll Listener to update Active Tab
     useEffect(() => {
-        const handleScroll = () => {
-            const viewportHeight = window.innerHeight;
-            // Determine active card based on position relative to center/trigger point
-            // Mobile: Trigger is around 50% down (below image).
-            // Desktop: Trigger is around center.
-
-            const triggerLine = viewportHeight * 0.8;
-
-            let newActive = -1;
-
-            cardRefs.current.forEach((card, index) => {
-                if (!card) return;
-                const rect = card.getBoundingClientRect();
-
-                // If the top of the card is ABOVE the trigger line, it's a candidate.
-                // We want the *last* card that has crossed the line.
-                if (rect.top <= triggerLine) {
-                    newActive = index;
-                }
-            });
-
-            if (newActive !== -1) {
-                setActiveTab(newActive);
-            }
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
         };
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll(); // Initial check
-        return () => window.removeEventListener('scroll', handleScroll);
+        // Preload all images for instant switching
+        categories.forEach((cat) => {
+            const img = new Image();
+            img.src = cat.image;
+        });
+
+        return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-<<<<<<< Updated upstream
-    // Animation Variants
-    const headerVariants = {
-=======
     const categories = [
         {
             title: "Fashion & Apparel Brands",
-            description: "Traditional fashion shoots demand high budgets, models, and long production timelines. Miraai delivers hyper-realistic AI-generated visuals and catalogs that help brands launch collections faster while reducing creative costs.",
+            description: "We help clothing and fashion brands increase sales with professional product shoots, catalogs, and social media ads.",
             image: fashionImg
         },
         {
             title: "Jewellery Businesses",
-            description: "Luxury jewellery shoots are expensive and difficult to scale across campaigns. Miraai creates ultra-realistic product visuals and premium catalogs that build trust and boost online and offline sales.",
-            image: jewelleryImg
+            description: "We create premium visuals and catalogs that build trust and boost jewellery sales online and offline.",
+            image: jwelleryImg
         },
         {
             title: "Real Estate",
-            description: "Property videos and walkthrough shoots often require heavy production and travel expenses. Miraai provides cinematic AI-generated visuals and promotional creatives that attract buyers and generate leads faster.",
+            description: "We support developers and agents with property videos, walkthroughs, and lead-generation ads.",
             image: realEstateImg
         },
         {
             title: "E-Commerce Sellers",
-            description: "Traditional product photography slows down catalog expansion and increases operational costs. Miraai enables scalable AI-generated product images and videos that improve conversions and speed up marketplace growth.",
+            description: "We help online sellers grow faster with high-converting product images, videos, and marketplace creatives.",
             image: ecommerceImg
         },
         {
             title: "Retail & Service Businesses",
-            description: "Professional ad shoots can be costly for growing local businesses. Miraai delivers high-quality AI-generated branding visuals and ads that help attract more customers without large production budgets.",
+            description: "We help local and growing businesses attract more customers through effective digital ads and branding.",
             image: retailServiceImg
         }
     ];
 
     // Animation variants
-    // Animation variants
     const headerVariants = isMobile ? {
         hidden: { opacity: 1, y: 0 },
         visible: { opacity: 1, y: 0 }
     } : {
->>>>>>> Stashed changes
         hidden: { opacity: 0, y: -20 },
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
     };
@@ -138,52 +74,16 @@ const AiContent = () => {
 
                 {/* Header */}
                 <motion.div
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                    className="text-center mb-8 md:mb-16"
-=======
-                    className="text-center mb-12 md:mb-16"
->>>>>>> Stashed changes
-=======
-                    className="text-center mb-12 md:mb-16"
->>>>>>> Stashed changes
-=======
-                    className="text-center mb-12 md:mb-16"
->>>>>>> Stashed changes
+                    className="text-center mb-12 md:mb-12"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={headerVariants}
                 >
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                    <h2 className="text-2xl md:text-[3.5rem] font-bold text-white mb-2 md:mb-4 tracking-tight leading-tight">
+                    <h2 className="text-2xl md:text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-white mb-2 tracking-tight leading-tight">
                         AI Content & Ad Creation Gallery
                     </h2>
-                    <p className="text-gray-400 text-sm md:text-lg mx-auto max-w-[900px]">
-                        Explore Real Campaigns, Branding Ads, And AI-Generated Videos.
-=======
-                    <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[90%] md:max-w-[1000px] mx-auto leading-tight mb-4 md:mb-6">
-                        Creative Solutions Built for Every Industry
-                    </h2>
-                    <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-medium tracking-wide opacity-80 max-w-[600px] md:max-w-[850px] mx-auto leading-relaxed">
-                        See how Miraai delivers high-quality AI-powered visuals, ads, and branded content that help businesses grow faster, attract customers, and scale their marketing effortlessly.
->>>>>>> Stashed changes
-=======
-                    <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[90%] md:max-w-[1000px] mx-auto leading-tight mb-4 md:mb-6">
-                        Creative Solutions Built for Every Industry
-                    </h2>
-                    <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-medium tracking-wide opacity-80 max-w-[600px] md:max-w-[850px] mx-auto leading-relaxed">
-                        See how Miraai delivers high-quality AI-powered visuals, ads, and branded content that help businesses grow faster, attract customers, and scale their marketing effortlessly.
->>>>>>> Stashed changes
-=======
-                    <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[90%] md:max-w-[1000px] mx-auto leading-tight mb-4 md:mb-6">
-                        Creative Solutions Built for Every Industry
-                    </h2>
-                    <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-medium tracking-wide opacity-80 max-w-[600px] md:max-w-[850px] mx-auto leading-relaxed">
-                        See how Miraai delivers high-quality AI-powered visuals, ads, and branded content that help businesses grow faster, attract customers, and scale their marketing effortlessly.
->>>>>>> Stashed changes
+                    <p className="text-gray-400 text-sm md:text-lg mx-auto max-w-[900px] leading-relaxed">
+                        Explore Real Campaigns, Branding Ads, And AI-Generated Videos Created For Businesses Across Industries.
                     </p>
                 </motion.div>
 
