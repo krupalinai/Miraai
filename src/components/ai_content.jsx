@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion';
 
 // Import images
 import fashionImg from '../assets/images/fashion.jpg';
-import jewelleryImg from '../assets/images/jewllery.jpg';
+import jewelleryImg from '../assets/images/jwellery.jpg';
 import realEstateImg from '../assets/images/real_estate.png';
 import ecommerceImg from '../assets/images/e-commerce.jpg';
 import retailServiceImg from '../assets/images/retail___service.jpg';
