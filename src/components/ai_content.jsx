@@ -34,7 +34,7 @@ const AiContent = () => {
     const categories = [
         {
             title: "Fashion & Apparel Brands",
-            description: "We help clothing and fashion brands increase sales with professional product shoots, catalogs, and social media ads.",
+            description: "Traditional fashion shoots demand high budgets, models, and long production timelines. Miraai delivers hyper-realistic AI-generated visuals and catalogs that help brands launch collections faster while reducing creative costs.",
             image: fashionImg
         },
         {
@@ -44,17 +44,17 @@ const AiContent = () => {
         },
         {
             title: "Real Estate",
-            description: "We support developers and agents with property videos, walkthroughs, and lead-generation ads.",
+            description: "Property videos and walkthrough shoots often require heavy production and travel expenses. Miraai provides cinematic AI-generated visuals and promotional creatives that attract buyers and generate leads faster.",
             image: realEstateImg
         },
         {
             title: "E-Commerce Sellers",
-            description: "We help online sellers grow faster with high-converting product images, videos, and marketplace creatives.",
+            description: "Traditional product photography slows down catalog expansion and increases operational costs. Miraai enables scalable AI-generated product images and videos that improve conversions and speed up marketplace growth.",
             image: ecommerceImg
         },
         {
             title: "Retail & Service Businesses",
-            description: "We help local and growing businesses attract more customers through effective digital ads and branding.",
+            description: "Professional ad shoots can be costly for growing local businesses. Miraai delivers high-quality AI-generated branding visuals and ads that help attract more customers without large production budgets.",
             image: retailServiceImg
         }
     ];
@@ -74,16 +74,16 @@ const AiContent = () => {
 
                 {/* Header */}
                 <motion.div
-                    className="text-center mb-12 md:mb-12"
+                    className="text-center mb-12 md:mb-16"
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
                     variants={headerVariants}
                 >
-                    <h2 className="text-2xl md:text-[clamp(2.5rem,5vw,3.5rem)] font-bold text-white mb-2 tracking-tight leading-tight">
-                        AI Content & Ad Creation Gallery
+                    <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[90%] md:max-w-[1000px] mx-auto leading-tight mb-4 md:mb-6">
+                        Creative Solutions Built for Every Industry
                     </h2>
-                    <p className="text-gray-400 text-sm md:text-lg mx-auto max-w-[900px] leading-relaxed">
-                        Explore Real Campaigns, Branding Ads, And AI-Generated Videos Created For Businesses Across Industries.
+                    <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-medium tracking-wide opacity-80 max-w-[600px] md:max-w-[850px] mx-auto leading-relaxed">
+                        See how Miraai delivers high-quality AI-powered visuals, ads, and branded content that help businesses grow faster, attract customers, and scale their marketing effortlessly.
                     </p>
                 </motion.div>
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
-import aiGenerationImg from '../assets/images/ai genration.png';
+import aiGenerationImg from '../assets/images/ai_genration.png';
 import customizeImg from '../assets/images/customize and brand copy.png';
 import inputVisionImg from '../assets/images/input your vision copy.png';
 import reviewDeployImg from '../assets/images/review and deploy copy.png';
