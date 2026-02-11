@@ -370,7 +370,7 @@ export default function FloatingVideoHero({ openForm }) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          gap: 6px;
+          gap: 12px;
         }
 
         .hero-heading {
@@ -515,7 +515,7 @@ export default function FloatingVideoHero({ openForm }) {
             padding: 0 20px;
           }
           .hero-content {
-            padding: 2rem 2rem 0.5rem 2rem;
+            padding: 5rem 2rem 5rem 2rem;
           }
         }
 
