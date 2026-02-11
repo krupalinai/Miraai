@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import aiGenerationImg from '../assets/ai_genration.png';
+import aiGenerationImg from '../assets/images/ai_genration.png';
 import customizeBrandImg from '../assets/images/customize and brand copy.png';
 import inputYourVisionImg from '../assets/images/input your vision copy.png';
 import reviewDeployImg from '../assets/images/review and deploy copy.png';

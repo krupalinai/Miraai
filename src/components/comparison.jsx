@@ -49,24 +49,19 @@ const DoBest = () => {
     return (
         <section className="bg-[#000004] py-12 md:py-12 px-4 md:px-4">
             <style>{styles}</style>
-            <div className="max-w-[1240px] mx-auto overflow-hidden">
-                <div className="text-center mb-12 md:mb-16">
-                    <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[90%] md:max-w-[1000px] mx-auto leading-tight mb-4 md:mb-6">
-                        Do It Yourself Vs Miraai Expert Team
-                    </h2>
-                    <p className="text-gray-400 text-sm sm:text-base md:text-lg lg:text-xl font-medium tracking-wide opacity-80 max-w-[600px] md:max-w-[850px] mx-auto leading-relaxed px-4">
-                        Discover why brands switch to Miraai for consistent, high-impact marketing visuals.
-                    </p>
-                </div>
+            <div className="max-w-[1200px] mx-auto">
+                <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-10 md:mb-16 tracking-tight px-4 leading-tight">
+                    Do It Yourself Vs Miraai Expert Team
+                </h2>
 
                 {/* Desktop Table View - Hidden on Mobile */}
                 <div className="hidden md:block overflow-x-auto rounded-3xl border border-[#262626] bg-[#000004]">
                     <table className="w-full text-left border-collapse comparison-table">
                         <thead>
                             <tr>
-                                <th className="p-6 text-white font-bold text-xl bg-[#8B5CF680] w-[25%] rounded-tl-3xl text-center border-r border-[#262626]">Area</th>
-                                <th className="p-6 text-white font-bold text-xl bg-[#8B5CF680] text-center w-[37.5%] border-r border-[#262626]">Do It Yourself</th>
-                                <th className="p-6 text-white font-bold text-xl bg-[#8B5CF680] text-center w-[37.5%] rounded-tr-3xl">Miraai Expert Team</th>
+                                <th className="p-6 text-white font-bold bg-[#8B5CF680] w-[25%] rounded-tl-3xl text-center border-r border-[#262626]">Area</th>
+                                <th className="p-6 text-white font-bold text-center w-[37.5%] border-b border-r border-[#262626]">Do It Yourself</th>
+                                <th className="p-6 text-white font-bold text-center w-[37.5%] border-b border-[#262626] rounded-tr-3xl">Miraai Expert Team</th>
                             </tr>
                         </thead>
                         <tbody>
