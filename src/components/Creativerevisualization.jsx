@@ -11,7 +11,7 @@ import joly3Img from '../assets/images/Joly 3.svg';
 import joly3Video from '../assets/images/videos/Joly 3.mp4';
 import joly4Img from '../assets/images/Joly 4.svg';
 import joly4Video from '../assets/images/videos/Joly 4.mp4';
-import jwelleryImg from '../assets/images/Jewllery.jpg';
+import jwelleryImg from '../assets/images/jwellery.jpg';
 import jwelleryVideo from '../assets/images/videos/Joly 4.mp4';
 import lifestyleImg from '../assets/images/lifestyles.jpg';
 import textileImg from '../assets/images/textile & garments.jpg';

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import textileImg from '../assets/images/textile & garments.jpg';
 import lifestyleImg from '../assets/images/lifestyles.jpg';
-import jwelleryImg from '../assets/images/Jewllery.jpg';
+import jwelleryImg from '../assets/images/jwellery.jpg';
 import realEstateImg from '../assets/images/real states.png';
 import foodImg from '../assets/images/food.png';
 import carImg from '../assets/images/car.png';
