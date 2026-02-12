@@ -118,7 +118,7 @@ export default function Supportingline() {
           padding: 48px 18px 48px;
           background: #000004;
           color: #e9e9ee;
-          font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
         }
 
         .sl-header {
@@ -137,7 +137,8 @@ export default function Supportingline() {
         }
 
         .sl-subtitle {
-          margin-top: 24px;
+          margin-top: 12px;
+          font-family: 'Inter', sans-serif;
           font-size: clamp(1rem, 1.2vw, 1.25rem);
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;

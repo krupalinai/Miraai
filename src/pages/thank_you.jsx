@@ -15,7 +15,7 @@ const ThankYouPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#000004] flex items-center justify-center py-10">
+        <div className="min-h-screen bg-[#000004] flex items-center justify-center py-10 font-['Inter']">
             <div className="w-full max-w-[1200px]">
                 <ThankU onClose={handleBackToHome} />
             </div>

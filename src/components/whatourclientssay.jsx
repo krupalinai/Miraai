@@ -149,10 +149,10 @@ export default function Whatourclientssay() {
       <style>{`
         .wcs-wrap {
           width: 100%;
-          padding: 90px 18px 90px;
+          padding: 60px 18px 90px;
           background: #000;
           color: rgba(255, 255, 255, 0.92);
-          font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
           position: relative;
           overflow: hidden;
         }
@@ -330,7 +330,7 @@ export default function Whatourclientssay() {
         ======================================== */
         @media (max-width: 680px) {
           .wcs-wrap {
-            padding: 70px 16px;
+            padding: 20px 16px 70px;
           }
 
           .wcs-head {
@@ -406,7 +406,7 @@ export default function Whatourclientssay() {
         ======================================== */
         @media (max-width: 480px) {
           .wcs-wrap {
-            padding: 60px 14px;
+            padding: 15px 14px 60px;
           }
 
           .wcs-head {

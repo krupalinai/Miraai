@@ -15,8 +15,17 @@ export default function Calltoaction({ openForm }) {
             Start Creating Professional Videos With AI - Faster, Smarter, And More Cost-Effective.
           </div>
 
-          <button className="cta-btn" type="button" onClick={openForm}>
-            <img src={contactUsBtn} alt="Contact Us" className="cta-btn-img" />
+          <button className="cta-btn group relative overflow-hidden" type="button" onClick={openForm}>
+            <span className="cta-btn-star relative z-10">✦</span>
+            <span className="relative z-10 block overflow-hidden">
+              <span className="block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                Contact Us
+              </span>
+              <span className="absolute inset-0 block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-full group-hover:translate-y-0">
+                Contact Us
+              </span>
+            </span>
+            <span className="cta-btn-star relative z-10">✦</span>
           </button>
         </div>
       </div>
@@ -27,7 +36,7 @@ export default function Calltoaction({ openForm }) {
           padding: 88px 18px 110px;
           background: #000;
           color: rgba(255, 255, 255, 0.92);
-          font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
           position: relative;
           overflow: hidden;
         }
@@ -83,7 +92,7 @@ export default function Calltoaction({ openForm }) {
         .cta-title {
           position: relative;
           z-index: 1;
-          font-size: clamp(1.5rem, 3.5vw, 2.6rem);
+          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
           font-weight: 800;
           line-height: 1.15;
           letter-spacing: -0.02em;
@@ -95,7 +104,7 @@ export default function Calltoaction({ openForm }) {
         .cta-sub {
           position: relative;
           z-index: 1;
-          margin-top: 24px;
+          margin-top: 12px;
           font-size: clamp(1rem, 1.2vw, 1.25rem);
           line-height: 1.65;
           color: rgba(255, 255, 255, 0.7);
@@ -108,18 +117,30 @@ export default function Calltoaction({ openForm }) {
         .cta-btn {
           border: 0;
           cursor: pointer;
-          background: none;
-          padding: 0;
-          margin-top: 28px;
-          display: inline-block;
+          background: #fff;
+          color: #000;
+          padding: 12px 32px;
+          margin-top: 32px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
           position: relative;
           z-index: 1;
-          transition: transform 200ms ease, opacity 200ms ease;
+          border-radius: 999px;
+          font-weight: 700;
+          font-size: 16px;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+        }
+
+        .cta-btn-star {
+          font-size: 14px;
+          color: inherit;
         }
 
         .cta-btn:hover {
-          transform: scale(1.05);
-          opacity: 0.9;
+          box-shadow: 0 6px 30px rgba(255, 255, 255, 0.25);
         }
 
         .cta-btn-img {
@@ -176,11 +197,8 @@ export default function Calltoaction({ openForm }) {
 
           .cta-btn {
             margin-top: 32px;
-          }
-
-
-          .cta-btn-img {
-            height: 36px;
+            padding: 10px 24px;
+            font-size: 14px;
           }
         }
 
@@ -209,11 +227,8 @@ export default function Calltoaction({ openForm }) {
 
           .cta-btn {
             margin-top: 28px;
-          }
-
-
-          .cta-btn-img {
-            height: 32px;
+            padding: 8px 20px;
+            font-size: 13px;
           }
         }
 
@@ -244,11 +259,8 @@ export default function Calltoaction({ openForm }) {
 
           .cta-btn {
             margin-top: 24px;
-          }
-
-
-          .cta-btn-img {
-            height: 30px;
+            padding: 7px 18px;
+            font-size: 12px;
           }
         }
       `}</style>

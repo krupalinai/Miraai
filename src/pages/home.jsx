@@ -30,6 +30,7 @@ function Home() {
             <Percentage />
             <GlobalGiants />
             <Features />
+            <Creativerevisualization openForm={() => setIsFormOpen(true)} />
             <Form isOpen={isFormOpen} onClose={() => setIsFormOpen(false)} />
             <TrustMiraai />
             <Whatwedo />
@@ -38,7 +39,6 @@ function Home() {
             <Supportingline />
             <UsesMiraai />
             <BusinessesChooseMiraai />
-            <Creativerevisualization openForm={() => setIsFormOpen(true)} />
             <Aidesigngenration />
             <Whatourclientssay />
             <Calltoaction openForm={() => setIsFormOpen(true)} />

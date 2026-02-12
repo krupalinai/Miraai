@@ -266,7 +266,7 @@ export default function BusinessesChooseMiraai() {
           padding: 80px 18px 40px;
           background: #000;
           color: #e9e9ee;
-          font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
           position: relative;
           overflow: hidden;
         }
@@ -288,20 +288,24 @@ export default function BusinessesChooseMiraai() {
         }
 
         .bcm-title {
-          font-size: 46px;
+          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
           font-weight: 800;
           color: #f3f3f6;
           letter-spacing: -0.02em;
-          line-height: 1.1;
-          margin-bottom: 12px;
+          line-height: 1.15;
+          max-width: 1000px;
+          margin: 0 auto;
+          margin-bottom: 24px;
         }
 
         .bcm-subtitle {
-          font-size: 14px;
+          font-size: clamp(1rem, 1.2vw, 1.25rem);
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
-          max-width: 600px;
+          max-width: 850px;
           margin: 0 auto;
+          opacity: 0.8;
+          line-height: 1.6;
         }
 
         .bcm-container {

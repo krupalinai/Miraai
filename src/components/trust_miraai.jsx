@@ -19,11 +19,11 @@ const TrustMiraai = () => {
     }, []);
 
     const issues = [
-        " Expensive studio shoots and high production costs",
+        "Expensive studio shoots and high production costs",
         "Delays caused by lengthy planning and editing cycles",
-        " Multiple vendors creating communication gaps",
+        "Multiple vendors creating communication gaps",
         "Difficulty scaling content across languages and campaigns",
-        "Re-shoots and revisions that increase overall cos"
+        "Re-shoots and revisions that increase overall cost"
     ];
 
     // Animation variants - only used on desktop
@@ -76,7 +76,7 @@ const TrustMiraai = () => {
     };
 
     return (
-        <div ref={sectionRef} className="bg-[#000004] min-h-auto py-6 md:py-12 px-4 md:px-8 relative overflow-hidden">
+        <div ref={sectionRef} className="bg-[#000004] min-h-auto py-6 md:py-12 px-4 md:px-8 relative overflow-hidden font-['Inter']">
             <div className="max-w-[1200px] mx-auto relative z-10">
 
                 {/* Header Section */}

@@ -95,12 +95,12 @@ const Percentage = () => {
 
             <div
                 ref={containerRef}
-                className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-[1200px] w-full relative z-[1]"
+                className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-[1200px] w-full relative z-[1] font-['Inter']"
             >
                 {stats.map((stat, index) => (
                     <div
                         key={index}
-                        className={`bg-[rgba(255,255,255,0.02)] backdrop-blur-[10px] border border-[rgba(255,255,255,0.1)] rounded-xl md:rounded-2xl py-5 px-3 md:py-10 md:px-8 text-center cursor-pointer relative overflow-hidden group hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(139,92,246,0.5)] hover:shadow-[0_20px_40px_rgba(139,92,246,0.2)] ${isMobile ? '' : 'transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards] md:hover:-translate-y-2 md:hover:scale-[1.02]'}`}
+                        className={`bg-[rgba(255,255,255,0.02)] backdrop-blur-[10px] border border-[rgba(255,255,255,0.1)] rounded-xl md:rounded-2xl py-6 px-3 md:py-10 md:px-8 text-center cursor-pointer relative overflow-hidden group hover:bg-[rgba(255,255,255,0.05)] hover:border-[rgba(139,92,246,0.5)] hover:shadow-[0_20px_40px_rgba(139,92,246,0.2)] ${isMobile ? '' : 'transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards] md:hover:-translate-y-2 md:hover:scale-[1.02]'}`}
                         style={{
                             animationDelay: isMobile ? '0s' : `${(index + 1) * 0.1}s`
                         }}
@@ -116,7 +116,7 @@ const Percentage = () => {
                                 : counts[index].toFixed(index === 0 ? 1 : 0) + stat.suffix
                             }
                         </div>
-                        <div className="text-gray-400 text-[10px] md:text-sm font-normal tracking-wide relative z-[1]">
+                        <div className="text-gray-400 text-[10px] md:text-sm font-medium tracking-wide relative z-[1]">
                             {stat.label}
                         </div>
                     </div>

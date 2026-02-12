@@ -131,10 +131,10 @@ export default function Aidesigngenration() {
       <style>{`
         .adg-wrap {
           width: 100%;
-          padding: 80px 0 100px;
+          padding: 80px 0 80px;
           background: #000;
           color: rgba(255, 255, 255, 0.92);
-          font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
           position: relative;
           overflow: hidden;
         }
@@ -174,7 +174,7 @@ export default function Aidesigngenration() {
         }
 
         .adg-sub {
-          margin-top: 24px;
+          margin-top: 12px;
           font-size: clamp(1rem, 1.2vw, 1.25rem);
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
@@ -355,7 +355,7 @@ export default function Aidesigngenration() {
         }
 
         @media (max-width: 680px) {
-          .adg-wrap { padding: 40px 0 40px; }
+          .adg-wrap { padding: 30px 0 20px; }
           .adg-title { font-size: 24px; max-width: 90%; }
           .adg-carousel-track { padding: 0 40px; gap: 20px; }
           .adg-video-card { width: 260px; height: 380px; opacity: 1; transform: scale(1); }

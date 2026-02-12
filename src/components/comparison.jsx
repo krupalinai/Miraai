@@ -47,10 +47,10 @@ const DoBest = () => {
     ];
 
     return (
-        <section className="bg-[#000004] py-12 md:py-12 px-4 md:px-4">
+        <section className="bg-[#000004] py-6 md:py-12 px-4 md:px-4 font-['Inter']">
             <style>{styles}</style>
             <div className="max-w-[1200px] mx-auto">
-                <h2 className="text-3xl md:text-5xl font-bold text-white text-center mb-10 md:mb-16 tracking-tight px-4 leading-tight">
+                <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white text-center mb-10 md:mb-16 tracking-tight px-4 leading-tight">
                     Do It Yourself Vs Miraai Expert Team
                 </h2>
 
@@ -81,7 +81,15 @@ const DoBest = () => {
                                     </td>
                                     <td className="p-6 text-gray-200 text-sm md:text-base group-hover:text-white transition-colors duration-300">
                                         <div className="flex items-center gap-3">
-                                            <img src={rightIcon} alt="Check" className="w-5 h-5 flex-shrink-0 filter drop-shadow-[0_0_3px_rgba(59,130,246,0.5)]" />
+                                            <svg
+                                                className="w-5 h-5 flex-shrink-0 text-[#22c55e] filter drop-shadow-[0_0_5px_rgba(34,197,94,0.4)]"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                strokeWidth="4"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                            </svg>
                                             {row.miraai}
                                         </div>
                                     </td>
@@ -122,8 +130,16 @@ const DoBest = () => {
                                 </div>
 
                                 {/* Miraai Side */}
-                                <div className="flex items-start gap-4 p-3 rounded-xl bg-[#8B5CF6]/10 border border-[#8B5CF6]/20">
-                                    <img src={rightIcon} alt="Check" className="w-5 h-5 flex-shrink-0 mt-0.5 filter drop-shadow-[0_0_8px_rgba(139,92,246,0.6)]" />
+                                <div className="flex items-start gap-4 p-3 rounded-xl bg-[#22c55e]/5 border border-[#22c55e]/20">
+                                    <svg
+                                        className="w-5 h-5 flex-shrink-0 mt-1 text-[#22c55e] filter drop-shadow-[0_0_8px_rgba(34,197,94,0.4)]"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        strokeWidth="4"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                    </svg>
                                     <div className="flex flex-col">
                                         <p className="text-white text-base font-semibold leading-relaxed">
                                             {row.miraai}
