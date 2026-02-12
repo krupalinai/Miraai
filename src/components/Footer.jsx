@@ -20,7 +20,7 @@ export default function Footer() {
             </div>
 
             <div className="ft-social">
-              <a className="ft-social-btn" href="#" aria-label="Facebook">
+              <a className="ft-social-btn" href="https://www.facebook.com/people/Miraaiinai/61587247783790/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M14 8.5V7.2C14 6.54 14.54 6 15.2 6H17V3H15.2C12.88 3 11 4.88 11 7.2V8.5H9V12H11V21H14V12H16.7L17 8.5H14Z"
@@ -30,7 +30,7 @@ export default function Footer() {
                   />
                 </svg>
               </a>
-              <a className="ft-social-btn" href="#" aria-label="Instagram">
+              <a className="ft-social-btn" href="https://www.instagram.com/miraai.inai?igsh=Zmd6cDQ1ajl1OGx0" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M7 3H17C19.209 3 21 4.791 21 7V17C21 19.209 19.209 21 17 21H7C4.791 21 3 19.209 3 17V7C3 4.791 4.791 3 7 3Z"

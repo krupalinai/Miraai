@@ -79,10 +79,10 @@ export default function Frequentlyaskedquestions() {
       <style>{`
         .faq-wrap {
           width: 100%;
-          padding: 40px 18px 40px;
+          padding: 60px 18px 60px;
           background: #000;
           color: rgba(255, 255, 255, 0.92);
-          font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
           position: relative;
           overflow: hidden;
         }
@@ -281,6 +281,10 @@ export default function Frequentlyaskedquestions() {
 
           .faq-left {
             padding-top: 0;
+          }
+
+          .faq-wrap {
+            padding: 20px 16px 20px;
           }
         }
 

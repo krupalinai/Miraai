@@ -279,10 +279,17 @@ export default function Creativerevisualization({ openForm }) {
                 ))}
               </div>
 
-              <button className="cr-try-btn" type="button" aria-label="Try it now" onClick={openForm}>
-                <span className="cr-btn-star">✦</span>
-                <span className="cr-btn-text">Try It Now</span>
-                <span className="cr-btn-star">✦</span>
+              <button className="cr-try-btn group relative overflow-hidden" type="button" aria-label="Try it now" onClick={openForm}>
+                <span className="relative z-10">✦</span>
+                <span className="relative z-10 block overflow-hidden">
+                  <span className="block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                    Try It Now
+                  </span>
+                  <span className="absolute inset-0 block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-full group-hover:translate-y-0">
+                    Try It Now
+                  </span>
+                </span>
+                <span className="relative z-10">✦</span>
               </button>
             </div>
           </div>
@@ -315,9 +322,9 @@ export default function Creativerevisualization({ openForm }) {
           width: 100%;
           overflow: hidden;
           display: flex;
-          align-items: flex-start;
+          align-items: center;
           justify-content: center;
-          padding-top: 60px;
+          padding-top: 0;
         }
 
         .cr-triggers {
@@ -340,7 +347,7 @@ export default function Creativerevisualization({ openForm }) {
           max-width: 1280px;
           margin: 0 auto;
           color: rgba(255, 255, 255, 0.92);
-          font-family: 'Urbanist', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+          font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
         }
 
         .cr-wrap::before {
@@ -356,7 +363,7 @@ export default function Creativerevisualization({ openForm }) {
 
         .cr-head {
           text-align: center;
-          margin-bottom: 60px;
+          margin-bottom: 30px;
           transition: opacity 0.3s;
         }
 
@@ -379,7 +386,7 @@ export default function Creativerevisualization({ openForm }) {
         }
 
         .cr-sub {
-          margin-top: 24px;
+          margin-top: 12px;
           font-size: clamp(1rem, 1.2vw, 1.25rem);
           line-height: 1.6;
           color: rgba(255, 255, 255, 0.7);
@@ -408,7 +415,9 @@ export default function Creativerevisualization({ openForm }) {
            position: relative;
            width: 100%;
            max-width: 520px;
+           max-height: 55vh;
            aspect-ratio: 1/1;
+           margin: 0 auto;
         }
 
         .cr-card-layer {
@@ -613,9 +622,10 @@ export default function Creativerevisualization({ openForm }) {
         }
 
         .cr-try-btn {
-          margin-top: 40px;
+          margin-top: 30px;
           border: 0;
-          background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%);
+          background: #fff;
+          color: #000;
           padding: 14px 28px;
           cursor: pointer;
           display: inline-flex;
@@ -624,13 +634,12 @@ export default function Creativerevisualization({ openForm }) {
           gap: 10px;
           border-radius: 999px;
           transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
-          box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+          box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+          font-weight: 700;
         }
 
         .cr-try-btn:hover {
-          filter: brightness(1.1);
-          transform: translateY(-2px);
-          box-shadow: 0 6px 28px rgba(139, 92, 246, 0.5);
+          box-shadow: 0 6px 28px rgba(255, 255, 255, 0.25);
         }
 
         .cr-btn-star {
@@ -640,8 +649,8 @@ export default function Creativerevisualization({ openForm }) {
 
         .cr-btn-text {
           font-size: 14px;
-          font-weight: 600;
-          color: #fff;
+          font-weight: 700;
+          color: inherit;
           letter-spacing: 0.3px;
         }
 
@@ -656,7 +665,7 @@ export default function Creativerevisualization({ openForm }) {
           .cr-sticky-viewport {
             position: relative;
             height: auto;
-            padding: 20px 0;
+            padding: 10px 0 20px;
             top: 0;
             display: block;
           }
@@ -840,7 +849,7 @@ export default function Creativerevisualization({ openForm }) {
         ======================================== */
         @media (max-width: 480px) {
           .cr-sticky-viewport {
-            padding: 20px 0;
+            padding: 80px 0 20px;
           }
 
           .cr-wrap {
@@ -934,7 +943,7 @@ export default function Creativerevisualization({ openForm }) {
         ======================================== */
         @media (max-width: 360px) {
           .cr-sticky-viewport {
-            padding: 32px 0;
+            padding: 80px 0 20px;
           }
 
           .cr-wrap {

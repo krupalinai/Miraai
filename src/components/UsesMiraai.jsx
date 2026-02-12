@@ -136,7 +136,7 @@ export default function UsesMiraai() {
           padding: 80px 0;
           background: #000;
           color: #e9e9ee;
-          font-family: 'Urbanist', system-ui, -apple-system, sans-serif;
+          font-family: 'Inter', system-ui, -apple-system, sans-serif;
           overflow: hidden;
         }
 
@@ -158,7 +158,7 @@ export default function UsesMiraai() {
         }
 
         .um-subtitle {
-          margin-top: 24px;
+          margin-top: 12px;
           font-size: clamp(1rem, 1.2vw, 1.25rem);
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
@@ -265,15 +265,15 @@ export default function UsesMiraai() {
 
         @media (max-width: 768px) {
           .um-wrap { padding: 10px 0 40px 0; }
-          .um-title { font-size: 24px; font-weight: 800; line-height: 1.2; max-width: 90%; }
-          .um-subtitle { font-size: 14px; margin-top: 16px; opacity: 0.8; }
+          .um-title { font-size: 30px!important; font-weight: 800; line-height: 1.2; max-width: 90%; }
+          .um-subtitle { font-size: 15px; margin-top: 16px; opacity: 0.8; }
           .um-card { width: 280px; height: 360px; }
           .um-rail { gap: 20px; }
         }
 
         @media (max-width: 480px) {
-          .um-title { font-size: 22px; }
-          .um-subtitle { font-size: 13px; padding: 0 15px; }
+          .um-title { font-size: 26px!important; }
+          .um-subtitle { font-size: 14px; padding: 0 15px; }
           .um-card { width: 260px; height: 340px; }
           .um-container {
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -281,7 +281,8 @@ export default function UsesMiraai() {
         }
 
         @media (max-width: 360px) {
-          .um-title { font-size: 20px; }
+          .um-title { font-size: 24px!important; }
+          .um-subtitle { font-size: 12px; line-height: 1.4; padding: 0 10px; margin-top: 12px; }
           .um-card { width: 260px; border-radius: 20px; }
           .um-card-title { font-size: 17px; }
           .um-text { padding: 20px; }

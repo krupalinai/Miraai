@@ -44,8 +44,8 @@ const Header = ({ openForm }) => {
             >
                 <div
                     className={`w-full flex items-center justify-between px-4 md:px-8 py-2 md:py-3 rounded-2xl md:rounded-3xl transition-all duration-400 ease-in-out ${isScrolled
-                            ? 'bg-[rgba(20,20,20,0.4)] backdrop-blur-[16px] border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]'
-                            : 'bg-transparent border border-transparent shadow-none'
+                        ? 'bg-[rgba(20,20,20,0.4)] backdrop-blur-[16px] border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)]'
+                        : 'bg-transparent border border-transparent shadow-none'
                         }`}
                 >
                     {/* Logo Section */}
@@ -60,9 +60,16 @@ const Header = ({ openForm }) => {
                     {/* Button Section */}
                     <button
                         onClick={openForm}
-                        className="bg-[#8B5CF6] text-white border-none py-2 px-4 md:py-[0.6rem] md:px-6 rounded-[2rem] font-semibold text-xs md:text-[0.9rem] cursor-pointer transition-all duration-300 ease-in-out shadow-[0_0_15px_rgba(139,92,246,0.4)] hover:scale-105 hover:shadow-[0_0_25px_rgba(139,92,246,0.6)]"
+                        className="group relative bg-white text-black border-none py-2 px-4 md:py-[0.6rem] md:px-6 rounded-[2rem] font-bold font-['Inter'] text-xs md:text-[0.9rem] cursor-pointer transition-all duration-300 ease-in-out shadow-[0_0_15px_rgba(255,255,255,0.2)] overflow-hidden"
                     >
-                        Get Started
+                        <span className="relative block overflow-hidden">
+                            <span className="block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                                Get Started
+                            </span>
+                            <span className="absolute inset-0 block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-full group-hover:translate-y-0">
+                                Get Started
+                            </span>
+                        </span>
                     </button>
                 </div>
             </div>

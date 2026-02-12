@@ -121,7 +121,7 @@ const Form = ({ isOpen, onClose }) => {
             />
 
             {/* Modal */}
-            <div className="relative w-[95%] max-w-[700px] max-h-[95vh] overflow-y-auto bg-[#000004] border border-[#22D3EE1A] backdrop-blur-md rounded-2xl p-5 md:p-6 shadow-[0_0_60px_rgba(34,211,238,0.1)] hide-scrollbar">
+            <div className="relative w-[95%] max-w-[700px] max-h-[95vh] overflow-y-auto bg-[#000004] border border-[#22D3EE1A] backdrop-blur-md rounded-2xl p-5 md:p-6 shadow-[0_0_60px_rgba(34,211,238,0.1)] hide-scrollbar font-['Inter']">
 
                 <style>{`
                     .hide-scrollbar::-webkit-scrollbar {
@@ -299,11 +299,18 @@ const Form = ({ isOpen, onClose }) => {
                         <button
                             type="submit"
                             disabled={isSubmitting}
-                            className={`bg-[#8B5CF6] text-white font-semibold py-2 px-7 rounded-full flex items-center gap-2 hover:bg-[#7C4FE0] transition-colors shadow-[0_0_20px_rgba(139,92,246,0.4)] hover:shadow-[0_0_30px_rgba(139,92,246,0.6)] ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                            className={`group relative bg-white text-black font-semibold py-2.5 px-8 rounded-full flex items-center gap-2 overflow-hidden transition-all shadow-[0_0_15px_rgba(255,255,255,0.2)] hover:shadow-[0_0_25px_rgba(255,255,255,0.3)] ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                         >
-                            <span>✦</span>
-                            {isSubmitting ? 'Submitting...' : 'Submit Your Request'}
-                            <span>✦</span>
+                            <span className="relative z-10">✦</span>
+                            <span className="relative z-10 block overflow-hidden">
+                                <span className="block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+                                    {isSubmitting ? 'Submitting...' : 'Submit Your Request'}
+                                </span>
+                                <span className="absolute inset-0 block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-full group-hover:translate-y-0">
+                                    {isSubmitting ? 'Submitting...' : 'Submit Your Request'}
+                                </span>
+                            </span>
+                            <span className="relative z-10">✦</span>
                         </button>
                     </div>
                 </form>

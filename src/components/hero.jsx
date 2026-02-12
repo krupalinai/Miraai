@@ -250,13 +250,19 @@ export default function FloatingVideoHero({ openForm }) {
         </motion.p>
 
         <motion.button
-          className="hero-button"
+          className="hero-button group relative overflow-hidden"
           variants={contentItemVariants}
-          whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={openForm}
         >
-          Talk to Our Expert
+          <span className="relative block overflow-hidden">
+            <span className="block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">
+              Talk to Our Expert
+            </span>
+            <span className="absolute inset-0 block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] translate-y-full group-hover:translate-y-0">
+              Talk to Our Expert
+            </span>
+          </span>
         </motion.button>
       </motion.div>
 
@@ -310,21 +316,21 @@ export default function FloatingVideoHero({ openForm }) {
         }
 
         .hero-button {
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: #ffffff;
+          background: #ffffff;
+          color: #000000;
           border: none;
           padding: 10px 24px;
           border-radius: 8px;
+          font-family: 'Inter', sans-serif;
           font-size: 14px;
-          font-weight: 600;
+          font-weight: 700;
           cursor: pointer;
           transition: all 0.3s ease;
-          box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+          box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15);
         }
 
         .hero-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+          box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
         }
 
         /* Mobile Layout */
@@ -384,7 +390,7 @@ export default function FloatingVideoHero({ openForm }) {
 
         .hero-heading {
           font-family: 'Inter', sans-serif;
-          font-size: 30px;
+          font-size: 40px;
           font-weight: 700;
           color: #ffffff;
           line-height: 1.15;
@@ -400,12 +406,12 @@ export default function FloatingVideoHero({ openForm }) {
 
         .hero-subheading {
           font-family: 'Inter', sans-serif;
-          font-size: 15px;
-          font-weight: 400;
+          font-size: 18px;
+          font-weight: 500;
           color: #9ca3af;
           line-height: 1.6;
           margin: 0;
-          max-width: 420px;
+          max-width: 480px;
         }
 
         /* Mobile Videos Container */
@@ -507,9 +513,6 @@ export default function FloatingVideoHero({ openForm }) {
           .floating-card {
             width: 165px;
             height: 282px;
-          }
-          .hero-heading {
-            font-size: 40px;
           }
         }
 
