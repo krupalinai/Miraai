@@ -50,7 +50,11 @@ const AiContent = () => {
             // Mobile: Trigger is around 50% down (below image).
             // Desktop: Trigger is around center.
 
-            const triggerLine = viewportHeight * 0.8;
+            const isDesktop = window.innerWidth >= 768;
+            // Desktop: Trigger very close to sticky top (120px).
+            // 140px means it activates only when the next card is 20px away from sticking (overlapping).
+            // This keeps the previous card active for as long as possible.
+            const triggerLine = isDesktop ? 140 : viewportHeight * 0.6;
 
             let newActive = -1;
 
@@ -141,7 +145,7 @@ const AiContent = () => {
                         Image Ends at: 80px + 38vh = ~48vh.
                         So Cards start sticking at ~50vh.
                     */}
-                    <div className="flex flex-col w-full relative z-20 pb-4 -mt-[300px] md:mt-0">
+                    <div className="flex flex-col w-full relative z-20 pb-4 -mt-[300px] md:mt-0 md:pb-[400px]">
                         {categories.map((item, index) => (
                             <div
                                 key={index}
@@ -169,8 +173,8 @@ const AiContent = () => {
                                     // Top = 150px + index * 60px.
 
                                     top: window.innerWidth < 768
-                                        ? `calc(38vh + 90px + ${index * 10}px)`
-                                        : `calc(120px + ${index * 20}px)`,
+                                        ? `calc(80px + ${index * 10}px)`
+                                        : `120px`,
 
                                     zIndex: 20 + index,
                                     backgroundColor: activeTab === index ? 'rgba(18, 18, 20, 0.95)' : 'rgba(10, 10, 10, 0.9)',
