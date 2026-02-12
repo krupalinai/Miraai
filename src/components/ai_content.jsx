@@ -64,30 +64,45 @@ const AiContent = () => {
     const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
 
     // Scroll Listener to update Active Tab
+    // Scroll Listener to update Active Tab
     useEffect(() => {
         const handleScroll = () => {
-            const viewportHeight = window.innerHeight;
             const isDesktop = window.innerWidth >= 768;
-            const triggerLine = isDesktop ? 140 : viewportHeight * 0.6;
+
+            // Calculate Trigger Line dynamically
+            // Desktop: Sticky header is ~120px. Trigger at 150px detects it reliably.
+            // Mobile: Sticky stack starts at roughly 80(Header) + 320(Image) + 24(Gap) = 424px.
+            // We set the trigger slightly below this (e.g., +100px = 524px).
+            // This ensures the incoming card triggers "Active" just before it hits the stack/sticky point.
+
+            let triggerLine;
+            if (isDesktop) {
+                triggerLine = 150;
+            } else {
+                const mobileStackTop = 80 + 320 + 24; // 424px
+                triggerLine = mobileStackTop + 100; // ~524px
+            }
 
             let newActive = -1;
             cardRefs.current.forEach((card, index) => {
                 if (!card) return;
                 const rect = card.getBoundingClientRect();
+                // Check if card top has crossed the trigger line
                 if (rect.top <= triggerLine) {
                     newActive = index;
                 }
             });
 
-            if (newActive !== -1) {
+            if (newActive !== -1 && newActive !== activeTab) {
                 setActiveTab(newActive);
             }
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
+        // Initial check
         handleScroll();
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [activeTab]);
 
     const headerVariants = {
         hidden: { opacity: 0, y: -20 },
@@ -172,23 +187,30 @@ const AiContent = () => {
                 {/* ===== MOBILE LAYOUT (Absolute Wrapper Approach for Perfect Scroll End) ===== */}
                 <div className="md:hidden relative">
                     {/* 
-                        Image Column: Absolute & Full Height. 
-                        This forces the sticky image to stay within this section's bounds.
-                        When this section scrolls up, the image MUST go with it.
+                        Image Column: Absolute & Full Height (minus offset). 
+                        We reduce the height by ~250px so that the "sticky container" for the image
+                        ends exactly when the last card (which is at ~460px + 150px = ~610px) 
+                        finish sticking.
+                        Image Bottom Limit = 400px (80+320).
+                        Last Card Bottom Limit = ~614px.
+                        Difference ~214px. We use 250px to be safe and ensure they scroll away together
+                        without the card crashing into the image.
                     */}
-                    <div className="absolute top-0 left-0 w-full h-full" style={{ zIndex: 50 }}>
-                        <div className="sticky top-[71px] w-full">
+                    <div className="absolute top-0 left-0 w-full" style={{ height: 'calc(100% - 250px)', zIndex: 40 }}>
+                        <div className="sticky top-[80px] w-full">
                             <ImageBlock categories={categories} activeTab={activeTab} />
                         </div>
                     </div>
 
                     {/* 
-                    {/* 
                         Cards Column: Normal flow content that drives the height.
-                        We add top padding equal to Header (80px) + Image Height (350px) + Gap (40px)
-                        Gap set to 40px for clean separation. Z-Index 40 ensures proper layering.
+                        We add top padding equal to:
+                        Header (80px) + Image Height (320px) + Gap (24px).
+                        Gap ensures separation from the image bottom line.
+                        Z-Index 50 ensures cards are ON TOP of the image if they were to meet,
+                        preventing them from "going under".
                     */}
-                    <div className="relative z-40" style={{ paddingTop: 'calc(80px + 350px + 40px)' }}>
+                    <div className="relative z-50" style={{ paddingTop: 'calc(80px + 320px + 24px)' }}>
                         {/* Card mapping */}
                         {categories.map((item, index) => (
                             <div
@@ -203,17 +225,15 @@ const AiContent = () => {
                                     rounded-[2rem] p-6 
                                     border border-white/10 
                                     backdrop-blur-md transition-all duration-300
-                                    {/* Remove margin from last card so section ends immediately */}
-                                    ${index === categories.length - 1 ? 'mb-0' : 'mb-4'}
+                                    ${index === categories.length - 1 ? 'mb-0' : 'mb-2'}
                                     flex flex-col justify-center
                                     cursor-pointer group
-                                    min-h-[200px]
+                                    min-h-[150px]
                                 `}
                                 style={{
-                                    // Sticky position: Same as natural start position ideally
-                                    // Header (80) + Image (350) + Gap (40) + Index offset
-                                    top: `calc(80px + 350px + 40px + ${index * 10}px)`,
-                                    zIndex: 40 + index,
+                                    // Sticky position ensures the card STOPS before hitting the image
+                                    top: `calc(80px + 320px + 24px + ${index * 10}px)`,
+                                    zIndex: 60 + index, // Higher than image (40) so it never goes "under"
                                     backgroundColor: activeTab === index ? 'rgba(18, 18, 20, 0.95)' : 'rgba(10, 10, 10, 0.9)',
                                     borderColor: activeTab === index ? 'rgba(139, 92, 246, 0.5)' : 'rgba(255, 255, 255, 0.1)',
                                     boxShadow: activeTab === index ? '0 -10px 30px rgba(0,0,0,0.5)' : 'none'
@@ -241,7 +261,7 @@ const AiContent = () => {
             <style>{`
                 html { scroll-behavior: smooth; }
             `}</style>
-        </div>
+        </div >
     );
 };
 

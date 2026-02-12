@@ -2,6 +2,8 @@ import React from 'react';
 
 import mirraiLogo from '../assets/images/mirai.svg';
 
+import { Link } from 'react-router-dom';
+
 export default function Footer() {
   return (
     <footer className="ft-wrap">
@@ -53,21 +55,25 @@ export default function Footer() {
           <div className="ft-copy">All Rights Reserved © 2026 by INAI Worlds Pvt. Ltd.</div>
 
           <div className="ft-legal-links">
-            <a href="#" className="ft-legal-link">
+            <Link to="/privacy-policy" className="ft-legal-link">
               Privacy Policy
-            </a>
+            </Link>
             <span className="ft-sep">|</span>
-            <a href="#" className="ft-legal-link">
+            <Link to="/terms-and-conditions" className="ft-legal-link">
               Terms & Conditions
-            </a>
+            </Link>
             <span className="ft-sep">|</span>
-            <a href="#" className="ft-legal-link">
+            <Link to="/cookies" className="ft-legal-link">
               Cookies
-            </a>
+            </Link>
             <span className="ft-sep">|</span>
-            <a href="#" className="ft-legal-link">
+            <Link to="/refund-policy" className="ft-legal-link">
               Refund & Cancellation
-            </a>
+            </Link>
+            <span className="ft-sep">|</span>
+            <Link to="/disclaimer" className="ft-legal-link">
+              Disclaimer
+            </Link>
           </div>
         </div>
       </div>
