@@ -60,7 +60,7 @@ const Header = ({ openForm }) => {
                     {/* Button Section */}
                     <button
                         onClick={openForm}
-                        className="group relative bg-white text-black border-none py-2 px-4 md:py-[0.6rem] md:px-6 rounded-[2rem] font-bold font-['Inter'] text-xs md:text-[0.9rem] cursor-pointer transition-all duration-300 ease-in-out shadow-[0_0_15px_rgba(255,255,255,0.2)] overflow-hidden"
+                        className="group relative bg-white text-black border-none py-2 px-4 md:py-[0.6rem] md:px-6 rounded-[2rem] font-bold font-['Inter'] tracking-[0.5px] text-xs md:text-[0.9rem] cursor-pointer transition-all duration-300 ease-in-out shadow-[0_0_15px_rgba(255,255,255,0.2)] overflow-hidden"
                     >
                         <span className="relative block overflow-hidden">
                             <span className="block transition-transform duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:-translate-y-full">

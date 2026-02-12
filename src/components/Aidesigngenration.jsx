@@ -164,9 +164,9 @@ export default function Aidesigngenration() {
         }
 
         .adg-title {
-          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+          font-size: 40px !important;
           font-weight: 800;
-          letter-spacing: -0.02em;
+          letter-spacing: 0.5px !important;
           color: #f3f3f6;
           line-height: 1.15;
           max-width: 1000px;
@@ -175,7 +175,7 @@ export default function Aidesigngenration() {
 
         .adg-sub {
           margin-top: 12px;
-          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          font-size: 21px !important;
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
           max-width: 850px;
@@ -183,6 +183,7 @@ export default function Aidesigngenration() {
           margin-right: auto;
           opacity: 0.8;
           line-height: 1.6;
+          letter-spacing: 0.5px !important;
         }
 
         /* Carousel Styles */
@@ -349,21 +350,21 @@ export default function Aidesigngenration() {
         }
 
         @media (max-width: 768px) {
-          .adg-title { font-size: 24px; font-weight: 800; }
-          .adg-sub { font-size: 14px; margin-top: 16px; font-weight: 400; }
+          .adg-title { font-size: 25px !important; font-weight: 800; }
+          .adg-sub { font-size: 18px !important; margin-top: 16px; font-weight: 500; }
           .adg-video-card { width: 240px; height: 340px; }
         }
 
         @media (max-width: 680px) {
           .adg-wrap { padding: 30px 0 20px; }
-          .adg-title { font-size: 24px; max-width: 90%; }
+          /* .adg-title processed in 768px query */
           .adg-carousel-track { padding: 0 40px; gap: 20px; }
           .adg-video-card { width: 260px; height: 380px; opacity: 1; transform: scale(1); }
           .adg-card-title { font-size: 20px; }
         }
 
         @media (max-width: 480px) {
-          .adg-title { font-size: 22px; }
+          /* .adg-title processed in 768px query */
           .adg-carousel-track { padding: 0 30px; }
         }
       `}</style>

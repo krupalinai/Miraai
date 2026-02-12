@@ -71,10 +71,10 @@ const GlobalGiants = () => {
             <div className="max-w-[1200px] w-full relative z-[1]">
                 {/* Header */}
                 <div className="text-center mb-10 md:mb-16 font-['Inter']">
-                    <h2 className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white mb-6 tracking-tight">
+                    <h2 className="text-[25px] md:text-[40px] font-bold text-white mb-6 tracking-[0.5px]">
                         Trusted by Global Giants
                     </h2>
-                    <p className="text-gray-400 text-[clamp(1rem,1.2vw,1.25rem)] max-w-[850px] mx-auto leading-relaxed font-medium opacity-80 px-2 mt-4">
+                    <p className="text-gray-400 text-[18px] md:text-[21px] max-w-[850px] mx-auto leading-relaxed font-medium tracking-[0.5px] opacity-80 px-2 mt-4">
                         Trusted By Businesses, Creators, And Institutions Across India For Scalable Content Production
                     </p>
                 </div>

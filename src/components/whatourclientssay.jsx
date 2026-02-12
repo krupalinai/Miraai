@@ -181,9 +181,9 @@ export default function Whatourclientssay() {
         }
 
         .wcs-title {
-          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+          font-size: 40px !important;
           font-weight: 800;
-          letter-spacing: -0.02em;
+          letter-spacing: 0.5px !important;
           color: #f3f3f6;
           line-height: 1.15;
           max-width: 1000px;
@@ -192,7 +192,7 @@ export default function Whatourclientssay() {
 
         .wcs-sub {
           margin-top: 24px;
-          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          font-size: 21px !important;
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
           max-width: 850px;
@@ -200,6 +200,7 @@ export default function Whatourclientssay() {
           margin-right: auto;
           opacity: 0.8;
           line-height: 1.6;
+          letter-spacing: 0.5px !important;
         }
 
         .wcs-stage {
@@ -338,7 +339,7 @@ export default function Whatourclientssay() {
           }
 
           .wcs-title {
-            font-size: 24px;
+            font-size: 25px !important;
             font-weight: 800;
             line-height: 1.2;
             max-width: 90%;
@@ -346,7 +347,7 @@ export default function Whatourclientssay() {
           }
 
           .wcs-sub {
-            font-size: 14px;
+            font-size: 18px !important;
             line-height: 1.5;
             margin-top: 16px;
             opacity: 0.8;
@@ -414,11 +415,11 @@ export default function Whatourclientssay() {
           }
 
           .wcs-title {
-            font-size: 22px;
+            font-size: 25px !important;
           }
 
           .wcs-sub {
-            font-size: 12px;
+            font-size: 18px !important;
             padding: 0 8px;
           }
 
@@ -465,11 +466,11 @@ export default function Whatourclientssay() {
           }
 
           .wcs-title {
-            font-size: 20px;
+            font-size: 25px !important;
           }
 
           .wcs-sub {
-            font-size: 11px;
+            font-size: 18px !important;
             line-height: 1.55;
             padding: 0 4px;
             margin-top: 12px;

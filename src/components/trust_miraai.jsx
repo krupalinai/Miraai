@@ -82,10 +82,10 @@ const TrustMiraai = () => {
                 {/* Header Section */}
                 {isMobile ? (
                     <div className="text-center mb-10">
-                        <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight max-w-[90%] mx-auto leading-tight">
+                        <h2 className="text-[25px] font-bold text-white tracking-[0.5px] max-w-[90%] mx-auto leading-tight">
                             Traditional Production Slows Down Modern Brands
                         </h2>
-                        <p className="text-gray-400 text-sm sm:text-base mt-4 max-w-[600px] mx-auto leading-relaxed opacity-80">
+                        <p className="text-gray-400 text-[18px] tracking-[0.5px] mt-4 max-w-[600px] mx-auto leading-relaxed opacity-80">
                             Creating videos and visuals through traditional shoots demands large budgets, long timelines, and multiple resources, making consistent content creation difficult to sustain.
                         </p>
                     </div>
@@ -96,11 +96,11 @@ const TrustMiraai = () => {
                         animate={isInView ? "visible" : "hidden"}
                         variants={headerVariants}
                     >
-                        <h2 className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[1000px] mx-auto leading-tight mb-6">
+                        <h2 className="text-[40px] font-bold text-white tracking-[0.5px] max-w-[1000px] mx-auto leading-tight mb-6">
                             Traditional Production Slows Down Modern Brands
                         </h2>
                         <motion.p
-                            className="text-gray-400 text-lg md:text-xl max-w-[850px] mx-auto leading-relaxed font-medium opacity-80"
+                            className="text-gray-400 text-[21px] tracking-[0.5px] max-w-[850px] mx-auto leading-relaxed font-medium opacity-80"
                             initial={{ opacity: 0, y: 10 }}
                             animate={isInView ? { opacity: 0.8, y: 0 } : { opacity: 0, y: 10 }}
                             transition={{ duration: 0.6, delay: 0.2 }}

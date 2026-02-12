@@ -368,9 +368,9 @@ export default function Creativerevisualization({ openForm }) {
         }
 
         .cr-title {
-          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+          font-size: 40px !important;
           font-weight: 800;
-          letter-spacing: -0.02em;
+          letter-spacing: 0.5px !important;
           color: #f3f3f6;
           display: flex;
           flex-wrap: wrap;
@@ -387,7 +387,7 @@ export default function Creativerevisualization({ openForm }) {
 
         .cr-sub {
           margin-top: 12px;
-          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          font-size: 21px !important;
           line-height: 1.6;
           color: rgba(255, 255, 255, 0.7);
           opacity: 0.8;
@@ -395,6 +395,7 @@ export default function Creativerevisualization({ openForm }) {
           margin-left: auto;
           margin-right: auto;
           font-weight: 500;
+          letter-spacing: 0.5px !important;
         }
 
         .cr-grid {
@@ -598,7 +599,7 @@ export default function Creativerevisualization({ openForm }) {
         }
         
         .cr-r-title {
-          font-size: 26px;
+          font-size: 21px !important;
           font-weight: 800;
           color: rgba(255, 255, 255, 0.95);
           margin-bottom: 12px;
@@ -612,7 +613,7 @@ export default function Creativerevisualization({ openForm }) {
         }
 
         .cr-r-desc {
-          font-size: 14px;
+          font-size: 18px !important;
           line-height: 1.6;
           color: rgba(255, 255, 255, 0.6);
         }
@@ -700,6 +701,27 @@ export default function Creativerevisualization({ openForm }) {
         }
 
         /* ========================================
+           RESPONSIVE - Tablet/Mobile (max-width: 768px)
+        ======================================== */
+        @media (max-width: 768px) {
+          .cr-title {
+            font-size: 25px !important;
+          }
+
+          .cr-sub {
+            font-size: 18px !important;
+          }
+
+          .cr-r-title {
+            font-size: 16px !important;
+          }
+
+          .cr-r-desc {
+            font-size: 16px !important;
+          }
+        }
+
+        /* ========================================
            RESPONSIVE - Mobile (max-width: 680px)
         ======================================== */
         @media (max-width: 680px) {
@@ -712,7 +734,7 @@ export default function Creativerevisualization({ openForm }) {
           }
 
           .cr-title {
-            font-size: 24px;
+            /* Handled in 768px query */
             line-height: 1.2;
             flex-direction: row;
             gap: 0 8px;
@@ -725,7 +747,7 @@ export default function Creativerevisualization({ openForm }) {
           }
 
           .cr-sub {
-            font-size: 14px;
+            /* Handled in 768px query */
             line-height: 1.55;
             margin-top: 16px;
             padding: 0 10px;
@@ -797,7 +819,7 @@ export default function Creativerevisualization({ openForm }) {
           }
 
           .cr-r-title {
-            font-size: 24px;
+            /* Handled in 768px query */
             margin-bottom: 16px;
             font-weight: 800;
             line-height: 1.2;

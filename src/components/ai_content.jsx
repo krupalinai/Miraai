@@ -120,10 +120,10 @@ const AiContent = () => {
                     animate={isInView ? "visible" : "hidden"}
                     variants={headerVariants}
                 >
-                    <h2 className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white mb-6 tracking-tight leading-tight">
+                    <h2 className="text-[25px] md:text-[40px] font-bold text-white mb-6 tracking-[0.5px] leading-tight">
                         AI Content & Ad Creation Gallery
                     </h2>
-                    <p className="text-gray-400 text-[clamp(1rem,1.2vw,1.25rem)] mx-auto max-w-[850px] opacity-80 leading-relaxed font-medium">
+                    <p className="text-gray-400 text-[18px] md:text-[21px] mx-auto max-w-[850px] tracking-[0.5px] opacity-80 leading-relaxed font-medium">
                         Explore Real Campaigns, Branding Ads, And AI-Generated Videos.
                     </p>
                 </motion.div>
@@ -156,26 +156,23 @@ const AiContent = () => {
                                     backdrop-blur-md transition-all duration-300
                                     mb-8
                                     flex flex-col justify-center
-                                    cursor-pointer group
-                                    min-h-[240px]
+                                    group relative p-8 rounded-[2rem] border transition-all duration-300 w-full cursor-pointer mb-8
+                                    ${activeTab === index
+                                        ? 'bg-white/5 border-l-[6px] border-l-[#8B5CF6] border-t-white/10 border-r-white/10 border-b-white/10 shadow-[0_0_30px_rgba(139,92,246,0.1)]'
+                                        : 'bg-transparent border-white/10 hover:bg-white/5'}
                                 `}
                                 style={{
                                     top: '120px',
                                     zIndex: 20 + index,
-                                    backgroundColor: activeTab === index ? 'rgba(18, 18, 20, 0.95)' : 'rgba(10, 10, 10, 0.9)',
-                                    borderColor: activeTab === index ? 'rgba(139, 92, 246, 0.5)' : 'rgba(255, 255, 255, 0.1)',
-                                    boxShadow: activeTab === index ? '0 -10px 30px rgba(0,0,0,0.5)' : 'none'
+                                    minHeight: '240px'
                                 }}
                                 onClick={() => setActiveTab(index)}
                             >
-                                {activeTab === index && (
-                                    <div className="absolute top-0 left-0 w-1.5 h-full bg-[#8B5CF6] shadow-[0_0_15px_rgba(139,92,246,0.8)] rounded-l-2xl" />
-                                )}
-                                <div className="pl-2 relative z-10">
-                                    <h3 className={`text-2xl font-bold mb-3 transition-colors ${activeTab === index ? 'text-[#8B5CF6]' : 'text-white'}`}>
+                                <div className="relative z-10 text-left">
+                                    <h3 className={`text-[21px] font-bold mb-3 transition-colors ${activeTab === index ? 'text-[#8B5CF6]' : 'text-white'}`}>
                                         {item.title}
                                     </h3>
-                                    <p className={`text-base leading-relaxed transition-colors ${activeTab === index ? 'text-gray-300' : 'text-gray-500'}`}>
+                                    <p className={`text-[18px] leading-relaxed transition-colors ${activeTab === index ? 'text-gray-300' : 'text-gray-500'}`}>
                                         {item.description}
                                     </p>
                                 </div>
@@ -223,7 +220,7 @@ const AiContent = () => {
                                 className={`
                                     w-full sticky 
                                     rounded-[2rem] p-6 
-                                    border border-white/10 
+                                    border 
                                     backdrop-blur-md transition-all duration-300
                                     ${index === categories.length - 1 ? 'mb-0' : 'mb-2'}
                                     flex flex-col justify-center
@@ -235,19 +232,21 @@ const AiContent = () => {
                                     top: `calc(80px + 320px + 24px + ${index * 10}px)`,
                                     zIndex: 60 + index, // Higher than image (40) so it never goes "under"
                                     backgroundColor: activeTab === index ? 'rgba(18, 18, 20, 0.95)' : 'rgba(10, 10, 10, 0.9)',
-                                    borderColor: activeTab === index ? 'rgba(139, 92, 246, 0.5)' : 'rgba(255, 255, 255, 0.1)',
+                                    // Active State: Purple Left Border (Curved) vs Normal Border
+                                    borderLeftWidth: activeTab === index ? '6px' : '1px',
+                                    borderLeftColor: activeTab === index ? '#8B5CF6' : 'rgba(255, 255, 255, 0.1)',
+                                    borderTopColor: 'rgba(255, 255, 255, 0.1)',
+                                    borderRightColor: 'rgba(255, 255, 255, 0.1)',
+                                    borderBottomColor: 'rgba(255, 255, 255, 0.1)',
                                     boxShadow: activeTab === index ? '0 -10px 30px rgba(0,0,0,0.5)' : 'none'
                                 }}
                                 onClick={() => setActiveTab(index)}
                             >
-                                {activeTab === index && (
-                                    <div className="absolute top-0 left-0 w-1.5 h-full bg-[#8B5CF6] shadow-[0_0_15px_rgba(139,92,246,0.8)] rounded-l-2xl" />
-                                )}
-                                <div className="pl-2 relative z-10">
-                                    <h3 className={`text-xl font-bold mb-3 transition-colors ${activeTab === index ? 'text-[#8B5CF6]' : 'text-white'}`}>
+                                <div className="relative z-10">
+                                    <h3 className={`text-[16px] md:text-[21px] font-bold mb-3 transition-colors ${activeTab === index ? 'text-[#8B5CF6]' : 'text-white'}`}>
                                         {item.title}
                                     </h3>
-                                    <p className={`text-sm leading-relaxed transition-colors ${activeTab === index ? 'text-gray-300' : 'text-gray-500'}`}>
+                                    <p className={`text-[16px] md:text-[18px] leading-relaxed transition-colors ${activeTab === index ? 'text-gray-300' : 'text-gray-500'}`}>
                                         {item.description}
                                     </p>
                                 </div>

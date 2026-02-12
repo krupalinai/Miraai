@@ -155,10 +155,10 @@ const Features = () => {
                 {/* Header Section */}
                 {isMobile ? (
                     <div className="text-center mb-10">
-                        <h2 className="text-xl sm:text-2xl font-bold text-white tracking-tight max-w-[90%] mx-auto leading-tight">
+                        <h2 className="text-[25px] font-bold text-white tracking-[0.5px] max-w-[90%] mx-auto leading-tight">
                             Powerful Platform Features
                         </h2>
-                        <p className="text-gray-400 text-sm sm:text-base mt-4 max-w-[600px] mx-auto leading-relaxed opacity-80">
+                        <p className="text-gray-400 text-[18px] tracking-[0.5px] mt-4 max-w-[600px] mx-auto leading-relaxed opacity-80">
                             Everything You Need In One AI Production Platform.
                         </p>
                     </div>
@@ -169,10 +169,10 @@ const Features = () => {
                         animate={isInView ? "visible" : "hidden"}
                         variants={headerVariants}
                     >
-                        <h2 className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[1000px] mx-auto leading-tight mb-6">
+                        <h2 className="text-[40px] font-bold text-white tracking-[0.5px] max-w-[1000px] mx-auto leading-tight mb-6">
                             Powerful Platform Features
                         </h2>
-                        <p className="text-gray-400 text-lg md:text-xl max-w-[850px] mx-auto leading-relaxed font-medium opacity-80">
+                        <p className="text-gray-400 text-[21px] tracking-[0.5px] max-w-[850px] mx-auto leading-relaxed font-medium opacity-80">
                             Everything You Need In One AI Production Platform.
                         </p>
                     </motion.div>

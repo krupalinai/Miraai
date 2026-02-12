@@ -50,7 +50,7 @@ const DoBest = () => {
         <section className="bg-[#000004] py-6 md:py-12 px-4 md:px-4 font-['Inter']">
             <style>{styles}</style>
             <div className="max-w-[1200px] mx-auto">
-                <h2 className="text-xl sm:text-2xl md:text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white text-center mb-10 md:mb-16 tracking-tight px-4 leading-tight">
+                <h2 className="text-[25px] md:text-[40px] font-bold text-white text-center mb-10 md:mb-16 tracking-[0.5px] px-4 leading-tight">
                     Do It Yourself Vs Miraai Expert Team
                 </h2>
 

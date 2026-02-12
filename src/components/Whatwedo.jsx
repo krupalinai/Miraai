@@ -58,7 +58,7 @@ const Whatwedo = () => {
                         initial={{ opacity: 0, y: -20 }}
                         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
                         transition={{ duration: 0.6 }}
-                        className="text-[clamp(1.5rem,3.5vw,2.8rem)] font-bold text-white tracking-tight max-w-[1000px] mx-auto leading-tight mb-6"
+                        className="text-[25px] md:text-[40px] font-bold text-white tracking-[0.5px] max-w-[1000px] mx-auto leading-tight mb-6"
                     >
                         Create Premium Content Faster With Miraai
                     </motion.h2>
@@ -66,7 +66,7 @@ const Whatwedo = () => {
                         initial={{ opacity: 0 }}
                         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-gray-400 text-[clamp(1rem,1.2vw,1.25rem)] font-medium tracking-wide opacity-80 max-w-[850px] mx-auto leading-relaxed"
+                        className="text-gray-400 text-[18px] md:text-[21px] font-medium tracking-[0.5px] opacity-80 max-w-[850px] mx-auto leading-relaxed"
                     >
                         Your Ai-powered Creative Team
                     </motion.p>

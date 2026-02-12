@@ -147,9 +147,9 @@ export default function UsesMiraai() {
         }
 
         .um-title {
-          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+          font-size: 40px !important;
           font-weight: 800;
-          letter-spacing: -0.02em;
+          letter-spacing: 0.5px !important;
           color: #f3f3f6;
           line-height: 1.15;
           max-width: 1000px;
@@ -159,7 +159,7 @@ export default function UsesMiraai() {
 
         .um-subtitle {
           margin-top: 12px;
-          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          font-size: 21px !important;
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
           max-width: 850px;
@@ -167,6 +167,7 @@ export default function UsesMiraai() {
           margin-right: auto;
           opacity: 0.8;
           line-height: 1.6;
+          letter-spacing: 0.5px !important;
         }
 
         .um-container {
@@ -265,15 +266,15 @@ export default function UsesMiraai() {
 
         @media (max-width: 768px) {
           .um-wrap { padding: 10px 0 40px 0; }
-          .um-title { font-size: 30px!important; font-weight: 800; line-height: 1.2; max-width: 90%; }
-          .um-subtitle { font-size: 15px; margin-top: 16px; opacity: 0.8; }
+          .um-title { font-size: 25px!important; font-weight: 800; line-height: 1.2; max-width: 90%; }
+          .um-subtitle { font-size: 18px !important; margin-top: 16px; opacity: 0.8; }
           .um-card { width: 280px; height: 360px; }
           .um-rail { gap: 20px; }
         }
 
         @media (max-width: 480px) {
-          .um-title { font-size: 26px!important; }
-          .um-subtitle { font-size: 14px; padding: 0 15px; }
+          .um-title { font-size: 25px!important; }
+          .um-subtitle { font-size: 18px !important; padding: 0 15px; }
           .um-card { width: 260px; height: 340px; }
           .um-container {
             mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
@@ -281,8 +282,8 @@ export default function UsesMiraai() {
         }
 
         @media (max-width: 360px) {
-          .um-title { font-size: 24px!important; }
-          .um-subtitle { font-size: 12px; line-height: 1.4; padding: 0 10px; margin-top: 12px; }
+          .um-title { font-size: 25px!important; }
+          .um-subtitle { font-size: 18px !important; line-height: 1.4; padding: 0 10px; margin-top: 12px; }
           .um-card { width: 260px; border-radius: 20px; }
           .um-card-title { font-size: 17px; }
           .um-text { padding: 20px; }
