@@ -50,9 +50,15 @@ const DoBest = () => {
         <section className="bg-[#000004] py-6 md:py-12 px-4 md:px-4 font-['Inter']">
             <style>{styles}</style>
             <div className="max-w-[1200px] mx-auto">
-                <h2 className="text-[25px] md:text-[40px] font-bold text-white text-center mb-10 md:mb-16 tracking-[0.5px] px-4 leading-tight">
+                <motion.h2
+                    className="text-[25px] md:text-[40px] font-bold text-white text-center mb-10 md:mb-16 tracking-[0.5px] px-4 leading-tight"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
                     Do It Yourself Vs Miraai Expert Team
-                </h2>
+                </motion.h2>
 
                 {/* Desktop Table View - Hidden on Mobile */}
                 <div className="hidden md:block overflow-x-auto rounded-3xl border border-[#262626] bg-[#000004]">

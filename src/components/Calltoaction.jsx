@@ -1,11 +1,18 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import contactUsBtn from '../assets/images/contact us button.png';
 
 export default function Calltoaction({ openForm }) {
   return (
     <section className="cta-wrap">
       <div className="cta-inner">
-        <div className="cta-card">
+        <motion.div
+          className="cta-card"
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="cta-title">
             Stop Overpaying For Video Production.
             <br />
@@ -27,7 +34,7 @@ export default function Calltoaction({ openForm }) {
             </span>
             <span className="cta-btn-star relative z-10">✦</span>
           </button>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`

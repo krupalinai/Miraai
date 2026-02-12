@@ -155,7 +155,7 @@ const Features = () => {
                 {/* Header Section */}
                 {isMobile ? (
                     <div className="text-center mb-10">
-                        <h2 className="text-[25px] font-bold text-white tracking-[0.5px] max-w-[90%] mx-auto leading-tight">
+                        <h2 className="text-[25px] font-bold text-white tracking-[0.5px] max-w-full px-2 mx-auto leading-tight">
                             Powerful Platform Features
                         </h2>
                         <p className="text-gray-400 text-[18px] tracking-[0.5px] mt-4 max-w-[600px] mx-auto leading-relaxed opacity-80">
@@ -169,7 +169,7 @@ const Features = () => {
                         animate={isInView ? "visible" : "hidden"}
                         variants={headerVariants}
                     >
-                        <h2 className="text-[40px] font-bold text-white tracking-[0.5px] max-w-[1000px] mx-auto leading-tight mb-6">
+                        <h2 className="text-[40px] font-bold text-white tracking-[0.5px] max-w-none mx-auto leading-tight mb-6">
                             Powerful Platform Features
                         </h2>
                         <p className="text-gray-400 text-[21px] tracking-[0.5px] max-w-[850px] mx-auto leading-relaxed font-medium opacity-80">
