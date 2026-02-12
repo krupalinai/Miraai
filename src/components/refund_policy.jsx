@@ -305,7 +305,7 @@ const RefundPolicy = () => {
     };
 
     return (
-        <div className="bg-black min-h-screen text-white font-['Urbanist'] flex flex-col">
+        <div className="bg-black min-h-screen text-white font-['Inter'] flex flex-col">
             <Header openForm={() => setIsFormOpen(true)} />
 
             {/* Main Content Container */}
@@ -337,8 +337,8 @@ const RefundPolicy = () => {
                     {/* Right Content */}
                     <div className="flex-1 w-full min-w-0">
                         <div className="mb-12">
-                            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">Refund & Cancellation Policy</h1>
-                            <p className="text-gray-400 text-lg max-w-3xl leading-relaxed">
+                            <h1 className="text-[25px] md:text-[40px] font-bold mb-6 leading-tight tracking-[0.5px]">Refund & Cancellation Policy</h1>
+                            <p className="text-gray-400 text-[21px] max-w-3xl leading-relaxed tracking-[0.5px]">
                                 This Refund & Cancellation Policy governs the terms under which cancellations, refunds, and payment adjustments are handled by Miraai for its AI-powered video production services.
                                 By engaging Miraai’s services, you acknowledge that you have read, understood, and agreed to this policy.
                             </p>
