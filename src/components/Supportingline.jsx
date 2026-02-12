@@ -127,9 +127,9 @@ export default function Supportingline() {
         }
 
         .sl-title {
-          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+          font-size: 40px !important;
           font-weight: 800;
-          letter-spacing: -0.02em;
+          letter-spacing: 0.5px !important;
           color: #f3f3f6;
           line-height: 1.15;
           max-width: 1000px;
@@ -139,7 +139,7 @@ export default function Supportingline() {
         .sl-subtitle {
           margin-top: 12px;
           font-family: 'Inter', sans-serif;
-          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          font-size: 21px !important;
           color: rgba(255, 255, 255, 0.7);
           font-weight: 500;
           max-width: 850px;
@@ -147,6 +147,7 @@ export default function Supportingline() {
           margin-right: auto;
           opacity: 0.8;
           line-height: 1.6;
+          letter-spacing: 0.5px !important;
         }
 
         .sl-timeline {
@@ -416,7 +417,7 @@ export default function Supportingline() {
           }
 
           .sl-title {
-            font-size: 24px;
+            font-size: 25px !important;
             font-weight: 800;
             color: #fff; /* Match other sections white title */
             line-height: 1.2;
@@ -425,7 +426,7 @@ export default function Supportingline() {
           }
 
           .sl-subtitle {
-            font-size: 14px;
+            font-size: 18px !important;
             margin-top: 16px;
             color: rgba(255, 255, 255, 0.7);
             opacity: 0.8;

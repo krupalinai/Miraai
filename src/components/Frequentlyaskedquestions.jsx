@@ -126,9 +126,9 @@ export default function Frequentlyaskedquestions() {
         }
 
         .faq-title {
-          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+          font-size: 40px !important;
           font-weight: 800;
-          letter-spacing: -0.02em;
+          letter-spacing: 0.5px !important;
           color: #f3f3f6;
           line-height: 1.15;
           max-width: 100%;
@@ -273,7 +273,7 @@ export default function Frequentlyaskedquestions() {
 
           .faq-title {
             text-align: center;
-            font-size: 24px;
+            font-size: 25px !important;
             font-weight: 800;
             max-width: 90%;
             margin: 0 auto;
@@ -290,7 +290,7 @@ export default function Frequentlyaskedquestions() {
 
         @media (max-width: 560px) {
           .faq-title {
-            font-size: 20px;
+            font-size: 25px !important;
           }
 
           .faq-item {

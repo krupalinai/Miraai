@@ -394,7 +394,7 @@ export default function FloatingVideoHero({ openForm }) {
           font-weight: 700;
           color: #ffffff;
           line-height: 1.15;
-          letter-spacing: -0.5px;
+          letter-spacing: 0.5px !important;
           margin: 0;
         }
 
@@ -406,10 +406,11 @@ export default function FloatingVideoHero({ openForm }) {
 
         .hero-subheading {
           font-family: 'Inter', sans-serif;
-          font-size: 18px;
+          font-size: 21px !important;
           font-weight: 500;
           color: #9ca3af;
           line-height: 1.6;
+          letter-spacing: 0.5px !important;
           margin: 0;
           max-width: 480px;
         }
@@ -519,11 +520,11 @@ export default function FloatingVideoHero({ openForm }) {
         /* Responsive - Mobile */
         @media (max-width: 768px) {
           .hero-heading {
-            font-size: 28px;
+            font-size: 25px !important;
             padding: 0 20px;
           }
           .hero-subheading {
-            font-size: 14px;
+            font-size: 18px !important;
             padding: 0 20px;
           }
           .hero-content {

@@ -69,6 +69,7 @@ const ThankU = ({ onClose }) => {
                 .tu-wrap {
                     font-family: 'Inter', system-ui, sans-serif;
                     position: relative;
+                    letter-spacing: 0.5px !important;
                 }
                 .tu-check-circle {
                     width: 70px;

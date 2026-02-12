@@ -121,7 +121,7 @@ export default function Footer() {
         }
 
         .ft-desc {
-          font-size: 14px;
+          font-size: 18px !important;
           line-height: 1.55;
           color: rgba(255, 255, 255, 0.52);
         }
@@ -163,7 +163,7 @@ export default function Footer() {
         }
 
         .ft-copy {
-          font-size: 14px;
+          font-size: 16px !important;
           color: rgba(255, 255, 255, 0.62);
         }
 
@@ -175,7 +175,7 @@ export default function Footer() {
         }
 
         .ft-legal-link {
-          font-size: 14px;
+          font-size: 16px !important;
           color: rgba(255, 255, 255, 0.62);
           text-decoration: none;
           transition: color 0.2s ease;
@@ -203,7 +203,16 @@ export default function Footer() {
         }
 
         /* ========================================
-           RESPONSIVE - Mobile
+           RESPONSIVE - Tablet/Mobile (max-width: 768px)
+        ======================================== */
+        @media (max-width: 768px) {
+          .ft-desc {
+            font-size: 16px !important;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Mobile (max-width: 680px)
         ======================================== */
         @media (max-width: 680px) {
           .ft-wrap {
@@ -242,7 +251,7 @@ export default function Footer() {
           
           .ft-legal-link {
              margin: 0 4px;
-             font-size: 13px;
+             font-size: 16px !important;
           }
         }
       `}</style>

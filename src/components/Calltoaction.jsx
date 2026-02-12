@@ -92,10 +92,10 @@ export default function Calltoaction({ openForm }) {
         .cta-title {
           position: relative;
           z-index: 1;
-          font-size: clamp(1.5rem, 3.5vw, 2.8rem);
+          font-size: 40px !important;
           font-weight: 800;
           line-height: 1.15;
-          letter-spacing: -0.02em;
+          letter-spacing: 0.5px !important;
           color: rgba(255, 255, 255, 0.95);
           max-width: 900px;
           margin: 0 auto;
@@ -105,13 +105,14 @@ export default function Calltoaction({ openForm }) {
           position: relative;
           z-index: 1;
           margin-top: 12px;
-          font-size: clamp(1rem, 1.2vw, 1.25rem);
+          font-size: 21px !important;
           line-height: 1.65;
           color: rgba(255, 255, 255, 0.7);
           opacity: 0.8;
           max-width: 800px;
           margin: 0 auto;
           font-weight: 500;
+          letter-spacing: 0.5px !important;
         }
 
         .cta-btn {
@@ -152,13 +153,23 @@ export default function Calltoaction({ openForm }) {
 
 
         @media (max-width: 980px) {
-          .cta-title {
-            font-size: 24px;
-            font-weight: 800;
-          }
-
+          /* Handled in 768px query */
           .cta-card {
             padding: 64px 18px 58px;
+          }
+        }
+
+        /* ========================================
+           RESPONSIVE - Tablet/Mobile (max-width: 768px)
+        ======================================== */
+        @media (max-width: 768px) {
+          .cta-title {
+            font-size: 25px !important;
+            font-weight: 800;
+          }
+          
+          .cta-sub {
+            font-size: 18px !important;
           }
         }
 
@@ -176,7 +187,7 @@ export default function Calltoaction({ openForm }) {
           }
 
           .cta-title {
-            font-size: 24px;
+            /* Handled in 768px query */
             line-height: 1.2;
             font-weight: 800;
             max-width: 90%;
@@ -188,7 +199,7 @@ export default function Calltoaction({ openForm }) {
           }
 
           .cta-sub {
-            font-size: 14px;
+            /* Handled in 768px query */
             line-height: 1.6;
             margin-top: 18px;
             opacity: 0.8;
@@ -216,11 +227,11 @@ export default function Calltoaction({ openForm }) {
           }
 
           .cta-title {
-            font-size: 22px;
+            /* Handled in 768px query */
           }
 
           .cta-sub {
-            font-size: 12px;
+            /* Handled in 768px query */
             padding: 0 8px;
             margin-top: 16px;
           }
@@ -246,12 +257,12 @@ export default function Calltoaction({ openForm }) {
           }
 
           .cta-title {
-            font-size: 20px;
+            /* Handled in 768px query */
             line-height: 1.25;
           }
 
           .cta-sub {
-            font-size: 11px;
+            /* Handled in 768px query */
             line-height: 1.55;
             padding: 0 4px;
             margin-top: 14px;
