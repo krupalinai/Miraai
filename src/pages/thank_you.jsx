@@ -8,7 +8,14 @@ const ThankYouPage = () => {
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, []);
+
+        // Auto redirect after 6 seconds
+        const timer = setTimeout(() => {
+            navigate('/');
+        }, 6000);
+
+        return () => clearTimeout(timer);
+    }, [navigate]);
 
     const handleBackToHome = () => {
         navigate('/');

@@ -86,18 +86,32 @@ const Form = ({ isOpen, onClose }) => {
                     projectRequirement: ''
                 });
             } else {
-                let errorDetails = '';
+                let errorData;
                 try {
-                    const errorData = await response.json();
-                    errorDetails = JSON.stringify(errorData);
+                    errorData = await response.json();
                 } catch (e) {
-                    errorDetails = await response.text();
+                    errorData = await response.text();
                 }
 
-                console.error(`Submission failed. Status: ${response.status}`, errorDetails);
+                console.error(`Submission failed. Status: ${response.status}`, errorData);
 
-                if (response.status === 422) {
-                    alert(`Validation Error (422): Server ko bheja gaya data galat hai. Details: ${errorDetails}`);
+                if (response.status === 422 && errorData.detail && Array.isArray(errorData.detail)) {
+                    // Create a user-friendly error message from the validation details
+                    const formattedErrors = errorData.detail.map(err => {
+                        // Extract field name (last item in loc array, e.g., 'project_requirement')
+                        const fieldNameKey = err.loc[err.loc.length - 1];
+                        // Convert user_name to User Name
+                        const fieldName = fieldNameKey
+                            .replace(/_/g, ' ')
+                            .replace(/\b\w/g, char => char.toUpperCase());
+
+                        return `${fieldName}: ${err.msg}`;
+                    }).join('\n');
+
+                    alert(`Please fix the following errors:\n\n${formattedErrors}`);
+                } else if (response.status === 422) {
+                    // Fallback if detail array is missing
+                    alert(`Validation Error (422): ${JSON.stringify(errorData)}`);
                 } else {
                     alert(`Submission failed. (Status: ${response.status}). Please check console for details.`);
                 }
