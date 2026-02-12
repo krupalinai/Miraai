@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import aiGenerationImg from '../assets/images/ai_genration.png';
 import customizeBrandImg from '../assets/images/customize and brand copy.png';
@@ -51,11 +52,17 @@ const steps = [
 export default function Supportingline() {
   return (
     <section className="sl-wrap">
-      <div className="sl-header">
+      <motion.div
+        className="sl-header"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <div className="sl-title">Here's Exactly How We Work With You
         </div>
         <div className="sl-subtitle">No confusion. No complexity. Just a simple process from idea to delivery.</div>
-      </div>
+      </motion.div>
 
       <div className="sl-timeline">
         {/* Central Timeline Line with Energy Flow */}
@@ -63,10 +70,14 @@ export default function Supportingline() {
           <div className="sl-line-glow"></div>
         </div>
 
-        {steps.map((step) => (
-          <div
+        {steps.map((step, index) => (
+          <motion.div
             key={step.number}
             className={`sl-row ${step.side === 'left' ? 'is-left' : 'is-right'}`}
+            initial={{ opacity: 0, x: step.side === 'left' ? 30 : -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.7, delay: 0.1 }}
           >
             {step.side === 'left' ? (
               <>
@@ -107,7 +118,7 @@ export default function Supportingline() {
               <div className="sl-content-subtitle">{step.subtitle}</div>
               <div className="sl-content-desc">{step.description}</div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

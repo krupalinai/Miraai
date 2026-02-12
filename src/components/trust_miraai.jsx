@@ -82,11 +82,11 @@ const TrustMiraai = () => {
                 {/* Header Section */}
                 {isMobile ? (
                     <div className="text-center mb-10">
-                        <h2 className="text-[25px] font-bold text-white tracking-[0.5px] max-w-[90%] mx-auto leading-tight">
+                        <h2 className="text-[25px] font-bold text-white tracking-[0.5px] max-w-full px-2 mx-auto leading-tight">
                             Traditional Production Slows Down Modern Brands
                         </h2>
                         <p className="text-gray-400 text-[18px] tracking-[0.5px] mt-4 max-w-[600px] mx-auto leading-relaxed opacity-80">
-                            Creating videos and visuals through traditional shoots demands large budgets, long timelines, and multiple resources, making consistent content creation difficult to sustain.
+                            Traditional video shoots require high budgets, long timelines, and many resources, making consistent content creation difficult.
                         </p>
                     </div>
                 ) : (
@@ -96,7 +96,7 @@ const TrustMiraai = () => {
                         animate={isInView ? "visible" : "hidden"}
                         variants={headerVariants}
                     >
-                        <h2 className="text-[40px] font-bold text-white tracking-[0.5px] max-w-[1000px] mx-auto leading-tight mb-6">
+                        <h2 className="text-[40px] font-bold text-white tracking-[0.5px] max-w-none mx-auto leading-tight mb-6">
                             Traditional Production Slows Down Modern Brands
                         </h2>
                         <motion.p
@@ -105,7 +105,7 @@ const TrustMiraai = () => {
                             animate={isInView ? { opacity: 0.8, y: 0 } : { opacity: 0, y: 10 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                         >
-                            Creating videos and visuals through traditional shoots demands large budgets, long timelines, and multiple resources, making consistent content creation difficult to sustain.
+                            Traditional video shoots require high budgets, long timelines, and many resources, making consistent content creation difficult.
                         </motion.p>
                     </motion.div>
                 )}

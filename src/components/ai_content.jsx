@@ -161,6 +161,10 @@ const AiContent = () => {
                                         ? 'bg-white/5 border-l-[6px] border-l-[#8B5CF6] border-t-white/10 border-r-white/10 border-b-white/10 shadow-[0_0_30px_rgba(139,92,246,0.1)]'
                                         : 'bg-transparent border-white/10 hover:bg-white/5'}
                                 `}
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                viewport={{ once: true, margin: "-100px" }}
+                                transition={{ duration: 0.6, delay: 0.1 * index }}
                                 style={{
                                     top: '120px',
                                     zIndex: 20 + index,
@@ -227,6 +231,10 @@ const AiContent = () => {
                                     cursor-pointer group
                                     min-h-[150px]
                                 `}
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5 }}
                                 style={{
                                     // Sticky position ensures the card STOPS before hitting the image
                                     top: `calc(80px + 320px + 24px + ${index * 10}px)`,

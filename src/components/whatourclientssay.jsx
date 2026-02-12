@@ -1,10 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 export default function Whatourclientssay() {
   const [currentIndex, setCurrentIndex] = useState(3); // Start at the first real item (index 3)
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
   const trackRef = useRef(null);
+
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -91,18 +95,28 @@ export default function Whatourclientssay() {
   };
 
   return (
-    <section className="wcs-wrap">
+    <section className="wcs-wrap" ref={sectionRef}>
       <div className="wcs-inner">
-        <div className="wcs-head">
+        <motion.div
+          className="wcs-head"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className="wcs-title">What Our Clients Say</div>
           <div className="wcs-sub">
             Trusted By Forward-Thinking Teams For Reliable, Intelligent, And
             <br />
             High-Impact Creative Production.
           </div>
-        </div>
+        </motion.div>
 
-        <div className="wcs-stage">
+        <motion.div
+          className="wcs-stage"
+          initial={{ opacity: 0, y: 40 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
           <div className="wcs-viewport">
             <div
               className="wcs-track"
@@ -143,7 +157,7 @@ export default function Whatourclientssay() {
               </svg>
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <style>{`
@@ -342,7 +356,7 @@ export default function Whatourclientssay() {
             font-size: 25px !important;
             font-weight: 800;
             line-height: 1.2;
-            max-width: 90%;
+            max-width: 100%;
             margin: 0 auto;
           }
 

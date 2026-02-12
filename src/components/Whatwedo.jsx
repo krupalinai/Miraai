@@ -68,12 +68,14 @@ const Whatwedo = () => {
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="text-gray-400 text-[18px] md:text-[21px] font-medium tracking-[0.5px] opacity-80 max-w-[850px] mx-auto leading-relaxed"
                     >
-                        Your Ai-powered Creative Team
+                        Miraai combines advanced AI with human creativity to deliver enterprise-grade content.
                     </motion.p>
                 </div>
 
                 {/* Content: Two Columns */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-20 items-center">
+
+
 
                     {/* Left side: Image */}
                     <motion.div
@@ -91,15 +93,6 @@ const Whatwedo = () => {
 
                     {/* Right side: Text and List */}
                     <div className="flex flex-col">
-                        <motion.p
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-                            transition={{ duration: 0.6, delay: 0.4 }}
-                            className="text-gray-400 text-sm sm:text-lg md:text-xl leading-relaxed font-normal mb-8 md:mb-10"
-                        >
-                            Miraai Combines Advanced Artificial Intelligence With Human Creativity To Deliver Enterprise-Grade Content Production.
-                        </motion.p>
-
                         <motion.h4
                             initial={{ opacity: 0 }}
                             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
