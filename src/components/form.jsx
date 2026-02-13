@@ -113,7 +113,7 @@ const Form = ({ isOpen, onClose }) => {
                     // Fallback if detail array is missing
                     alert(`Validation Error (422): ${JSON.stringify(errorData)}`);
                 } else {
-                    alert(`Submission failed. (Status: ${response.status}). Please check console for details.`);
+                    alert(`Submission failed. (Status: ${response.status}): ${typeof errorData === 'object' ? JSON.stringify(errorData) : errorData}`);
                 }
             }
         } catch (error) {
